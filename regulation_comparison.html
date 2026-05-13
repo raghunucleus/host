@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>
+(function(){if(sessionStorage.getItem("rec_portal_auth_v1")!=="1"){location.replace("index.html");}})();
+</script>
+<title>AR-23 (Raghu Engineering College) vs FFCS v4.0 (VIT) — A Complete Side-by-Side</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=JetBrains+Mono:wght@400;600&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1115;
+    --paper: #f4efe6;
+    --paper-2: #ebe4d6;
+    --rule: #1a1d24;
+    --accent-ar: #b8341f;       /* terracotta — Raghu */
+    --accent-ar-soft: #f3d5cd;
+    --accent-vit: #1b4d3e;      /* forest — VIT */
+    --accent-vit-soft: #cfe1d7;
+    --muted: #5a5043;
+    --gold: #b48a3b;
+    --warning: #8a4a2a;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter Tight', sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 72px 48px 60px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--gold);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 12% 30%, rgba(184,52,31,0.18), transparent 38%),
+      radial-gradient(circle at 88% 70%, rgba(27,77,62,0.22), transparent 42%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1320px; margin: 0 auto; position: relative; z-index: 1; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: clamp(38px, 6vw, 78px);
+    line-height: 0.98;
+    margin: 0 0 22px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 .vs {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--gold);
+    font-size: 0.7em;
+    padding: 0 8px;
+  }
+  .hero p.lede {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    max-width: 780px;
+    color: #d8d2c4;
+    margin: 0 0 36px;
+    font-style: italic;
+  }
+  .legend {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .legend-item { display: flex; align-items: center; gap: 10px; }
+  .swatch { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+  .swatch-ar { background: var(--accent-ar); }
+  .swatch-vit { background: var(--accent-vit); }
+
+  /* ===== Section scaffolding ===== */
+  main { max-width: 1320px; margin: 0 auto; padding: 64px 48px 120px; }
+  .section { margin-bottom: 72px; scroll-margin-top: 30px; }
+  .section-header {
+    display: flex; align-items: baseline; gap: 18px;
+    margin-bottom: 28px;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 14px;
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-ar);
+    letter-spacing: 0.1em;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(28px, 3.5vw, 42px);
+    margin: 0;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  /* ===== Comparison grid ===== */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--rule);
+    background: var(--paper-2);
+    margin-bottom: 24px;
+  }
+  .col {
+    padding: 26px 28px;
+    background: var(--paper);
+  }
+  .col-ar { border-right: 1px solid var(--rule); }
+  .col-header {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .col-ar .col-header { color: var(--accent-ar); }
+  .col-vit .col-header { color: var(--accent-vit); }
+  .col-header::before {
+    content: '';
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .col-ar .col-header::before { background: var(--accent-ar); }
+  .col-vit .col-header::before { background: var(--accent-vit); }
+
+  .col p { margin: 0 0 12px; font-size: 15px; }
+  .col ul { margin: 0 0 12px; padding-left: 18px; font-size: 15px; }
+  .col ul li { margin-bottom: 6px; }
+  .col strong { font-weight: 600; }
+  .col em { color: var(--muted); }
+
+  /* ===== Difference callout ===== */
+  .diff {
+    background: #fff8eb;
+    border-left: 4px solid var(--gold);
+    padding: 18px 24px;
+    margin-bottom: 36px;
+    font-size: 15px;
+    position: relative;
+  }
+  .diff::before {
+    content: 'KEY DIFFERENCE';
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .diff p { margin: 0; }
+  .diff p + p { margin-top: 8px; }
+
+  /* ===== Quick-glance table ===== */
+  .quicktable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 8px 0 20px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .quicktable th, .quicktable td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #d6cebf;
+    vertical-align: top;
+  }
+  .quicktable th {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 500;
+  }
+  .quicktable td:first-child {
+    font-weight: 600;
+    background: var(--paper-2);
+    width: 26%;
+  }
+  .quicktable .ar { color: var(--accent-ar); font-weight: 500; }
+  .quicktable .vit { color: var(--accent-vit); font-weight: 500; }
+
+  /* ===== TOC ===== */
+  .toc {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    margin-bottom: 64px;
+  }
+  .toc h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin: 0 0 16px;
+    font-weight: 600;
+  }
+  .toc ol {
+    columns: 2;
+    column-gap: 40px;
+    margin: 0;
+    padding-left: 22px;
+    font-size: 14px;
+  }
+  .toc li { margin-bottom: 5px; break-inside: avoid; }
+  .toc a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px dotted #aaa;
+  }
+  .toc a:hover { color: var(--accent-ar); border-color: var(--accent-ar); }
+
+  /* ===== Tag pills ===== */
+  .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    border-radius: 3px;
+    margin-right: 4px;
+    margin-bottom: 2px;
+  }
+  .pill-ar { background: var(--accent-ar-soft); color: var(--accent-ar); }
+  .pill-vit { background: var(--accent-vit-soft); color: var(--accent-vit); }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--ink);
+    color: #aaa294;
+    padding: 40px 48px;
+    text-align: center;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+    border-top: 4px solid var(--gold);
+  }
+  footer strong { color: var(--paper); font-family: 'Fraunces', serif; font-style: italic; font-size: 15px; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 860px) {
+    main { padding: 40px 22px 60px; }
+    .hero { padding: 50px 22px 40px; }
+    .grid { grid-template-columns: 1fr; }
+    .col-ar { border-right: none; border-bottom: 1px solid var(--rule); }
+    .toc ol { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== HERO ============== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Academic Regulations · Comparative Study</div>
+    <h1>AR-23 <span class="vs">vs.</span> FFCS v4.0</h1>
+    <p class="lede">A complete, category-by-category comparison of Raghu Engineering College's AR-23 Regulations and Vellore Institute of Technology's Fully Flexible Credit System (FFCS) Version 4.0 — every section, every difference, side by side.</p>
+    <div class="legend">
+      <div class="legend-item"><span class="swatch swatch-ar"></span> AR-23 · Raghu Engineering College (Autonomous)</div>
+      <div class="legend-item"><span class="swatch swatch-vit"></span> FFCS v4.0 · Vellore Institute of Technology</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============== TOC ============== -->
+<nav class="toc">
+  <h2>Sections in this comparison</h2>
+  <ol>
+    <li><a href="#s1">Governance &amp; Scope</a></li>
+    <li><a href="#s2">Programme Duration &amp; Award of Degree</a></li>
+    <li><a href="#s3">Admission</a></li>
+    <li><a href="#s4">Academic Calendar &amp; Semester Structure</a></li>
+    <li><a href="#s5">Curriculum Structure &amp; Course Classification</a></li>
+    <li><a href="#s6">Credit System &amp; Definitions</a></li>
+    <li><a href="#s7">Minimum Credit Requirements</a></li>
+    <li><a href="#s8">Course Registration Process</a></li>
+    <li><a href="#s9">Add/Drop &amp; Course Withdrawal</a></li>
+    <li><a href="#s10">Course Prerequisites &amp; Equivalence</a></li>
+    <li><a href="#s11">Attendance Rules</a></li>
+    <li><a href="#s12">Continuous Internal Evaluation (Theory)</a></li>
+    <li><a href="#s13">End-Semester Evaluation (Theory)</a></li>
+    <li><a href="#s14">Practical &amp; Lab Course Evaluation</a></li>
+    <li><a href="#s15">Embedded Theory + Lab Courses</a></li>
+    <li><a href="#s16">Project &amp; Internship</a></li>
+    <li><a href="#s17">Skill-Oriented Courses</a></li>
+    <li><a href="#s18">MOOCs &amp; Credit Transfer</a></li>
+    <li><a href="#s19">Academic Bank of Credits (ABC)</a></li>
+    <li><a href="#s20">Grading System &amp; Pass Criteria</a></li>
+    <li><a href="#s21">SGPA / CGPA Calculation</a></li>
+    <li><a href="#s22">Absolute vs Relative Grading</a></li>
+    <li><a href="#s23">Promotion Rules</a></li>
+    <li><a href="#s24">Re-evaluation &amp; Answer Sheet Perusal</a></li>
+    <li><a href="#s25">Absence from Exams &amp; Re-FAT</a></li>
+    <li><a href="#s26">Backlog &amp; Re-registration</a></li>
+    <li><a href="#s27">Grade Improvement</a></li>
+    <li><a href="#s28">Course Substitution</a></li>
+    <li><a href="#s29">Audit Courses</a></li>
+    <li><a href="#s30">Minor Degree</a></li>
+    <li><a href="#s31">Honours Degree</a></li>
+    <li><a href="#s32">Class / Distinction Award</a></li>
+    <li><a href="#s33">Multiple Entry &amp; Exit</a></li>
+    <li><a href="#s34">Gap Year / Break of Study</a></li>
+    <li><a href="#s35">Mandatory / Audit Non-Credit Courses</a></li>
+    <li><a href="#s36">Semester Abroad &amp; International Exposure</a></li>
+    <li><a href="#s37">Academic Malpractice</a></li>
+    <li><a href="#s38">Withholding of Results</a></li>
+    <li><a href="#s39">Medium of Instruction</a></li>
+    <li><a href="#s40">Transitory / Re-admission Rules</a></li>
+    <li><a href="#s41">Lateral Entry Provisions</a></li>
+    <li><a href="#s42">Special Recognition (Honours Club / Rank)</a></li>
+    <li><a href="#s43">Time Limit / Maximum Duration</a></li>
+    <li><a href="#s44">Modification of Regulations</a></li>
+    <li><a href="#s45">Grade Sheets &amp; Transcripts</a></li>
+    <li><a href="#s46">Induction Programme</a></li>
+    <li><a href="#s47">Higher Order Thinking (HOTs) in exams</a></li>
+    <li><a href="#s48">Maximum / Minimum Credit Load per Semester</a></li>
+    <li><a href="#summary">Synthesis &amp; Overall Differences</a></li>
+  </ol>
+</nav>
+
+<!-- ============== S1 ============== -->
+<section class="section" id="s1">
+  <div class="section-header">
+    <span class="section-num">01 / GOVERNANCE</span>
+    <h2 class="section-title">Governance &amp; Scope of the Regulations</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23 · Raghu Engineering College</div>
+      <p>AR-23 is an institutional regulation document for an <strong>autonomous engineering college</strong> affiliated to JNTU-GV, Vizianagaram. The document explicitly governs the B.Tech programme from the batch admitted in academic year 2023-24 onwards, with a parallel section for lateral-entry students from 2024-25 onwards.</p>
+      <p>Approval and amendment authority sits with the <strong>Vice-Chancellor of the affiliating University</strong>; the College Academic Committee handles operational matters like attendance condonation. The regulations are explicitly framed around AICTE-recommended credit distributions and APSCHE guidelines.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0 · VIT</div>
+      <p>FFCS v4.0 is a <strong>deemed-university-wide</strong> regulation that applies to <em>all programmes</em> (B.Tech, M.Tech, MCA, MBA, M.Sc., BBA, BCA, B.Des, B.Arch, etc.) at VIT, not just engineering. It applies to students admitted from 2021-22 onwards.</p>
+      <p>The regulations have a documented version history dating back to <strong>FFCS 1.0 (2009)</strong>, with each revision tied to an Academic Council meeting number and date. Version 4.0 was approved at the 72nd Academic Council meeting on 13 December 2023. Final interpretive authority lies with the <strong>Academic Council</strong>.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23 is a <strong>single-programme regulation</strong> (B.Tech only) for an affiliated autonomous college, written tightly around AICTE/APSCHE prescriptions. FFCS v4.0 is a <strong>university-wide framework</strong> covering UG and PG across disciplines, with explicit version control and a research-university orientation.</p>
+  </div>
+</section>
+
+<!-- ============== S2 ============== -->
+<section class="section" id="s2">
+  <div class="section-header">
+    <span class="section-num">02 / DEGREE</span>
+    <h2 class="section-title">Programme Duration &amp; Award of Degree</h2>
+  </div>
+
+  <table class="quicktable">
+    <thead><tr><th>Aspect</th><th>AR-23 (B.Tech Regular)</th><th>FFCS v4.0 (B.Tech)</th></tr></thead>
+    <tbody>
+      <tr><td>Minimum duration</td><td class="ar">4 academic years</td><td class="vit">4 years (also UGC-prescribed minimum)</td></tr>
+      <tr><td>Maximum duration</td><td class="ar">8 academic years (+2 if gap year availed)</td><td class="vit">n + 3 years (i.e. 7 years for B.Tech)</td></tr>
+      <tr><td>Total credits</td><td class="ar">160 credits for B.Tech</td><td class="vit">Programme-specific; defined in curriculum</td></tr>
+      <tr><td>Lateral entry duration</td><td class="ar">3–6 years; 120 credits</td><td class="vit">Not separately structured in FFCS v4.0</td></tr>
+      <tr><td>Forfeiture clause</td><td class="ar">Seat cancelled if not completed in 8 yrs</td><td class="vit">Studentship auto-cancelled at n+3</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>To earn the degree the student must (a) pursue the programme for <strong>not less than 4 and not more than 8 academic years</strong> and (b) register for and secure <strong>all 160 credits</strong>. Honours requires an additional 15 credits taken simultaneously with the B.Tech.</p>
+      <p>Students failing to complete in 8 years <em>forfeit their seat</em> and admission stands cancelled.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Minimum durations are listed for every degree the university offers (B.Tech: 4 yrs, M.Tech: 2 yrs, M.Tech-Integrated: 5 yrs, MCA/MBA/M.Sc: 2 yrs, BBA/BCA/B.Sc/B.Com: 3 yrs, M.Sc-Integrated: 5 yrs, B.Arch: 5 yrs). Provisional certificate is issued by the CoE once requirements are met; the degree is conferred at the next Convocation.</p>
+      <p>Degree certificate text follows a precise format that includes Minor/Honours specializations: e.g. "Bachelor of Technology (Honours) in Computer Science Engineering with specialization in Data Science."</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>Both regulations cap the programme to roughly the same horizon, but the philosophies differ. AR-23 talks of "forfeiting the seat" — a harder line. FFCS v4.0 uses a softer "studentship stands cancelled automatically" formula but adds explicit provision for break of study (1 year, once per programme) and a documented "gap year" pathway through the affiliating university for AR-23 students.</p>
+  </div>
+</section>
+
+<!-- ============== S3 ============== -->
+<section class="section" id="s3">
+  <div class="section-header">
+    <span class="section-num">03 / ADMISSION</span>
+    <h2 class="section-title">Admission Pathways</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Admissions are governed by <strong>AP State Government / University</strong> rules. Selection is by merit rank in the common entrance examination (effectively EAPCET) conducted by the AP government, or any other government-approved merit order, subject to state-prescribed reservations.</p>
+      <p>The college itself has no admission entrance test; it operates inside the AP government counseling framework.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>VIT conducts its own <strong>national-level computer-based entrance exams</strong>: VITEEE for B.Tech, VITMEE for M.Tech. Admission is through university counseling on the merit list of these exams.</p>
+      <p>For programmes outside the engineering vertical (BBA, B.Sc., etc.), admission is on merit plus programme-specific criteria as published in the annual Admissions brochure.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>State-government counseling (AR-23) versus university-run national entrance exam (FFCS) — the structural difference between an affiliated autonomous college and a deemed-to-be university under section 3 of the UGC Act.</p>
+  </div>
+</section>
+
+<!-- ============== S4 ============== -->
+<section class="section" id="s4">
+  <div class="section-header">
+    <span class="section-num">04 / CALENDAR</span>
+    <h2 class="section-title">Academic Calendar &amp; Semester Structure</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <ul>
+        <li><strong>Two semesters per year</strong> (one odd + one even).</li>
+        <li>Minimum <strong>90 working days</strong> per semester, including exams.</li>
+        <li>A <strong>summer term of 8 weeks</strong> for internships/apprenticeships, particularly for students who exit after 2 or 4 semesters.</li>
+        <li><strong>3-week mandatory induction</strong> before Semester 1, per AICTE template.</li>
+        <li>Preferably <strong>25% of each theory course</strong> is taught in blended-learning mode.</li>
+      </ul>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <ul>
+        <li><strong>Two regular semesters</strong>: Fall (Jul–Nov) and Winter (Dec–May).</li>
+        <li><strong>15 instructional non-exam weeks</strong> per semester (explicit clock-hours per credit).</li>
+        <li>Optional <strong>Weekend Intra Semester</strong> and <strong>Summer Semester</strong> in fast-track mode for clearing backlogs — not binding on the university.</li>
+        <li>Slot-based timetable: students build their own time-table from open slots; classmates may have entirely different schedules.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23 follows a <strong>conventional fixed timetable</strong> with summer used mostly for industry exposure. FFCS introduces <strong>slot-based scheduling</strong> with optional weekend and summer terms, fundamentally enabling personalised academic pacing — the defining philosophical move of the "Fully Flexible" Credit System.</p>
+  </div>
+</section>
+
+<!-- ============== S5 ============== -->
+<section class="section" id="s5">
+  <div class="section-header">
+    <span class="section-num">05 / STRUCTURE</span>
+    <h2 class="section-title">Curriculum Structure &amp; Course Classification</h2>
+  </div>
+
+  <table class="quicktable">
+    <thead><tr><th>Category</th><th>AR-23 (% of 160 credits)</th><th>FFCS v4.0 equivalent</th></tr></thead>
+    <tbody>
+      <tr><td>Humanities &amp; Mgmt</td><td class="ar">13 cr · 8%</td><td class="vit">Part of Foundation Core (HSM electives)</td></tr>
+      <tr><td>Basic Sciences</td><td class="ar">20 cr · 13%</td><td class="vit">Foundation Core (FC)</td></tr>
+      <tr><td>Engineering Sciences</td><td class="ar">23.5 cr · 14%</td><td class="vit">Discipline-Linked Engineering Courses (DLE)</td></tr>
+      <tr><td>Professional Core</td><td class="ar">54.5 cr · 34%</td><td class="vit">Discipline Core (DC)</td></tr>
+      <tr><td>Electives (PE/OE/SEC)</td><td class="ar">33 cr · 21%</td><td class="vit">DE / SE / OE / SEC / AEC baskets</td></tr>
+      <tr><td>Internship &amp; Project</td><td class="ar">16 cr · 10%</td><td class="vit">Project &amp; Internship category</td></tr>
+      <tr><td>Mandatory Courses</td><td class="ar">Non-credit</td><td class="vit">NGCR &amp; bridge courses (non-counted)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Eight clearly labelled buckets: <span class="pill pill-ar">HM</span> <span class="pill pill-ar">BS</span> <span class="pill pill-ar">ES</span> <span class="pill pill-ar">PC</span> <span class="pill pill-ar">PE</span> <span class="pill pill-ar">OE</span> <span class="pill pill-ar">SEC</span> <span class="pill pill-ar">PR</span> <span class="pill pill-ar">MC</span>.</p>
+      <p>Specific count: <strong>5 Professional Electives + 4 Open Electives + 5 Skill-Oriented Courses</strong>. Of the 5 skill courses: 2 from the same domain, 1 soft skill, 2 advanced skill (interdisciplinary). The total open-elective count enables an in-curriculum Minor.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Course buckets: <span class="pill pill-vit">FC</span> <span class="pill pill-vit">DLE</span> <span class="pill pill-vit">DC</span> <span class="pill pill-vit">DE</span> <span class="pill pill-vit">SE</span> <span class="pill pill-vit">OE</span> <span class="pill pill-vit">SEC</span> <span class="pill pill-vit">AEC</span> plus speciality categories (Value Added, Foreign Language, Major/Minor, Honours, Compulsory Clinical for medicine etc.).</p>
+      <p>Each course is identified by an <strong>8-character course code</strong>: four letters (discipline) + three digits (cognitive level + serial) + one letter (version). Courses are also tagged by <strong>type</strong>: Theory-only, Lab-only, Embedded, Project-only — each with its own evaluation pattern.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>Both use roughly similar buckets, but FFCS adds finer granularity: <em>Specialization Elective</em> (restricted basket) is treated separately from <em>Discipline Elective</em> (broader); <em>Ability Enhancement</em> sits alongside <em>Skill Enhancement</em>; and courses come encoded with cognitive levels and versions. AR-23 sticks to the AICTE-mandated bucket percentages almost verbatim.</p>
+  </div>
+</section>
+
+<!-- ============== S6 ============== -->
+<section class="section" id="s6">
+  <div class="section-header">
+    <span class="section-num">06 / CREDITS</span>
+    <h2 class="section-title">Credit Definitions</h2>
+  </div>
+
+  <table class="quicktable">
+    <thead><tr><th>Component</th><th>AR-23</th><th>FFCS v4.0</th></tr></thead>
+    <tbody>
+      <tr><td>1 hr Lecture / wk</td><td class="ar">1 credit</td><td class="vit">1 credit (50-min L per week, 15 wks)</td></tr>
+      <tr><td>1 hr Tutorial / wk</td><td class="ar">1 credit</td><td class="vit">1 credit</td></tr>
+      <tr><td>1 hr Practical / wk</td><td class="ar">0.5 credit</td><td class="vit">— (uses 100-min P unit)</td></tr>
+      <tr><td>2 hr Practical / wk</td><td class="ar">1 credit</td><td class="vit">~1 credit (100-min lab per week)</td></tr>
+      <tr><td>Total instructional hrs/credit</td><td class="ar">Not specified explicitly</td><td class="vit">15 hrs for L or T; min 30 hrs for P</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>AR-23 spells out credit weights for L/T/P as a simple weekly conversion table. Courses are written in <strong>L-T-P-C</strong> format, exactly as AICTE recommends. Half-credits (e.g. 0.5 for one practical hour) appear in the structure.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>FFCS defines a credit as <strong>15 hours of L or T, or 30 hours of P</strong>, executed over a 15-week semester. Every course has a 4-tuple LTPC; this maps directly to instructional minutes per week (50-min units for L/T, 100-min units for P).</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>FFCS expresses the credit rule as <em>total instructional hours per credit</em> (15 L/T or 30 P) — useful because some courses are taught in fast-track mode in summer/weekend semesters where the per-week count rises but the totals stay constant. AR-23 sticks to a strict per-week formula, which assumes a regular semester only.</p>
+  </div>
+</section>
+
+<!-- ============== S7 ============== -->
+<section class="section" id="s7">
+  <div class="section-header">
+    <span class="section-num">07 / MINIMUM CREDITS</span>
+    <h2 class="section-title">Minimum Credit Requirement for Degree</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p><strong>Hard requirement: 160 credits</strong> for B.Tech (Regular), <strong>120 credits</strong> for Lateral Entry, plus all FC/PC courses to be cleared individually. An additional <strong>15 credits</strong> for B.Tech (Honors).</p>
+      <p>No category-level relaxation is granted — every course listed in the structure of the chosen branch must be cleared.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Minimum credits are programme-specific and declared in each curriculum. Critically: it is possible under FFCS to <strong>hit the total credit number without meeting category-level minima</strong> — and in that case the student must still complete all FC/DLE/DC courses and the required quanta in OE/DE/SE/SEC/AEC.</p>
+      <p>Minor and Honours each demand <strong>18 additional credits</strong> with a minimum average CGPA of 7.50 in those courses.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23's count (160) is fixed for any B.Tech branch; FFCS is programme-defined. Additional credentials differ in scale: AR-23 Honours needs <strong>+15 credits</strong>, FFCS Minor/Honours each demand <strong>+18 credits</strong> with a CGPA condition layered on top.</p>
+  </div>
+</section>
+
+<!-- ============== S8 ============== -->
+<section class="section" id="s8">
+  <div class="section-header">
+    <span class="section-num">08 / REGISTRATION</span>
+    <h2 class="section-title">Course Registration Process</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>AR-23 follows a more conventional model: a student takes the courses listed for their semester in their branch's course-structure document. The structure for I-Year I-Sem and II-Sem is identical for every student in the branch. Registration is implicit — students pursue what their branch prescribes.</p>
+      <p>Skill courses give students a limited choice (institutional offering vs. external certification — see §17). MOOCs allow some external substitution.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Formal annual <strong>Course Registration process</strong>. Each student picks courses (and slots) for the coming semester. A <strong>Proctor</strong> (faculty advisor) reviews the plan against curriculum, prerequisites, and academic performance before approving it. The system supports late registration (within 10 calendar days) with a late fee.</p>
+      <p>First semester is auto-registered by the School Academic Coordinator; from semester 2 onwards the student drives the choice.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>This is the <strong>biggest philosophical difference</strong> between the two regulations. AR-23 places the student inside a fixed semester structure with limited choice. FFCS makes course-by-course, slot-by-slot registration the central mechanic of student agency — and assigns a proctor to guide it.</p>
+  </div>
+</section>
+
+<!-- ============== S9 ============== -->
+<section class="section" id="s9">
+  <div class="section-header">
+    <span class="section-num">09 / ADD-DROP</span>
+    <h2 class="section-title">Add/Drop &amp; Course Withdrawal</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>AR-23 contains no explicit add/drop or course-withdrawal provision. Since the semester course list is essentially fixed per branch, the question doesn't arise in the same way.</p>
+      <p>Students who can't continue may seek <strong>re-admission</strong> when the semester is re-offered (§24, Transitory Regulations) but this means dropping out of the cohort, not a structured withdrawal.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <ul>
+        <li><strong>Add/Drop window</strong>: first 3 instructional days of every regular semester. Dropped courses don't appear on the Grade Sheet.</li>
+        <li><strong>Course Withdrawal</strong>: open for 3 instructional days <em>after CAT-I marks are finalised</em>, if the student feels CAT-I performance is poor. Withdrawn course gets a <strong>W grade</strong>, listed on academic history but not on Grade Sheets or transcripts. Re-registration fee applies.</li>
+        <li>Backlog re-registered courses cannot be withdrawn.</li>
+        <li>Withdrawal can't take the credit-load below 16 (final-year and timed-out students exempted).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>FFCS gives students a structured exit ramp from a course that's going badly — a notable safety valve missing from AR-23, where the only way to "withdraw" is to fail and re-take.</p>
+  </div>
+</section>
+
+<!-- ============== S10 ============== -->
+<section class="section" id="s10">
+  <div class="section-header">
+    <span class="section-num">10 / PREREQ</span>
+    <h2 class="section-title">Course Prerequisites &amp; Equivalence</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>The regulation cautions students against opting for electives with content that overlaps courses already pursued, but does not formalise prerequisite/anti-requisite/co-requisite chains. Course equivalence is handled implicitly when the curriculum is revised (existing batches continue on the curriculum they joined under).</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>FFCS formalises three relationships per course: <strong>prerequisite, co-requisite, anti-requisite</strong>. A student with an F in a prerequisite is still allowed to register the higher-level course, on the principle that "exposure" was achieved.</p>
+      <p><strong>Course equivalence</strong> is a first-class concept: a Course Committee can declare two courses equivalent (typically across versions or curriculum revisions), which then auto-updates baskets across all affected curricula. The original course code/title is preserved on the transcript.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S11 ============== -->
+<section class="section" id="s11">
+  <div class="section-header">
+    <span class="section-num">11 / ATTENDANCE</span>
+    <h2 class="section-title">Attendance Rules</h2>
+  </div>
+
+  <table class="quicktable">
+    <thead><tr><th>Rule</th><th>AR-23</th><th>FFCS v4.0</th></tr></thead>
+    <tbody>
+      <tr><td>Minimum aggregate</td><td class="ar">75% across all subjects</td><td class="vit">75% per course</td></tr>
+      <tr><td>Per-course minimum</td><td class="ar">40% per subject (separate floor)</td><td class="vit">75% per course (no separate aggregate)</td></tr>
+      <tr><td>Condonation</td><td class="ar">65–74% condonable on payment to University; College Academic Cttee approves</td><td class="vit">No condonation. Below 75% → debarred from next exam component</td></tr>
+      <tr><td>Below 65%</td><td class="ar">"In NO CASE be condoned" → re-admit</td><td class="vit">Same outcome but threshold is 75%</td></tr>
+      <tr><td>Top-performer exemption</td><td class="ar">None</td><td class="vit"><strong>CGPA ≥ 9.0 with no backlogs → exempt from attendance minima</strong> (regular semesters only)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Both an <strong>aggregate</strong> (75% across all subjects) and a <strong>per-subject</strong> (40%) requirement must be met. A condonation band of 65–74% aggregate is available, on payment of a fee to the University. Below 65% aggregate is non-condonable and the student is not promoted to the next semester.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Per-course 75% with <strong>no condonation</strong>. The attendance software auto-debars students from the next exam component (CAT-I, CAT-II, FAT) as soon as the threshold is breached, and a "debarred" student is awarded an <strong>N grade</strong> and must re-register.</p>
+      <p>A unique perk: students with CGPA ≥ 9.0 and no current backlog are <strong>exempted</strong> from minimum attendance — and the list is generated dynamically before each exam component.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23 is more forgiving (condonation with fee); FFCS is more automated (software-driven debarring) but rewards top performers by exempting them entirely. Both target the same 75% norm.</p>
+  </div>
+</section>
+
+<!-- ============== S12 ============== -->
+<section class="section" id="s12">
+  <div class="section-header">
+    <span class="section-num">12 / CIE</span>
+    <h2 class="section-title">Continuous Internal Evaluation — Theory</h2>
+  </div>
+
+  <table class="quicktable">
+    <thead><tr><th>Element</th><th>AR-23</th><th>FFCS v4.0</th></tr></thead>
+    <tbody>
+      <tr><td>CIE weightage</td><td class="ar">30 marks (of 100)</td><td class="vit">60% of total</td></tr>
+      <tr><td>End-Exam weightage</td><td class="ar">70 marks (of 100)</td><td class="vit">40%</td></tr>
+      <tr><td>Internal tests</td><td class="ar">2 mid-term exams</td><td class="vit">CAT-I + CAT-II (90 min, 50 marks each, scaled to 15)</td></tr>
+      <tr><td>Test structure</td><td class="ar">10 marks objective + 15 marks subjective + 5 marks assignment</td><td class="vit">No fixed split; CAT-II is <strong>open-book</strong></td></tr>
+      <tr><td>Digital Assignments</td><td class="ar">5 marks weight in mid</td><td class="vit">30% weight (min 3 assignments)</td></tr>
+      <tr><td>Combining the two tests</td><td class="ar">80% to better mid + 20% to other</td><td class="vit">Both count as-is in CAM</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Two mid-term exams. Each is 30 marks total = 10 (objective, 20 min) + 15 (subjective, 90 min) + 5 (assignment-average). First mid covers Units I & II; second covers Units III, IV, V. The final mid mark is a weighted blend: <strong>0.8 × better mid + 0.2 × weaker mid</strong>.</p>
+      <p>If absent: no re-exam; that mid is recorded as zero (used as the weaker mid in the blend).</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>CAT-I (15 marks weight) + CAT-II (15 marks weight, <strong>open-book</strong>) + Digital Assignments (30 marks weight; min. 3 assignments OR alternative continuous assessment) = <strong>60% CAM</strong>. The faculty announces the assessment mode and weightages before the course starts, with HoD approval.</p>
+      <p>Re-CATs are organised for students absent due to internship abroad with permission, fellowship work, placement activities, or hospitalisation.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>FFCS gives <strong>twice the weight to internal work</strong> (60% vs 30%) — a deliberate design choice to reward sustained engagement over a single end-of-semester exam. FFCS also makes CAT-II <strong>open-book by default</strong>, requiring 100% Higher-Order-Thinking questions in that test. AR-23 leans more heavily on the end exam.</p>
+  </div>
+</section>
+
+<!-- ============== S13 ============== -->
+<section class="section" id="s13">
+  <div class="section-header">
+    <span class="section-num">13 / END EXAM</span>
+    <h2 class="section-title">End-Semester / Final Assessment Exam — Theory</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>End exam is for <strong>70 marks</strong>, 3 hours. Structure:</p>
+      <ul>
+        <li><strong>Q1</strong>: 10 compulsory short-answer questions × 2 marks = 20 marks (two from each unit).</li>
+        <li><strong>Q2–Q6</strong>: one "either/or" question per unit, 10 marks each (50 marks total).</li>
+      </ul>
+      <p>For two-part courses (e.g., BEEE), the question paper is split into Part A and Part B of 35 marks each.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Final Assessment Test (FAT) for <strong>100 marks</strong>, 3 hours; weighted at <strong>40%</strong> of the final grade. Question pattern is not fixed in the regulation but governed by Course Committees. Minimum 80% of questions must be HOTs-based.</p>
+      <p>FAT is conducted centrally by the CoE office; CATs are conducted by the School.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23's end exam has a tightly mandated, almost prescriptive structure (specific number of compulsory questions, unit-by-unit coverage, either/or pattern). FFCS leaves the structure to faculty/Course Committees but mandates the HOTs proportion.</p>
+  </div>
+</section>
+
+<!-- ============== S14 ============== -->
+<section class="section" id="s14">
+  <div class="section-header">
+    <span class="section-num">14 / LAB EXAMS</span>
+    <h2 class="section-title">Practical &amp; Lab Course Evaluation</h2>
+  </div>
+
+  <table class="quicktable">
+    <thead><tr><th>Element</th><th>AR-23 Lab</th><th>FFCS v4.0 Lab-only</th></tr></thead>
+    <tbody>
+      <tr><td>Total marks</td><td class="ar">100 (30 CIE + 70 EE)</td><td class="vit">100 (60 CA + 40 FAT)</td></tr>
+      <tr><td>Day-to-day</td><td class="ar">15 marks (record + viva)</td><td class="vit">Embedded in CA based on per-experiment performance</td></tr>
+      <tr><td>Internal test</td><td class="ar">15 marks (lab mid)</td><td class="vit">Part of CA</td></tr>
+      <tr><td>End-exam split</td><td class="ar">20 procedure + 30 experiment/results + 20 viva</td><td class="vit">Pattern set by the lab faculty + an expert</td></tr>
+      <tr><td>Pass criterion</td><td class="ar">≥35% in EE; ≥40% overall</td><td class="vit"><strong>≥50% average across all experiments</strong></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============== S15 ============== -->
+<section class="section" id="s15">
+  <div class="section-header">
+    <span class="section-num">15 / EMBEDDED</span>
+    <h2 class="section-title">Embedded Theory + Lab Courses</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>If a course has both theory and practical components, they are <strong>evaluated separately as a theory subject and a practical subject</strong>, but with the same course code suffixed by 'T' and 'P'. Each has its own 30+70 split, its own grade, its own pass criterion.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Embedded courses have a <strong>single combined grade</strong>. Marks ratio: (L+T) : (P/2). To pass the embedded course the student must score ≥50% in the lab component <em>and</em> ≥40% in the theory FAT <em>and</em> ≥50% overall.</p>
+      <p>If the student fails only the lab, they re-register just the lab component; if they pass lab but fail theory, lab marks carry forward to the re-attempt.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23: splits the course into independent T/P modules with separate grades. FFCS: keeps them fused with a single overall grade but allows partial re-registration. The FFCS model preserves the integrative spirit of the course; AR-23 keeps things modular and granular.</p>
+  </div>
+</section>
+
+<!-- ============== S16 ============== -->
+<section class="section" id="s16">
+  <div class="section-header">
+    <span class="section-num">16 / PROJECT</span>
+    <h2 class="section-title">Project &amp; Internship</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p><strong>Two summer internships</strong> are compulsory, each ≥8 weeks:</p>
+      <ul>
+        <li>After Year 2: <strong>Community Service Project</strong> (society-oriented, with govt/NGOs).</li>
+        <li>After Year 3: <strong>Industry Internship</strong>.</li>
+      </ul>
+      <p>Each summer internship is evaluated for <strong>50 marks</strong> (external only, no internal): 50% on report, 50% on oral presentation before a departmental committee.</p>
+      <p><strong>Final-semester Full Internship + Project Work</strong>: 200 marks total = 60 internal (15 report + 15 seminar by supervisor + 30 dept Project Review Committee) + 140 external viva-voce.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p><strong>Industrial Internship</strong>: 4 weeks in any reputed industry after Year 1, can be in one stretch or two 2-week blocks. Activity log + report + completion certificate; School committee awards marks.</p>
+      <p><strong>Final-Semester Project</strong>: structured 3-review system —
+      <ol style="margin: 6px 0 0 18px;">
+        <li><em>Review 1</em> (5%): title acceptance, Week 1 of semester.</li>
+        <li><em>Review 2</em> (40%): scheduled during CAT-I.</li>
+        <li><em>Review 3 / Final Viva</em> (50%): during FAT period; 25% report (guide) + 25% viva (external).</li>
+        <li>Draft submission (5%): 10 days before viva.</li>
+      </ol></p>
+      <p>Group projects up to 5 members; individual report titles must reflect individual contributions. Submitting a purchased / borrowed / previously-submitted project = malpractice → N grade.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23 emphasizes a <strong>community-service internship</strong> (society-oriented) as a separate mandatory step — a feature absent from FFCS. FFCS, conversely, has a much more <strong>granular review/timeline framework</strong> for the final project with named review weights and submission deadlines. AR-23 internship totals 50 marks; FFCS does not pin a specific mark figure but uses the review weightages.</p>
+  </div>
+</section>
+
+<!-- ============== S17 ============== -->
+<section class="section" id="s17">
+  <div class="section-header">
+    <span class="section-num">17 / SKILL</span>
+    <h2 class="section-title">Skill-Oriented Courses</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p><strong>5 skill-oriented courses</strong> across semesters III–VII. Mix: 2 domain skill + 2 advanced skill/interdisciplinary + 1 soft-skill. Each 100 marks (30 CIE + 70 end-exam).</p>
+      <p>A unique option: students may <strong>swap any skill course for an industry/professional-body certification</strong>. The principal sends such proposals to the affiliating University for grade-equivalence approval.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Skill Enhancement Courses (SEC) and Ability Enhancement Courses (AEC) are listed as separate categories. Students choose from these baskets per the curriculum. Evaluation pattern follows the same theory/lab/embedded rules.</p>
+      <p>External certification is not a generalised substitution option; rather, certain credits can flow in via SWAYAM-NPTEL MOOCs against Open Elective slots.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S18 ============== -->
+<section class="section" id="s18">
+  <div class="section-header">
+    <span class="section-num">18 / MOOCs</span>
+    <h2 class="section-title">MOOCs &amp; Credit Transfer</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p><strong>One MOOC is mandatory</strong> for the degree, with minimum 8 or 12 weeks of duration. Core (PC) courses are not allowed to be taken via MOOC. The HoD appoints a mentor; the student bears any exam fee.</p>
+      <p>The University permits MOOC-based credit transfer up to <strong>20% of total programme credits (max ≈ 32 credits)</strong>, applicable to Professional and Open electives only. Students with proctored MOOC exam passes are exempted from internal and external exams for those courses.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>SWAYAM-NPTEL MOOCs are permitted, but only as <strong>credit transfer against Open Elective</strong> slots — not against DE, DC, FC, or DLE. The credit-transfer regime overall is well-defined for inter-university migration (programme migration within VIT, or admission from another institution under recognised arrangements).</p>
+      <p>FFCS does not mandate a MOOC for graduation — it's an optional pathway.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23 makes one MOOC <strong>compulsory</strong> for the degree and allows up to 20% of credits through MOOCs — strongly aligned with NEP 2020 blended-learning targets. FFCS treats MOOCs as a supplementary credit-transfer channel restricted to Open Electives, not as a mandate.</p>
+  </div>
+</section>
+
+<!-- ============== S19 ============== -->
+<section class="section" id="s19">
+  <div class="section-header">
+    <span class="section-num">19 / ABC</span>
+    <h2 class="section-title">Academic Bank of Credits (ABC)</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>AR-23 has an explicit Section 14 on the <strong>Academic Bank of Credits</strong>: the University has implemented ABC per NEP 2020 to (i) enable mobility across universities, (ii) enable MOOC credits to flow in, (iii) underpin the certificate/diploma/degree awards for multi-entry-exit, (iv) maintain credit accounts in the student's ABC ID.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>FFCS v4.0 does not formalise ABC as a named section. Credit transfer is handled through programme migration rules and the Semester Abroad Program — internal mechanisms rather than the national-bank framework.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23 is more <strong>explicitly NEP-2020-aligned</strong> on ABC; FFCS handles inter-institutional credit-mobility through its own credit-transfer framework but is silent on the national ABC platform in the regulation document.</p>
+  </div>
+</section>
+
+<!-- ============== S20 ============== -->
+<section class="section" id="s20">
+  <div class="section-header">
+    <span class="section-num">20 / GRADING</span>
+    <h2 class="section-title">Grading System &amp; Pass Criteria</h2>
+  </div>
+
+  <table class="quicktable">
+    <thead><tr><th>Grade</th><th>AR-23 (marks)</th><th>FFCS v4.0 (marks, absolute mode)</th></tr></thead>
+    <tbody>
+      <tr><td>S / O (Superior / Outstanding)</td><td class="ar">≥90 → 10 pts</td><td class="vit">≥90 → 10 pts</td></tr>
+      <tr><td>A (Excellent)</td><td class="ar">80–89 → 9 pts</td><td class="vit">80–89 → 9 pts</td></tr>
+      <tr><td>B (Very Good)</td><td class="ar">70–79 → 8 pts</td><td class="vit">70–79 → 8 pts</td></tr>
+      <tr><td>C (Good)</td><td class="ar">60–69 → 7 pts</td><td class="vit">60–69 → 7 pts</td></tr>
+      <tr><td>D (Average)</td><td class="ar">50–59 → 6 pts</td><td class="vit">55–59 → 6 pts</td></tr>
+      <tr><td>E (Pass)</td><td class="ar">40–49 → 5 pts</td><td class="vit">50–54 → 5 pts</td></tr>
+      <tr><td>F (Fail)</td><td class="ar">&lt;40 → 0 pts</td><td class="vit">&lt;50 → 0 pts</td></tr>
+      <tr><td>Pass floor in EE</td><td class="ar">≥35% in end exam</td><td class="vit">≥40% in FAT theory</td></tr>
+      <tr><td>Pass floor overall</td><td class="ar">≥40% (CIE + EE)</td><td class="vit">≥50% (CIE + FAT, for non-theory-only)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Pure absolute grading. A student passes a course if they secure (i) ≥35% in the end exam <strong>and</strong> (ii) ≥40% in CIE + EE combined. For mandatory non-credit courses, the threshold is 40% of internal marks.</p>
+      <p>'AB' grade for absentees (carries 0 pts and is treated as failed). Audit/satisfactory courses are marked S/U but excluded from SGPA/CGPA.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Pass conditions: (a) ≥40% in theory FAT, (b) ≥50% in lab/project components, (c) ≥50% overall in any course except theory-only — and (d) for theory-only the pass band is derived from the relative-grading curve.</p>
+      <p>Grades: <strong>S/A/B/C/D/E/F/N/W/U/P</strong>. N grade is uniquely FFCS — assigned when a component is incomplete (not the same as F).</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>FFCS sets the bar higher — minimum overall is <strong>50%</strong>, versus AR-23's <strong>40%</strong>. FFCS also has the unique <strong>N grade</strong> (incomplete; component-level) distinct from F (fail), enabling partial re-registration. AR-23 has no equivalent "N" — students either pass, fail, or are absent.</p>
+  </div>
+</section>
+
+<!-- ============== S21 ============== -->
+<section class="section" id="s21">
+  <div class="section-header">
+    <span class="section-num">21 / SGPA-CGPA</span>
+    <h2 class="section-title">SGPA / CGPA / GPA Calculation</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>SGPA = Σ(C<sub>i</sub> × G<sub>i</sub>) / ΣC<sub>i</sub>. CGPA = Σ(C<sub>i</sub> × S<sub>i</sub>) / ΣC<sub>i</sub> — where S<sub>i</sub> is the SGPA of the i-th semester.</p>
+      <p>Zero-graded courses are <em>included</em> while computing SGPA. Audit/non-credit courses are excluded. CGPA-to-% formula: <strong>(CGPA − 0.5) × 10</strong>.</p>
+      <p>Both SGPA and CGPA are reported to two decimals.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>CGPA = Σ(C<sub>i</sub> × GP<sub>i</sub>) / ΣC<sub>i</sub>. SGPA computed per semester likewise.</p>
+      <p>Pass-Fail (P), audit, Minor and Honours courses are <em>excluded</em>. If a course is failed multiple times or substituted, credits count once in both numerator and denominator. CGPA-to-% formula: <strong>CGPA × 10</strong> (8.75 CGPA ≡ 87.5%).</p>
+      <p>The Consolidated Grade Sheet shows only CGPA — no class or division label.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>Both use the standard weighted-average formula but with <strong>very different percentage conversions</strong>. AR-23 deducts 0.5 first (so 8.75 CGPA = 82.5%); FFCS multiplies straight (so 8.75 CGPA = 87.5%). For students applying abroad or to government jobs requiring percentage equivalence, this 5-point gap is material.</p>
+  </div>
+</section>
+
+<!-- ============== S22 ============== -->
+<section class="section" id="s22">
+  <div class="section-header">
+    <span class="section-num">22 / RELATIVE GRADING</span>
+    <h2 class="section-title">Absolute vs Relative Grading</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>AR-23 uses <strong>purely absolute grading</strong>. Letter grades map to fixed mark ranges (≥90 = S, 80–89 = A, etc.) regardless of class performance.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>For theory components with class strength &gt; 10, FFCS uses <strong>class-wise relative grading</strong>. The class mean is anchored to mid-B; standard deviations σ above/below set the grade bands:</p>
+      <ul>
+        <li>S: ≥ mean+1.5σ (also ≥90%)</li>
+        <li>A: mean+0.5σ to mean+1.5σ</li>
+        <li>B: mean−0.5σ to mean+0.5σ</li>
+        <li>C: mean−1σ to mean−0.5σ</li>
+        <li>D: mean−1.5σ to mean−1σ</li>
+        <li>E: mean−2σ to mean−1.5σ</li>
+        <li>F: &lt; mean−2σ</li>
+      </ul>
+      <p>Lab-only, project, soft-skill, NGCR, and small-class (≤10) courses use the absolute table above (§20).</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>This is the <strong>single most consequential difference</strong> in evaluation philosophy. Under FFCS relative grading, a student's letter grade depends on how their peers performed; under AR-23 it depends only on their own marks. FFCS argues this neutralises "easy/hard paper" effects; AR-23's absolute system is more transparent and predictable.</p>
+  </div>
+</section>
+
+<!-- ============== S23 ============== -->
+<section class="section" id="s23">
+  <div class="section-header">
+    <span class="section-num">23 / PROMOTION</span>
+    <h2 class="section-title">Promotion Rules</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <ul>
+        <li><strong>I → II</strong>: attendance norms met.</li>
+        <li><strong>II → III</strong>: at least <strong>40% of the credits</strong> studied through Sem III (rounded down).</li>
+        <li><strong>III → IV</strong>: at least 40% of credits studied through Sem V (rounded down).</li>
+        <li>Detained students may clear deficits via supplementary exams before joining V or VII sem.</li>
+      </ul>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p><strong>Promotion is automatic</strong> — irrespective of academic performance. However, if a student's CGPA dips below 4.00, they are <strong>capped at 16 credits per semester</strong> until CGPA recovers. Repeated failure to recover triggers a Dean-of-Academics committee review which can recommend cancellation of studentship to the VC.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23 uses <strong>credit-based promotion gates</strong> (must clear 40% of credits to move up); FFCS uses <strong>automatic promotion with a credit-load throttle</strong> for academically struggling students. The latter avoids the risk of a student being "stuck" in a year but adds explicit safety-net machinery.</p>
+  </div>
+</section>
+
+<!-- ============== S24 ============== -->
+<section class="section" id="s24">
+  <div class="section-header">
+    <span class="section-num">24 / RE-EVAL</span>
+    <h2 class="section-title">Re-evaluation &amp; Answer-Sheet Perusal</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>AR-23 does not detail a re-evaluation process within the regulation text supplied. Standard university procedures apply, and lab record/mid papers are <strong>preserved for at least 3 years</strong> at the institution for university inspection.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>A three-tier process:
+      <ol style="margin:6px 0 0 18px;">
+        <li><strong>Perusal</strong>: student sees the FAT script (after paying fee).</li>
+        <li><strong>Re-evaluation</strong>: if marks shift ≤5%, best of two stands. If shift &gt;5%, a third examiner evaluates and best of three stands.</li>
+        <li><strong>Examination Appellate Committee</strong>: final step; original evaluator + an expert from the Course Committee re-evaluate together. Decision is final.</li>
+      </ol>
+      </p>
+      <p>If a class average exceeds 90%, the FAT scripts are <strong>automatically re-evaluated</strong> by a second examiner; the original faculty must explain the high average.</p>
+      <p><strong>No re-evaluation</strong> for lab exams, soft skills, project viva, design/mini-project courses, or comprehensive exams.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S25 ============== -->
+<section class="section" id="s25">
+  <div class="section-header">
+    <span class="section-num">25 / EXAM ABSENCE</span>
+    <h2 class="section-title">Absence from Exams &amp; Re-FAT</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Mid-exam absence: <strong>no re-exam</strong>; marks recorded as zero. Final marks computed using the weighted blend (80/20) with the absent test as the weaker one (zero).</p>
+      <p>End-exam absence: 'AB' grade (0 pts) → re-register / supplementary exam.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p><strong>Re-CAT</strong>: organised separately for students absent due to (a) approved international internship, (b) Indian Academy fellowships, (c) placement activities, (d) hospitalisation — provided attendance criterion is met.</p>
+      <p><strong>Re-FAT</strong>: students absent for the FAT due to hospitalization (in-patient, &gt; 1 week) or death in family may apply via Dean to the VC within 14 calendar days, with proper medical certificate. A special committee scrutinises and may grant a Re-FAT — treated as <strong>first attempt</strong>. Failure to write the Re-FAT means the original N grade stands.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>FFCS has a <strong>formal compassionate-exam pathway</strong> (Re-CAT, Re-FAT) with explicit triggers and timelines. AR-23 takes a stricter line — missed mids are zeros, missed end-exams require re-registration.</p>
+  </div>
+</section>
+
+<!-- ============== S26 ============== -->
+<section class="section" id="s26">
+  <div class="section-header">
+    <span class="section-num">26 / BACKLOG</span>
+    <h2 class="section-title">Backlog &amp; Re-registration</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Failed courses → supplementary exams when the semester is offered. There is no separate "re-registration of a single component" — the student re-appears for the end exam (mid marks carry over). Detained students may make up credits through supplementary exams.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Subtle but powerful distinction between F and N:</p>
+      <ul>
+        <li><strong>F</strong> (failed) → must re-register the whole course (all components reset).</li>
+        <li><strong>N</strong> (incomplete) → may re-register only the failed component; passed components carry forward.</li>
+      </ul>
+      <p>If a student has F in a prerequisite course they can still register the next level course (the "exposure" doctrine). Backlogs can also be cleared via <strong>arrear examinations</strong> after the final semester, but this requires re-appearing for all components, not just the failed ones.</p>
+      <p>Backlog courses are also offered in summer/weekend semesters where feasible.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S27 ============== -->
+<section class="section" id="s27">
+  <div class="section-header">
+    <span class="section-num">27 / GRADE IMPROVEMENT</span>
+    <h2 class="section-title">Grade Improvement</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>AR-23 does not contain a formal grade-improvement option for already-passed courses.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Students may <strong>re-register a passed course to improve the grade</strong>, paying the registration fee. Limit: once per course, one course per semester (relaxed for final-year/timed-out students to help placement CGPA). The course must be tagged "Grade Improvement" during registration. Credit cap (16–27 per regular semester) is not relaxed.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>Grade improvement is unique to FFCS — a clear student-friendly tool to lift CGPA, especially valuable for placement and graduate-school applications.</p>
+  </div>
+</section>
+
+<!-- ============== S28 ============== -->
+<section class="section" id="s28">
+  <div class="section-header">
+    <span class="section-num">28 / SUBSTITUTION</span>
+    <h2 class="section-title">Course Substitution</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Not formally provided. Failed PE/OE courses must be retaken; the regulations do warn students against picking electives that overlap with prior courses.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>If a student fails a DE, they may <strong>substitute another DE from the same basket</strong> in a subsequent semester. If a student fails an OE, they may substitute another OE — or even a DE — in its place. Re-registration fee applies. Substitution is <strong>not</strong> allowed for FC, DC, or DLE.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S29 ============== -->
+<section class="section" id="s29">
+  <div class="section-header">
+    <span class="section-num">29 / AUDIT</span>
+    <h2 class="section-title">Audit Courses</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Non-credit mandatory courses (Environmental Sciences, Indian Constitution, Tech Paper Writing &amp; IPR) are marked S/U and excluded from SGPA/CGPA. AR-23 has no formal "Audit" option for picking new optional courses beyond these mandatory ones.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Students with CGPA ≥ 8.0 may register up to <strong>2 audit courses (B.Tech/M.Tech-Integrated/M.Sc-Integrated)</strong> or 1 audit course (others) during the entire programme. Audit courses appear on the transcript with a U grade (if performance grade earned). All attendance and assessment rules apply. The course doesn't count to SGPA/CGPA.</p>
+      <p>If audited but failed/withdrawn, the course is shown as W in the Semester Grade Sheet and removed from the Consolidated Grade Sheet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S30 ============== -->
+<section class="section" id="s30">
+  <div class="section-header">
+    <span class="section-num">30 / MINOR</span>
+    <h2 class="section-title">Minor Degree</h2>
+  </div>
+
+  <table class="quicktable">
+    <thead><tr><th>Aspect</th><th>AR-23 Minor</th><th>FFCS Minor</th></tr></thead>
+    <tbody>
+      <tr><td>Credits</td><td class="ar">12 credits (within 160)</td><td class="vit">18 additional credits</td></tr>
+      <tr><td>How earned</td><td class="ar">Through Open Elective tracks/verticals</td><td class="vit">Separate Minor basket; doesn't double-count with primary</td></tr>
+      <tr><td>CGPA requirement</td><td class="ar">None specified</td><td class="vit">≥7.50 average in Minor courses</td></tr>
+      <tr><td>Impact on main CGPA</td><td class="ar">Counted (since within main credits)</td><td class="vit">Excluded from main CGPA</td></tr>
+    </tbody>
+  </table>
+
+  <div class="diff">
+    <p>AR-23 builds the Minor <strong>inside</strong> the regular 160 credits, using the 4 Open Elective slots arranged as tracks/verticals. FFCS requires the Minor to be <strong>on top of</strong> the main programme, demanding extra credit registration each semester and a separate CGPA gate.</p>
+  </div>
+</section>
+
+<!-- ============== S31 ============== -->
+<section class="section" id="s31">
+  <div class="section-header">
+    <span class="section-num">31 / HONOURS</span>
+    <h2 class="section-title">Honours Degree</h2>
+  </div>
+
+  <table class="quicktable">
+    <thead><tr><th>Aspect</th><th>AR-23 Honours</th><th>FFCS Honours</th></tr></thead>
+    <tbody>
+      <tr><td>Additional credits</td><td class="ar">15</td><td class="vit">18</td></tr>
+      <tr><td>Entry CGPA</td><td class="ar">≥7.5 with no backlog, at end of Sem III</td><td class="vit">Not gated on entry CGPA; gated by completion average</td></tr>
+      <tr><td>Completion CGPA</td><td class="ar">Pass all Honours courses</td><td class="vit">≥7.50 average in Honours courses</td></tr>
+      <tr><td>Per-sem load</td><td class="ar">Max 2 Honours courses per semester</td><td class="vit">Bound by overall 27-credit per-semester cap</td></tr>
+      <tr><td>Domain</td><td class="ar">Same branch as Major</td><td class="vit">Same discipline as Major</td></tr>
+      <tr><td>Drop policy</td><td class="ar">Extra credits stay extra; not converted</td><td class="vit">Completed courses convert to Audit</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23 — registration</div>
+      <p>Students who maintain CGPA ≥ 7.5 with no backlogs through Sem III register Honours from Sem IV onwards. Max 2 Honours courses per semester from Sem V onwards. 75% attendance on Honours courses is mandatory; attendance is tracked independently of the Major.</p>
+      <p>If detained or attendance fails on Honours → Honours registration cancelled, but Major continues.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS — registration</div>
+      <p>Honours runs through normal Course Registration alongside the Major. The student accumulates credits across semesters; once 18 credits + CGPA ≥7.5 in Honours basket is achieved within programme time-limit, the credential is awarded.</p>
+      <p>If the student withdraws or fails, completed Honours courses are converted to Audit on the transcript.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23 enforces an <strong>upfront CGPA gate (≥7.5)</strong> for entry and rations Honours load (max 2/sem). FFCS imposes the CGPA bar at <strong>completion</strong> and allows the student to attempt as many Honours courses as the 27-credit per-semester cap allows. Both name the credential identically on the degree certificate.</p>
+  </div>
+</section>
+
+<!-- ============== S32 ============== -->
+<section class="section" id="s32">
+  <div class="section-header">
+    <span class="section-num">32 / CLASS</span>
+    <h2 class="section-title">Class / Distinction Award</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23 — Class Awarded</div>
+      <table class="quicktable" style="margin-top:8px;">
+        <thead><tr><th>Class</th><th>CGPA</th></tr></thead>
+        <tbody>
+          <tr><td>First Class with Distinction</td><td class="ar">≥ 7.5 (without any supplementary appearance)</td></tr>
+          <tr><td>First Class</td><td class="ar">≥ 6.5 and &lt; 7.5</td></tr>
+          <tr><td>Second Class</td><td class="ar">≥ 5.5 and &lt; 6.5</td></tr>
+          <tr><td>Pass Class</td><td class="ar">≥ 5.0 and &lt; 5.5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS — Class Awarded</div>
+      <p>FFCS explicitly states: <strong>the Consolidated Grade Sheet and Degree Certificate do not mention any class</strong> — only the CGPA is shown. Programme-wise rank lists are prepared on CGPA alone (with shared rank in case of ties; next student gets the skipped rank).</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>This is a striking philosophical difference. AR-23 retains the classical <strong>First Class with Distinction</strong> / First / Second / Pass system and ties Distinction to a "no supplementary attempts" purity condition. FFCS abolishes class designations and lets the CGPA speak for itself.</p>
+  </div>
+</section>
+
+<!-- ============== S33 ============== -->
+<section class="section" id="s33">
+  <div class="section-header">
+    <span class="section-num">33 / EXIT</span>
+    <h2 class="section-title">Multiple Entry &amp; Exit (NEP 2020)</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Three structured exit options as per NEP 2020:</p>
+      <ul>
+        <li><strong>UG Certificate</strong> — after Year 1 (40 credits + 10-credit bridge with ≥6-cr internship).</li>
+        <li><strong>UG Diploma</strong> — after Year 2 (80 credits + 10-credit bridge).</li>
+        <li><strong>B.Sc. Engineering</strong> — after Year 3 (120 credits).</li>
+      </ul>
+      <p>Re-entry modalities are stated to be defined in due course.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>FFCS v4.0 does not provide a formal multi-entry-multi-exit framework. The regulation focuses on full programme completion. Programme migration between programmes (within VIT) is allowed at the end of Year 1, but this is internal, not a national NEP exit.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23 is significantly more aligned with the <strong>NEP 2020 multiple-entry-multiple-exit doctrine</strong>; FFCS v4.0 has not yet adopted it in the regulation text.</p>
+  </div>
+</section>
+
+<!-- ============== S34 ============== -->
+<section class="section" id="s34">
+  <div class="section-header">
+    <span class="section-num">34 / GAP YEAR</span>
+    <h2 class="section-title">Gap Year / Break of Study</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p><strong>"Student Entrepreneur in Residence" gap year</strong> — outstanding students may take a break of <strong>1 year (extendable to 2)</strong> after Year 2 to pursue entrepreneurship or set up startups. The 2 years are <em>not counted</em> against the 8-year max programme duration. Proposals are forwarded by the Principal to a University-level evaluation committee.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p><strong>Break of Study</strong> — up to 1 year for valid reasons (accident, prolonged hospitalisation). Recommended by School Dean, approved by Dean Academics, ordered by Registrar. The time limit is extended by the break period. Available <strong>once per programme</strong>. Indiscipline-based debarring does <em>not</em> count as break of study.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23's gap year is <strong>entrepreneurship-focused</strong> — explicitly a build-your-startup year. FFCS's break of study is <strong>medical/personal</strong>. Both extend the maximum duration; neither stacks indefinitely.</p>
+  </div>
+</section>
+
+<!-- ============== S35 ============== -->
+<section class="section" id="s35">
+  <div class="section-header">
+    <span class="section-num">35 / MANDATORY</span>
+    <h2 class="section-title">Mandatory / Non-Credit Courses</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <ul>
+        <li>Environmental Sciences, Indian Constitution, Technical Paper Writing &amp; IPR — non-credit mandatory.</li>
+        <li>Health and Wellness, Yoga &amp; Sports / NSS / NCC / Scouts &amp; Guides — credit-mandatory (0.5 credit each).</li>
+        <li>Design Thinking for Innovation &amp; Tinkering Labs — credit-mandatory.</li>
+      </ul>
+      <p>For non-credit mandatory courses there is no external exam — but attendance counts toward aggregate and the student must score ≥40% in internals to pass. If fail, a re-exam for 30 marks is offered.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>FFCS uses Non-Graded Core Requirement (NGCR) and similar tags for compulsory non-credit courses; specific lists are programme-specific. There is no equivalent fixed list of "Constitution + IPR + Environmental" in the FFCS regulation document — the curriculum determines it.</p>
+      <p>Bridge courses (assigned based on a screening test in Sem 1) are also mandatory but excluded from CGPA.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S36 ============== -->
+<section class="section" id="s36">
+  <div class="section-header">
+    <span class="section-num">36 / SAP</span>
+    <h2 class="section-title">Semester Abroad &amp; International Exposure</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>AR-23 does not formalise a Semester Abroad Program. Students may participate in MOOCs from international platforms (within the 20% credit-transfer cap), but a structured one-semester exchange is not described.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>A full Semester Abroad Program (SAP) is detailed:</p>
+      <ul>
+        <li>Eligibility: CGPA ≥ 7.0, no current backlogs.</li>
+        <li>Applicable institutes: VIT partner universities + Top-500 QS / THE / Shanghai ranked.</li>
+        <li>Duration: 1 semester (4–5 months) — extendable to 2 semesters.</li>
+        <li>Max transferable credits: <strong>21 credits</strong> (plus project credits separately).</li>
+        <li>Credit transfer is restricted to DE/PE and OE/UE categories.</li>
+        <li>Grades from abroad <strong>count toward VIT CGPA</strong>.</li>
+        <li>Final project can be done abroad under a foreign guide (Option I) or through internship-cum-project (Option II).</li>
+      </ul>
+      <p>The window varies by programme — see FFCS Table 7. B.Tech students may avail it in Sem 6, 7, or 8.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S37 ============== -->
+<section class="section" id="s37">
+  <div class="section-header">
+    <span class="section-num">37 / MALPRACTICE</span>
+    <h2 class="section-title">Academic Malpractice</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>The regulation states "Malpractices rules-nature and punishments are appended" — but the appendix is not part of the document supplied. Generally, malpractice cases are governed by the affiliating University's malpractice rules.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>A formal Malpractice Committee enquires every reported case.</p>
+      <ul>
+        <li><strong>Malpractice in a CAT</strong> → zero marks awarded in <em>all subjects registered in that semester</em> for that CAT component (across-the-board penalty).</li>
+        <li><strong>Malpractice in the FAT</strong> → N grade in all regular courses for which the student was eligible to write and attended the FAT that semester. Courses must be cleared via re-registration.</li>
+        <li>Submitting a purchased/borrowed/repeated project → exam malpractice → N grade.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>FFCS is unusually severe — malpractice in one paper can wipe out an entire semester's exam component. AR-23 defers to the affiliating university's malpractice schedule.</p>
+  </div>
+</section>
+
+<!-- ============== S38 ============== -->
+<section class="section" id="s38">
+  <div class="section-header">
+    <span class="section-num">38 / WITHHOLDING</span>
+    <h2 class="section-title">Withholding of Results</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Results are withheld if the candidate has dues unpaid to the university, or if any case of indiscipline or malpractice is pending.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>No standalone "withholding of results" section, but registration itself is blocked when dues are outstanding (the student can register for courses but not attend classes until dues are cleared).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S39 ============== -->
+<section class="section" id="s39">
+  <div class="section-header">
+    <span class="section-num">39 / MEDIUM</span>
+    <h2 class="section-title">Medium of Instruction</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>"The medium of instruction of the entire B.Tech undergraduate programme in Engineering &amp; Technology (including examinations and project reports) will be in English only."</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>FFCS does not explicitly state the medium in the supplied text — English is implicit across all programmes. Foreign Language courses are explicitly accommodated within the FC basket.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S40 ============== -->
+<section class="section" id="s40">
+  <div class="section-header">
+    <span class="section-num">40 / TRANSITORY</span>
+    <h2 class="section-title">Transitory / Re-admission Rules</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Discontinued/detained/failed candidates are eligible for re-admission when the semester is offered again. They follow the academic regulations into which they are <strong>re-admitted</strong>, not the regulations of their original batch. Same applies to students returning from gap year.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Students re-joining after a break of study or detention follow the regulations into which they're readmitted. Programme migration to a different programme is permitted at the end of Year 1, subject to circulars issued by Dean Academics.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S41 ============== -->
+<section class="section" id="s41">
+  <div class="section-header">
+    <span class="section-num">41 / LATERAL</span>
+    <h2 class="section-title">Lateral Entry Provisions</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>A dedicated section governs Lateral Entry students (admitted directly to Year 2 from 2024-25 onwards):</p>
+      <ul>
+        <li>Duration: 3 to 6 academic years.</li>
+        <li>Total credits: 120 (vs 160 for Regular).</li>
+        <li>Honours: same 15 additional credits.</li>
+        <li>Promotion from III → IV year: 40% credits-cleared rule applied at Sem V.</li>
+        <li>All other rules of the B.Tech (Regular) regulation apply.</li>
+      </ul>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>FFCS v4.0 does not include a separate B.Tech Lateral Entry chapter in the supplied text. Lateral entry admissions, where applicable, would follow VIT's specific admission criteria for that programme.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S42 ============== -->
+<section class="section" id="s42">
+  <div class="section-header">
+    <span class="section-num">42 / RECOGNITION</span>
+    <h2 class="section-title">Special Recognition (Honours Club / Distinction)</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Recognition through the formal "First Class with Distinction" class designation, awarded only if the student crossed CGPA 7.5 <strong>without any supplementary appearance</strong>.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p><strong>Honours Club</strong>: students who maintain CGPA ≥ 9.25, with no F grade and no record of being debarred, are admitted. Benefits include:</p>
+      <ul>
+        <li>Preference for university-sponsored conferences/workshops.</li>
+        <li>Certificate of Merit.</li>
+        <li>Possible cash award/scholarship for following semesters.</li>
+      </ul>
+      <p>Admission is withdrawn the moment a condition is breached.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>AR-23 rewards excellence through the <strong>degree-certificate Class</strong>; FFCS does it through the <strong>Honours Club</strong> with material benefits during the programme itself.</p>
+  </div>
+</section>
+
+<!-- ============== S43 ============== -->
+<section class="section" id="s43">
+  <div class="section-header">
+    <span class="section-num">43 / TIME LIMIT</span>
+    <h2 class="section-title">Time Limit / Maximum Duration</h2>
+  </div>
+
+  <table class="quicktable">
+    <thead><tr><th>Programme</th><th>AR-23 Maximum</th><th>FFCS Maximum (n+3)</th></tr></thead>
+    <tbody>
+      <tr><td>B.Tech (Regular)</td><td class="ar">8 years (+2 gap year)</td><td class="vit">7 years</td></tr>
+      <tr><td>B.Tech (Lateral)</td><td class="ar">6 years</td><td class="vit">Not applicable</td></tr>
+      <tr><td>M.Tech 2-year</td><td class="ar">N/A</td><td class="vit">5 years</td></tr>
+      <tr><td>MCA / MBA</td><td class="ar">N/A</td><td class="vit">5 years</td></tr>
+      <tr><td>Integrated 5-year M.Tech</td><td class="ar">N/A</td><td class="vit">8 years</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============== S44 ============== -->
+<section class="section" id="s44">
+  <div class="section-header">
+    <span class="section-num">44 / AMENDMENTS</span>
+    <h2 class="section-title">Modification of Regulations</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Universities may amend regulations/syllabi at any time. Changes apply to all students on rolls from the notified date. Final interpretive authority: <strong>Vice-Chancellor</strong>.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Academic Council holds authority to add, delete, or modify the regulations. Each version supersedes all previous versions and circulars. Final interpretation: <strong>Academic Council</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S45 ============== -->
+<section class="section" id="s45">
+  <div class="section-header">
+    <span class="section-num">45 / TRANSCRIPTS</span>
+    <h2 class="section-title">Grade Sheets &amp; Transcripts</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Standard semester grade sheet with subject-wise letter grade, grade points, SGPA, CGPA. The transcript carries the Class designation (Distinction, First, Second, Pass). The CGPA-to-percentage formula (CGPA-0.5)×10 is the official conversion.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Semester Grade Sheet lists every registered course including F/N/W/U/P, substituted, re-registered, audit, grade-improvement attempts — a complete academic activity log per semester. The Consolidated Grade Sheet shows only the CGPA (no class). Minor/Honours courses are listed under separate headings with their own basket-level CGPA mention.</p>
+      <p>Additional courses crediting beyond curriculum requirement become "Additional" and incur fees at end of programme.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>The FFCS Grade Sheet is essentially a <strong>complete academic-history ledger</strong>: every attempt, every withdrawal, every audit is visible. AR-23 keeps the Grade Sheet cleaner but the cost is reduced transparency about course-level history.</p>
+  </div>
+</section>
+
+<!-- ============== S46 ============== -->
+<section class="section" id="s46">
+  <div class="section-header">
+    <span class="section-num">46 / INDUCTION</span>
+    <h2 class="section-title">Induction Programme</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>A <strong>3-week mandatory induction</strong> before the start of Semester 1, with explicit modules listed:</p>
+      <ul>
+        <li>Physical Activities — Sports, Yoga, Meditation, Plantation</li>
+        <li>Career Counselling, Human Values &amp; Professional Ethics</li>
+        <li>Orientation to all branches, then to the admitted branch</li>
+        <li>Proficiency Modules &amp; Productivity Tools</li>
+        <li>Assessment on basic aptitude and math; Remedial Training</li>
+        <li>Communication Skills (LSRW)</li>
+        <li>Concepts of Programming</li>
+      </ul>
+      <p>Attendance per AICTE norms applies to induction.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>FFCS does not detail a formal multi-week induction in the regulation. Bridge courses (English, Programming, etc.) are assigned in Semester 1 itself based on a screening test, serving a similar purpose but integrated into the regular schedule.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S47 ============== -->
+<section class="section" id="s47">
+  <div class="section-header">
+    <span class="section-num">47 / HOTs</span>
+    <h2 class="section-title">Higher-Order Thinking Questions</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>AR-23 specifies that objective papers "shall be prepared in line with the quality of competitive examinations questions" but does not give a numerical proportion of HOTs across the question paper.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>All CAT and FAT papers must carry at least <strong>80% HOTs-based questions</strong>. Open-book CAT-II must be <strong>100% HOTs</strong>. The system explicitly targets analysis, evaluation, and synthesis above recall.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== S48 ============== -->
+<section class="section" id="s48">
+  <div class="section-header">
+    <span class="section-num">48 / LOAD</span>
+    <h2 class="section-title">Credit Load Per Semester</h2>
+  </div>
+
+  <div class="grid">
+    <div class="col col-ar">
+      <div class="col-header">AR-23</div>
+      <p>Per-semester load is implicitly fixed by the branch course-structure (typically 19–21 credits per semester in Year 1, totalling 160 over 8 semesters). There is no explicit minimum/maximum credit cap that a student can dial.</p>
+    </div>
+    <div class="col col-vit">
+      <div class="col-header">FFCS v4.0</div>
+      <p>Explicit caps for regular semesters:</p>
+      <ul>
+        <li><strong>Maximum: 27 credits</strong></li>
+        <li><strong>Minimum: 16 credits</strong></li>
+        <li><strong>Average: 23 credits</strong> (programme-design target)</li>
+      </ul>
+      <p>Below 16 only allowed in the last registration of a programme. CGPA &lt; 4 → capped at 16. Summer/weekend semesters: no cap.</p>
+    </div>
+  </div>
+
+  <div class="diff">
+    <p>This is the central <strong>"flexibility lever"</strong> of FFCS — the ability to dial credit load up (fast pace) or down (slow pace, recover-from-failure pace) explicitly per semester. AR-23, by structure, doesn't expose that lever.</p>
+  </div>
+</section>
+
+<!-- ============== SYNTHESIS ============== -->
+<section class="section" id="summary">
+  <div class="section-header">
+    <span class="section-num">49 / SYNTHESIS</span>
+    <h2 class="section-title">The Big Picture — Where the Two Regulations Diverge Most</h2>
+  </div>
+
+  <table class="quicktable">
+    <thead><tr><th>Dimension</th><th>AR-23 (Raghu)</th><th>FFCS v4.0 (VIT)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Underlying philosophy</strong></td><td class="ar">AICTE/APSCHE-aligned structured programme</td><td class="vit">Fully Flexible, student-driven, slot-based</td></tr>
+      <tr><td><strong>Student agency</strong></td><td class="ar">Limited to PE/OE/skill course choice</td><td class="vit">Course choice + slot choice + pace choice</td></tr>
+      <tr><td><strong>Internal vs end-exam balance</strong></td><td class="ar">30 / 70</td><td class="vit">60 / 40</td></tr>
+      <tr><td><strong>Grading style</strong></td><td class="ar">Absolute only</td><td class="vit">Relative (theory, class &gt; 10) + Absolute</td></tr>
+      <tr><td><strong>Pass mark floor</strong></td><td class="ar">40% overall</td><td class="vit">50% overall (40% in theory FAT)</td></tr>
+      <tr><td><strong>Class on degree</strong></td><td class="ar">Distinction / First / Second / Pass</td><td class="vit">None — CGPA only</td></tr>
+      <tr><td><strong>CGPA → % formula</strong></td><td class="ar">(CGPA − 0.5) × 10</td><td class="vit">CGPA × 10</td></tr>
+      <tr><td><strong>Promotion</strong></td><td class="ar">40% credits gate</td><td class="vit">Automatic + 16-credit cap if CGPA &lt; 4</td></tr>
+      <tr><td><strong>NEP exit pathways</strong></td><td class="ar">Yes (Certificate / Diploma / B.Sc Engg)</td><td class="vit">Not in v4.0</td></tr>
+      <tr><td><strong>Gap year</strong></td><td class="ar">Up to 2 years for entrepreneurship</td><td class="vit">1 year break of study (medical/personal)</td></tr>
+      <tr><td><strong>Mandatory MOOC</strong></td><td class="ar">Yes — 1 MOOC required</td><td class="vit">Optional</td></tr>
+      <tr><td><strong>ABC adoption</strong></td><td class="ar">Yes</td><td class="vit">Not explicit</td></tr>
+      <tr><td><strong>Community Service Project</strong></td><td class="ar">Mandatory (after Year 2)</td><td class="vit">Not present</td></tr>
+      <tr><td><strong>Summer/Weekend semesters</strong></td><td class="ar">Summer only (8 weeks, internship-focused)</td><td class="vit">Both — for backlog clearing</td></tr>
+      <tr><td><strong>Add/Drop &amp; Withdrawal</strong></td><td class="ar">Not formalised</td><td class="vit">Both with defined windows</td></tr>
+      <tr><td><strong>Grade Improvement</strong></td><td class="ar">No</td><td class="vit">Yes — re-register passed courses</td></tr>
+      <tr><td><strong>Course Substitution (failed elective)</strong></td><td class="ar">No</td><td class="vit">Yes — DE for DE, OE for OE or DE</td></tr>
+      <tr><td><strong>Minor / Honours</strong></td><td class="ar">12 / 15 credits</td><td class="vit">18 / 18 credits, with CGPA ≥7.5 condition</td></tr>
+      <tr><td><strong>Top-student perks</strong></td><td class="ar">Distinction class</td><td class="vit">Honours Club, attendance exemption ≥9.0 CGPA</td></tr>
+      <tr><td><strong>Semester Abroad</strong></td><td class="ar">Not formalised</td><td class="vit">Detailed SAP with 21 transferable credits</td></tr>
+      <tr><td><strong>Malpractice penalty</strong></td><td class="ar">Per affiliating university schedule</td><td class="vit">Wipe entire semester's exam component</td></tr>
+      <tr><td><strong>Re-FAT / compassionate exam</strong></td><td class="ar">Supplementary exams</td><td class="vit">Re-CAT &amp; Re-FAT with defined triggers</td></tr>
+      <tr><td><strong>Lateral entry</strong></td><td class="ar">Dedicated chapter, 120 credits</td><td class="vit">Not in v4.0 chapter</td></tr>
+      <tr><td><strong>Final interpretive authority</strong></td><td class="ar">Vice-Chancellor</td><td class="vit">Academic Council</td></tr>
+    </tbody>
+  </table>
+
+  <div class="diff">
+    <p><strong>One way to see it:</strong> AR-23 is an <em>NEP 2020-modernised version of a classical Indian engineering curriculum</em> — structured, AICTE-aligned, community-service-conscious, with stronger exit ramps and a hard line on class designations. FFCS v4.0 is a <em>credit-system that asks the student to actively own their academic plan</em> — flexible pacing, relative grading, granular re-registration, broader degree coverage, and a stronger international-mobility scaffolding.</p>
+    <p>A student moving between the two systems would notice: the FFCS pass bar is higher (50% vs 40%); the FFCS internal weight is higher (60% vs 30%); the FFCS Grade Sheet is more transparent; AR-23's class designation gives a quick prestige label on the degree that FFCS deliberately abolishes; and the FFCS slot-based, choice-rich semester is structurally different from AR-23's branch-prescribed semester.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>Side-by-side comparison · AR-23 vs FFCS v4.0</strong></p>
+  <p>Compiled from the official regulation documents · Every section, every category.</p>
+</footer>
+
+</body>
+</html>

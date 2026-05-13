@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>
+(function(){if(sessionStorage.getItem("rec_portal_auth_v1")!=="1"){location.replace("index.html");}})();
+</script>
+<title>CS + Domain Programs — A Complete Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #faf5ec;
+  --bg-card: #ffffff;
+  --bg-sunken: #f2ebdc;
+  --ink: #1a1f2e;
+  --ink-soft: #3d4456;
+  --ink-mute: #6b7186;
+  --rule: #d8cdb7;
+  --rule-soft: #e7dec9;
+  --accent-rust: #b53d20;
+  --accent-rust-soft: #f4d6cb;
+  --accent-teal: #0d4f4d;
+  --accent-teal-soft: #cfe1df;
+  --accent-mustard: #b88528;
+  --accent-mustard-soft: #f3e4c3;
+  --accent-plum: #5e2a4c;
+  --accent-plum-soft: #e8d4dd;
+  --serif-display: "Fraunces", "Times New Roman", serif;
+  --serif-body: "Newsreader", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif-body);
+  font-size: 17px;
+  line-height: 1.6;
+  font-feature-settings: "kern", "liga", "onum";
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(ellipse at top left, rgba(184, 133, 40, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(13, 79, 77, 0.03) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Grain texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 28px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ───── HEADER ───── */
+header.hero {
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-rust);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+  max-width: 200px;
+}
+
+h1.title {
+  font-family: var(--serif-display);
+  font-weight: 380;
+  font-size: clamp(48px, 7vw, 92px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  margin-bottom: 32px;
+  color: var(--ink);
+}
+h1.title em {
+  font-style: italic;
+  font-weight: 280;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  color: var(--accent-rust);
+}
+
+.subtitle {
+  font-size: 21px;
+  line-height: 1.5;
+  max-width: 720px;
+  color: var(--ink-soft);
+  font-weight: 350;
+  margin-bottom: 36px;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 36px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ink-mute);
+  padding-top: 24px;
+  border-top: 1px solid var(--rule-soft);
+}
+.meta-row span strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ───── TABLE OF CONTENTS ───── */
+nav.toc {
+  background: var(--bg-sunken);
+  border: 1px solid var(--rule);
+  padding: 32px 40px;
+  margin: 56px 0;
+  border-radius: 4px;
+  position: relative;
+}
+nav.toc h2 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+nav.toc ol {
+  list-style: none;
+  counter-reset: tocnum;
+  column-count: 2;
+  column-gap: 48px;
+}
+nav.toc ol li {
+  counter-increment: tocnum;
+  padding: 8px 0;
+  border-bottom: 1px dotted var(--rule);
+  break-inside: avoid;
+}
+nav.toc ol li::before {
+  content: counter(tocnum, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent-rust);
+  margin-right: 14px;
+  font-weight: 500;
+}
+nav.toc a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+nav.toc a:hover {
+  color: var(--accent-rust);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ───── SECTIONS ───── */
+section {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--rule);
+}
+section:last-of-type {
+  border-bottom: none;
+}
+
+.section-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-rust);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+h2.section-title {
+  font-family: var(--serif-display);
+  font-weight: 380;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 90, "SOFT" 30;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+h2.section-title em {
+  font-style: italic;
+  font-variation-settings: "opsz" 90, "SOFT" 100, "WONK" 1;
+}
+
+.section-lead {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 760px;
+  margin-bottom: 48px;
+  font-weight: 350;
+}
+
+h3 {
+  font-family: var(--serif-display);
+  font-size: 28px;
+  font-weight: 420;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 48px 0 16px;
+  font-variation-settings: "opsz" 60, "SOFT" 30;
+  color: var(--ink);
+}
+
+h4 {
+  font-family: var(--serif-display);
+  font-size: 22px;
+  font-weight: 450;
+  margin: 32px 0 12px;
+  color: var(--ink);
+  font-variation-settings: "opsz" 30, "SOFT" 30;
+}
+
+h5 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+  margin: 28px 0 12px;
+}
+
+p {
+  margin-bottom: 18px;
+  max-width: 740px;
+}
+
+strong { font-weight: 600; color: var(--ink); }
+em { font-style: italic; }
+
+/* ───── PROGRAM CARDS ───── */
+.program-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 40px 44px;
+  margin-bottom: 32px;
+  position: relative;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02), 0 12px 32px -16px rgba(70, 50, 20, 0.08);
+}
+
+.program-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 40px;
+  right: 40px;
+  height: 3px;
+  background: var(--accent-rust);
+}
+.program-card.teal::before { background: var(--accent-teal); }
+.program-card.mustard::before { background: var(--accent-mustard); }
+.program-card.plum::before { background: var(--accent-plum); }
+
+.program-card .card-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-rust);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.program-card.teal .card-eyebrow { color: var(--accent-teal); }
+.program-card.mustard .card-eyebrow { color: var(--accent-mustard); }
+.program-card.plum .card-eyebrow { color: var(--accent-plum); }
+
+.program-card .card-title {
+  font-family: var(--serif-display);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 60, "SOFT" 30;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.program-card .card-subtitle {
+  font-style: italic;
+  color: var(--ink-mute);
+  font-size: 17px;
+  margin-bottom: 24px;
+}
+
+/* Stat strip inside card */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+  margin: 24px 0 32px;
+}
+.stat-strip .stat {
+  padding: 16px 18px 16px 0;
+  border-right: 1px solid var(--rule-soft);
+}
+.stat-strip .stat:last-child { border-right: none; }
+.stat-strip .stat .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  display: block;
+  margin-bottom: 6px;
+}
+.stat-strip .stat .value {
+  font-family: var(--serif-display);
+  font-size: 20px;
+  font-weight: 450;
+  color: var(--ink);
+  font-variation-settings: "opsz" 30, "SOFT" 30;
+}
+
+/* ───── TABLES ───── */
+.table-wrap {
+  margin: 24px 0 32px;
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  font-size: 15px;
+}
+
+table thead {
+  background: var(--ink);
+  color: var(--bg);
+}
+table thead th {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 14px 16px;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+table thead th:last-child { border-right: none; }
+
+table tbody td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--rule-soft);
+  border-right: 1px solid var(--rule-soft);
+  vertical-align: top;
+  line-height: 1.45;
+}
+table tbody td:last-child { border-right: none; }
+table tbody tr:last-child td { border-bottom: none; }
+table tbody tr:nth-child(even) { background: var(--bg-sunken); }
+
+table .credit-cell, table .grade-cell {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Grade chip */
+.grade-chip {
+  display: inline-block;
+  padding: 3px 9px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 3px;
+  min-width: 32px;
+  text-align: center;
+}
+.grade-chip.o { background: var(--accent-teal); }
+.grade-chip.aplus { background: #178578; }
+.grade-chip.a { background: var(--accent-mustard); }
+.grade-chip.bplus { background: #c89a3e; }
+.grade-chip.b { background: #a78651; }
+.grade-chip.c { background: #8a7660; }
+.grade-chip.p { background: #6e6862; }
+.grade-chip.f { background: var(--accent-rust); }
+
+/* Semester block */
+.semester-block {
+  margin: 20px 0 32px;
+  border-left: 3px solid var(--accent-rust);
+  padding-left: 22px;
+}
+.program-card.teal .semester-block { border-left-color: var(--accent-teal); }
+.program-card.mustard .semester-block { border-left-color: var(--accent-mustard); }
+.program-card.plum .semester-block { border-left-color: var(--accent-plum); }
+
+.semester-block .sem-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 4px;
+}
+.semester-block .sem-name {
+  font-family: var(--serif-display);
+  font-size: 19px;
+  font-weight: 460;
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-variation-settings: "opsz" 30, "SOFT" 30;
+}
+
+.subject-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px 16px;
+}
+.subject-grid .subj {
+  padding: 6px 0;
+  font-size: 15px;
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted var(--rule-soft);
+  gap: 16px;
+}
+.subject-grid .subj .name {
+  flex: 1;
+}
+.subject-grid .subj .cr {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+
+/* Callout boxes */
+.callout {
+  background: var(--accent-mustard-soft);
+  border-left: 3px solid var(--accent-mustard);
+  padding: 20px 24px;
+  margin: 28px 0;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.callout.teal {
+  background: var(--accent-teal-soft);
+  border-left-color: var(--accent-teal);
+}
+.callout.rust {
+  background: var(--accent-rust-soft);
+  border-left-color: var(--accent-rust);
+}
+.callout .callout-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Two column */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 24px 0;
+}
+@media (max-width: 740px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+ul.bullet {
+  list-style: none;
+  margin: 12px 0 24px;
+}
+ul.bullet li {
+  padding: 6px 0 6px 22px;
+  position: relative;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+ul.bullet li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  color: var(--accent-rust);
+  font-size: 12px;
+}
+
+/* Formula */
+.formula {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 22px 28px;
+  margin: 20px 0;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.7;
+  position: relative;
+}
+.formula .formula-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250, 245, 236, 0.5);
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Inline code */
+code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--bg-sunken);
+  padding: 2px 7px;
+  border-radius: 3px;
+  color: var(--accent-plum);
+}
+
+/* Pull quote */
+.pull-quote {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 26px;
+  line-height: 1.3;
+  font-weight: 320;
+  color: var(--ink);
+  padding: 32px 0 32px 40px;
+  border-left: 2px solid var(--accent-rust);
+  margin: 36px 0;
+  font-variation-settings: "opsz" 60, "SOFT" 80, "WONK" 1;
+  max-width: 720px;
+}
+
+/* Footer */
+footer {
+  padding: 60px 0 80px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink-mute);
+  font-family: var(--mono);
+  letter-spacing: 0.06em;
+}
+
+/* Smaller screens */
+@media (max-width: 720px) {
+  nav.toc ol { column-count: 1; }
+  .program-card { padding: 28px 24px; }
+  .program-card::before { left: 24px; right: 24px; }
+  table { font-size: 13.5px; }
+  table thead th, table tbody td { padding: 10px 12px; }
+}
+
+/* Print-friendly */
+@media print {
+  body { background: white; }
+  body::before { display: none; }
+  nav.toc { break-after: page; }
+  .program-card { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">A Field Guide · Updated May 2026</div>
+    <h1 class="title">Computer Science <em>plus</em> Domain Knowledge</h1>
+    <p class="subtitle">A comprehensive reference to engineering degrees that pair core computer science with deep training in a specific industry vertical — finance, business systems, manufacturing, healthcare, linguistics. Curriculum, credits, grading, eligibility, all here.</p>
+    <div class="meta-row">
+      <span><strong>13</strong> programs covered</span>
+      <span><strong>2</strong> grading systems explained</span>
+      <span><strong>India + USA</strong> options</span>
+      <span><strong>UG + PG</strong> levels</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#intro">What "CS + Domain" Means</a></li>
+    <li><a href="#grading-indian">The Indian 10-point Grading System</a></li>
+    <li><a href="#grading-us">The US 4.0 GPA System</a></li>
+    <li><a href="#finance">CS + Finance &amp; Banking</a></li>
+    <li><a href="#mit-fintech">MIT Manipal — CS &amp; Financial Technology</a></li>
+    <li><a href="#karnavati">Karnavati University — CSE FinTech with Paytm</a></li>
+    <li><a href="#dypiu">DY Patil — FinTech with Integrated MBA</a></li>
+    <li><a href="#business">CS + Business Systems (CSBS)</a></li>
+    <li><a href="#csbs-tcs">CSBS — The TCS-designed Curriculum</a></li>
+    <li><a href="#pondicherry">Pondicherry University — Integrated CSBS + MBA</a></li>
+    <li><a href="#manufacturing">CS + Manufacturing &amp; MES</a></li>
+    <li><a href="#purdue">Purdue — Smart Manufacturing Industrial Informatics</a></li>
+    <li><a href="#healthcare">CS + Healthcare &amp; Biomedical</a></li>
+    <li><a href="#cmu">Carnegie Mellon — AI Engineering in BME</a></li>
+    <li><a href="#upenn-jhu">UPenn, Johns Hopkins, South Dakota Mines</a></li>
+    <li><a href="#nku">Northern Kentucky — MS Health Informatics</a></li>
+    <li><a href="#research">Research Dual Degrees</a></li>
+    <li><a href="#iiith">IIIT Hyderabad Dual Degree Programs</a></li>
+    <li><a href="#compare">Side-by-side Comparison</a></li>
+    <li><a href="#choosing">How to Choose</a></li>
+  </ol>
+</nav>
+</div>
+
+<!-- ════════════ INTRO ════════════ -->
+<section id="intro">
+  <div class="wrap">
+    <div class="section-eyebrow">§ 01 · Foundations</div>
+    <h2 class="section-title">What "CS + Domain" actually <em>means</em></h2>
+    <p class="section-lead">These programs pair a complete computer-science spine — algorithms, data structures, operating systems, databases, machine learning — with deep coursework in one industry vertical. The ratio is roughly 55–60% CS, 25% domain, 15% mathematics and humanities, with an industry partner shaping the domain electives.</p>
+
+    <p>The pattern is global. Universities noticed that hiring managers in fintech, healthcare, manufacturing and consulting were tired of training fresh CS graduates from scratch on domain context. Programs like these collapse the first 1–2 years of on-the-job learning into the degree itself. The trade-off: slightly narrower lateral mobility compared to a generalist CS degree, but a much faster ramp into specialized roles.</p>
+
+    <div class="pull-quote">"To produce engineers who understand both technology and business — ideal for roles in the digital and IT services economy." — TCS, on why it co-designed the CSBS curriculum</div>
+
+    <p>The remainder of this document walks through thirteen specific programs across four domains, plus the two grading systems they use. Begin with the grading sections — every program description that follows refers back to them.</p>
+  </div>
+</section>
+
+<!-- ════════════ INDIAN GRADING ════════════ -->
+<section id="grading-indian">
+  <div class="wrap">
+    <div class="section-eyebrow">§ 02 · Grading Systems</div>
+    <h2 class="section-title">The Indian 10-point system <em>(AICTE &amp; UGC)</em></h2>
+    <p class="section-lead">Nearly every engineering college in India — IITs, NITs, private universities, state colleges — follows a 10-point Cumulative Grade Point Average (CGPA) scale mandated by AICTE and UGC. Letter grades are tied to grade points, and grade points are credit-weighted into per-semester and overall averages.</p>
+
+    <h3>The grade scale</h3>
+    <p>The letter grades and their associated points map to mark ranges as follows. The bands are widely used though some institutions tweak them by a few percentage points.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Letter</th>
+            <th>Grade Point</th>
+            <th>Marks Range</th>
+            <th>Descriptor</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="grade-chip o">O</span></td>
+            <td class="grade-cell">10</td>
+            <td class="credit-cell">90 – 100</td>
+            <td>Outstanding</td>
+            <td>Pass</td>
+          </tr>
+          <tr>
+            <td><span class="grade-chip aplus">A+</span></td>
+            <td class="grade-cell">9</td>
+            <td class="credit-cell">80 – 89</td>
+            <td>Excellent</td>
+            <td>Pass</td>
+          </tr>
+          <tr>
+            <td><span class="grade-chip a">A</span></td>
+            <td class="grade-cell">8</td>
+            <td class="credit-cell">70 – 79</td>
+            <td>Very Good</td>
+            <td>Pass</td>
+          </tr>
+          <tr>
+            <td><span class="grade-chip bplus">B+</span></td>
+            <td class="grade-cell">7</td>
+            <td class="credit-cell">60 – 69</td>
+            <td>Good</td>
+            <td>Pass</td>
+          </tr>
+          <tr>
+            <td><span class="grade-chip b">B</span></td>
+            <td class="grade-cell">6</td>
+            <td class="credit-cell">55 – 59</td>
+            <td>Above Average</td>
+            <td>Pass</td>
+          </tr>
+          <tr>
+            <td><span class="grade-chip c">C</span></td>
+            <td class="grade-cell">5</td>
+            <td class="credit-cell">50 – 54</td>
+            <td>Average</td>
+            <td>Pass</td>
+          </tr>
+          <tr>
+            <td><span class="grade-chip p">P</span></td>
+            <td class="grade-cell">4</td>
+            <td class="credit-cell">40 – 49</td>
+            <td>Pass</td>
+            <td>Pass (bare)</td>
+          </tr>
+          <tr>
+            <td><span class="grade-chip f">F</span></td>
+            <td class="grade-cell">0</td>
+            <td class="credit-cell">&lt; 40</td>
+            <td>Fail</td>
+            <td>Reappear</td>
+          </tr>
+          <tr>
+            <td><span class="grade-chip f">Ab</span></td>
+            <td class="grade-cell">0</td>
+            <td class="credit-cell">—</td>
+            <td>Absent</td>
+            <td>Reappear</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>SGPA and CGPA — how they're calculated</h3>
+    <p>SGPA (Semester Grade Point Average) captures one semester. CGPA (Cumulative Grade Point Average) is the running average across all semesters completed. Both are <em>credit-weighted</em>, meaning a 4-credit course pulls harder on the average than a 2-credit lab.</p>
+
+    <div class="formula">
+      <span class="formula-label">Semester Grade Point Average</span>
+      SGPA = Σ (Cᵢ × Gᵢ) / Σ Cᵢ<br>
+      &nbsp;&nbsp;where Cᵢ = credits of course i, Gᵢ = grade point earned in course i
+    </div>
+
+    <div class="formula">
+      <span class="formula-label">Cumulative Grade Point Average</span>
+      CGPA = Σ (Cⱼ × SGPAⱼ) / Σ Cⱼ<br>
+      &nbsp;&nbsp;where Cⱼ = total credits in semester j, SGPAⱼ = SGPA of semester j
+    </div>
+
+    <h4>A worked example</h4>
+    <p>A second-semester CSBS student takes six courses with these credits and grades:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Course</th>
+            <th>Credits (C)</th>
+            <th>Grade</th>
+            <th>Grade Point (G)</th>
+            <th>C × G</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Linear Algebra</td><td class="credit-cell">4</td><td><span class="grade-chip aplus">A+</span></td><td class="credit-cell">9</td><td class="credit-cell">36</td></tr>
+          <tr><td>Data Structures &amp; Algorithms</td><td class="credit-cell">3</td><td><span class="grade-chip o">O</span></td><td class="credit-cell">10</td><td class="credit-cell">30</td></tr>
+          <tr><td>Fundamentals of Economics</td><td class="credit-cell">2</td><td><span class="grade-chip a">A</span></td><td class="credit-cell">8</td><td class="credit-cell">16</td></tr>
+          <tr><td>Statistical Modeling</td><td class="credit-cell">3</td><td><span class="grade-chip bplus">B+</span></td><td class="credit-cell">7</td><td class="credit-cell">21</td></tr>
+          <tr><td>Business Communication II</td><td class="credit-cell">4</td><td><span class="grade-chip a">A</span></td><td class="credit-cell">8</td><td class="credit-cell">32</td></tr>
+          <tr><td>Principles of Electronics</td><td class="credit-cell">3</td><td><span class="grade-chip b">B</span></td><td class="credit-cell">6</td><td class="credit-cell">18</td></tr>
+          <tr style="font-weight:600; background: var(--accent-mustard-soft) !important;"><td>Totals</td><td class="credit-cell">19</td><td>—</td><td>—</td><td class="credit-cell">153</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>SGPA = 153 / 19 = <strong>8.05</strong>. That's a "Very Good" overall semester. If subsequent semesters average around the same, CGPA stabilises around 8.0 — the threshold most premium recruiters look for.</p>
+
+    <h3>Converting CGPA to percentage</h3>
+    <p>There is no single conversion formula. Universities use different multipliers, often listed on the back of the grade sheet.</p>
+
+    <ul class="bullet">
+      <li><strong>CGPA × 10</strong> — most direct, used by many state technical universities</li>
+      <li><strong>CGPA × 9.5</strong> — common in central universities and CBSE-aligned institutions</li>
+      <li><strong>(CGPA − 0.5) × 10</strong> — used by AKTU (Lucknow) and several UP institutions</li>
+      <li><strong>(CGPA − 0.75) × 10</strong> — Anna University regulations</li>
+      <li><strong>VTU formula: (SGPA − 0.75) × 10</strong> — Karnataka state engineering</li>
+    </ul>
+
+    <h3>Pass criteria and degree class</h3>
+    <p>Most engineering universities require:</p>
+
+    <ul class="bullet">
+      <li>Grade <strong>P (4) or higher</strong> in every course to pass that course</li>
+      <li>SGPA <strong>≥ 5.0</strong> at the end of each semester</li>
+      <li>CGPA <strong>≥ 5.0</strong> to be awarded the B.Tech degree</li>
+      <li><strong>First Class with Distinction</strong> — final CGPA ≥ 7.5 (some universities: ≥ 7.0)</li>
+      <li><strong>First Class</strong> — final CGPA ≥ 6.5 but &lt; 7.5</li>
+      <li><strong>Second Class</strong> — final CGPA ≥ 5.0 but &lt; 6.5</li>
+    </ul>
+
+    <h3>ATKT — the backlog rule</h3>
+    <p>"Allowed To Keep Term" rules govern how many failed papers a student may carry forward while still registering for the next semester. The typical cap is <strong>2 backlogs per semester</strong>; exceeding it freezes promotion until the student clears arrears via supplementary exams. Some institutions cap total active backlogs over the program at 4–6.</p>
+
+    <h3>Attendance</h3>
+    <p>AICTE mandates a minimum 75% attendance per course; up to 25% can be condoned on medical grounds. Falling below the threshold usually bars a student from sitting the end-semester exam in that course.</p>
+
+    <div class="callout">
+      <div class="callout-title">Recruiters' CGPA floor</div>
+      Tier-1 service companies (TCS, Infosys, Wipro, Accenture) typically require CGPA ≥ 6.5 with no active backlogs. Premium firms (Microsoft, Amazon, Goldman Sachs, JP Morgan) usually expect 7.5+. PSU recruitment via GATE (BHEL, ONGC, NTPC) requires 60–65% in graduation, which translates to roughly CGPA 6.5–7.0 depending on the formula used.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ US GRADING ════════════ -->
+<section id="grading-us">
+  <div class="wrap">
+    <div class="section-eyebrow">§ 03 · Grading Systems</div>
+    <h2 class="section-title">The US 4.0 GPA system <em>(Purdue, CMU, UPenn, JHU)</em></h2>
+    <p class="section-lead">American universities use a 4.0 Grade Point Average scale with letter grades broken into thirds (A, A−, B+, B, B−...). The math is the same as Indian SGPA — credit-weighted average of grade points — but the scale and thresholds differ.</p>
+
+    <h3>The grade scale</h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Letter</th>
+            <th>Grade Point</th>
+            <th>Marks Range</th>
+            <th>Descriptor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="grade-chip o">A</span></td><td class="grade-cell">4.0</td><td class="credit-cell">93 – 100</td><td>Excellent</td></tr>
+          <tr><td><span class="grade-chip aplus">A−</span></td><td class="grade-cell">3.7</td><td class="credit-cell">90 – 92</td><td>Excellent</td></tr>
+          <tr><td><span class="grade-chip a">B+</span></td><td class="grade-cell">3.3</td><td class="credit-cell">87 – 89</td><td>Good</td></tr>
+          <tr><td><span class="grade-chip bplus">B</span></td><td class="grade-cell">3.0</td><td class="credit-cell">83 – 86</td><td>Good</td></tr>
+          <tr><td><span class="grade-chip b">B−</span></td><td class="grade-cell">2.7</td><td class="credit-cell">80 – 82</td><td>Good</td></tr>
+          <tr><td><span class="grade-chip c">C+</span></td><td class="grade-cell">2.3</td><td class="credit-cell">77 – 79</td><td>Satisfactory</td></tr>
+          <tr><td><span class="grade-chip c">C</span></td><td class="grade-cell">2.0</td><td class="credit-cell">73 – 76</td><td>Satisfactory</td></tr>
+          <tr><td><span class="grade-chip p">C−</span></td><td class="grade-cell">1.7</td><td class="credit-cell">70 – 72</td><td>Below Average</td></tr>
+          <tr><td><span class="grade-chip p">D</span></td><td class="grade-cell">1.0</td><td class="credit-cell">60 – 69</td><td>Poor (bare pass)</td></tr>
+          <tr><td><span class="grade-chip f">F</span></td><td class="grade-cell">0.0</td><td class="credit-cell">&lt; 60</td><td>Fail</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Computing GPA</h3>
+
+    <div class="formula">
+      <span class="formula-label">Grade Point Average</span>
+      GPA = Σ (Creditsᵢ × Grade Pointᵢ) / Σ Creditsᵢ<br>
+      &nbsp;&nbsp;Term GPA covers one term; Cumulative GPA covers the entire program.
+    </div>
+
+    <h3>Honors thresholds</h3>
+    <p>US universities award Latin honors at graduation based on cumulative GPA. Thresholds vary by school but the rough convention is:</p>
+
+    <ul class="bullet">
+      <li><strong>Summa cum laude</strong> — GPA ≥ 3.9 (top ~5% of class at competitive schools)</li>
+      <li><strong>Magna cum laude</strong> — GPA ≥ 3.75 (top ~10%)</li>
+      <li><strong>Cum laude</strong> — GPA ≥ 3.5 (top ~25%)</li>
+      <li><strong>Dean's List (per term)</strong> — usually GPA ≥ 3.5 in that term with full course load</li>
+    </ul>
+
+    <h3>Indian-to-US conversion</h3>
+    <p>For students applying to US graduate schools from Indian B.Tech programs, the approximate equivalents are:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Indian CGPA (10-pt)</th>
+            <th>US GPA (4.0)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="credit-cell">9.0 – 10.0</td><td class="credit-cell">3.8 – 4.0</td><td>Outstanding</td></tr>
+          <tr><td class="credit-cell">8.0 – 8.9</td><td class="credit-cell">3.5 – 3.7</td><td>Excellent</td></tr>
+          <tr><td class="credit-cell">7.0 – 7.9</td><td class="credit-cell">3.0 – 3.4</td><td>Good</td></tr>
+          <tr><td class="credit-cell">6.0 – 6.9</td><td class="credit-cell">2.5 – 2.9</td><td>Average</td></tr>
+          <tr><td class="credit-cell">5.0 – 5.9</td><td class="credit-cell">2.0 – 2.4</td><td>Below average</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Official credential evaluation services like WES (World Education Services) do this conversion authoritatively for US graduate applications.</p>
+  </div>
+</section>
+
+<!-- ════════════ CS + FINANCE ════════════ -->
+<section id="finance">
+  <div class="wrap">
+    <div class="section-eyebrow">§ 04 · Domain Group A</div>
+    <h2 class="section-title">CS + <em>Finance</em> &amp; Banking</h2>
+    <p class="section-lead">India has been the biggest mover here — UPI, demonetization, and the digital banking boom triggered an explosion of FinTech-specific engineering programs co-designed with banks, payment companies, and global financial-services firms.</p>
+
+    <!-- MIT MANIPAL FINTECH -->
+    <div class="program-card" id="mit-fintech">
+      <div class="card-eyebrow">Program 01 · India · UG · 4 years</div>
+      <h3 class="card-title" style="margin-top:0">B.Tech in Computer Science &amp; Financial Technology</h3>
+      <div class="card-subtitle">Manipal Institute of Technology (MIT), Manipal Academy of Higher Education</div>
+
+      <div class="stat-strip">
+        <div class="stat"><span class="label">Duration</span><span class="value">4 yrs / 8 sem</span></div>
+        <div class="stat"><span class="label">Total Fees</span><span class="value">~₹22.1 L</span></div>
+        <div class="stat"><span class="label">Annual Fee</span><span class="value">~₹5.5 L</span></div>
+        <div class="stat"><span class="label">Intake</span><span class="value">~60 seats</span></div>
+        <div class="stat"><span class="label">Entrance</span><span class="value">MET</span></div>
+      </div>
+
+      <p>India's first and only program of this kind, jointly run by MIT Manipal's School of Computer Engineering and the School of Basic Sciences, Humanities &amp; Management. Curriculum designed with FIS Global (Fortune 500 fintech), which contributes case studies and partial teaching. Three core spines: Computer Science, Financial Technology, Mathematics.</p>
+
+      <h5>Eligibility</h5>
+      <p>10+2 with Physics, Mathematics, English mandatory; Chemistry / Biotechnology / Biology / Technical-Vocational as the fourth subject. Minimum 50% aggregate across Physics, Math, and the optional subject. Admission via the Manipal Entrance Test (MET) — a computer-based exam covering Physics, Chemistry, Math, English, and logical reasoning, with marks weighted 50:50 against 10+2 marks for the merit list.</p>
+
+      <h5>Course structure (representative)</h5>
+
+      <div class="semester-block">
+        <div class="sem-label">Year 1</div>
+        <div class="sem-name">Foundations — Semesters I &amp; II</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Engineering Mathematics I &amp; II</span><span class="cr">4 cr each</span></div>
+          <div class="subj"><span class="name">Engineering Physics / Chemistry</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Problem Solving Using Computers (C / Python)</span><span class="cr">4 cr</span></div>
+          <div class="subj"><span class="name">Basic Electrical &amp; Electronics</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Engineering Drawing / Workshop</span><span class="cr">2 cr</span></div>
+          <div class="subj"><span class="name">Communication Skills / English</span><span class="cr">2 cr</span></div>
+          <div class="subj"><span class="name">Environmental Studies</span><span class="cr">2 cr</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-label">Year 2</div>
+        <div class="sem-name">Core CS + Intro to Finance — Semesters III &amp; IV</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Data Structures &amp; Algorithms</span><span class="cr">4 cr</span></div>
+          <div class="subj"><span class="name">Object-Oriented Programming (Java)</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Discrete Mathematics</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Probability &amp; Statistics for Finance</span><span class="cr">4 cr</span></div>
+          <div class="subj"><span class="name">Database Management Systems</span><span class="cr">4 cr</span></div>
+          <div class="subj"><span class="name">Computer Organization &amp; Architecture</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Financial Accounting &amp; Reporting</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Introduction to Financial Markets</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Operating Systems</span><span class="cr">4 cr</span></div>
+          <div class="subj"><span class="name">Microeconomics / Macroeconomics</span><span class="cr">3 cr</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-label">Year 3</div>
+        <div class="sem-name">Specialization — Semesters V &amp; VI</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Design &amp; Analysis of Algorithms</span><span class="cr">4 cr</span></div>
+          <div class="subj"><span class="name">Computer Networks</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Software Engineering</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Banking Technology</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Capital Markets &amp; Investment Analysis</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Financial Management &amp; Corporate Finance</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Machine Learning</span><span class="cr">4 cr</span></div>
+          <div class="subj"><span class="name">Big Data Analytics</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Cloud Computing</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Blockchain Technology</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Risk Management &amp; Insurance</span><span class="cr">3 cr</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-label">Year 4</div>
+        <div class="sem-name">Electives + Project — Semesters VII &amp; VIII</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Cybersecurity for Financial Systems</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Quantitative Finance &amp; Algorithmic Trading</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Regulatory Technology (RegTech)</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">FIS-led Industry Electives</span><span class="cr">3 cr each</span></div>
+          <div class="subj"><span class="name"><strong>Semester VIII: Full-time Project / Practice School</strong></span><span class="cr">16+ cr</span></div>
+        </div>
+      </div>
+
+      <div class="callout teal">
+        <div class="callout-title">FIS Global involvement</div>
+        FIS Global (Fortune 500) contributes to syllabus design, provides industry case applications, and partially handles teaching for senior fintech electives. The 8th semester is fully reserved for a practice-school project — students typically work onsite at FIS or partner financial institutions.
+      </div>
+
+      <h5>Grading</h5>
+      <p>MAHE uses a standard 10-point CGPA system. <strong>O (10), A+ (9), A (8), B+ (7), B (6), C (5), P (4), F (0)</strong>. Each course runs continuous assessment (50%) + end-semester exam (50%). Minimum CGPA of 5.0 required to graduate; the merit-based <strong>Freeship scholarship</strong> gives 100% tuition waiver to top MET rankers, with continuation contingent on maintaining CGPA ≥ 8.0 with zero backlogs.</p>
+
+      <h5>Career outcomes</h5>
+      <ul class="bullet">
+        <li>FinTech product roles at FIS, Goldman Sachs Engineering, JP Morgan, Morgan Stanley</li>
+        <li>Quantitative analyst, blockchain specialist, risk modeling</li>
+        <li>General SDE pivot to Microsoft, Amazon, Bosch (placed last batch)</li>
+        <li>Highest package reported: ~₹51 LPA; median around ₹8.5 LPA</li>
+      </ul>
+    </div>
+
+    <!-- KARNAVATI -->
+    <div class="program-card" id="karnavati">
+      <div class="card-eyebrow">Program 02 · India · UG · 4 years</div>
+      <h3 class="card-title" style="margin-top:0">B.Tech (Hons.) CSE in FinTech with Paytm</h3>
+      <div class="card-subtitle">Unitedworld Institute of Technology, Karnavati University, Gandhinagar</div>
+
+      <div class="stat-strip">
+        <div class="stat"><span class="label">Duration</span><span class="value">4 yrs / 8 sem</span></div>
+        <div class="stat"><span class="label">Annual Fee</span><span class="value">~₹3 – 4 L</span></div>
+        <div class="stat"><span class="label">Industry Partner</span><span class="value">Paytm</span></div>
+        <div class="stat"><span class="label">Entrance</span><span class="value">KUET / JEE</span></div>
+      </div>
+
+      <p>An honours-track CSE degree where Paytm shapes the fintech electives. Unlike MIT Manipal's vendor-neutral curriculum, this one is closely tied to one company's stack and methodology, which has both upsides (deeper Paytm-aligned skills, easier internship route) and downsides (narrower exposure).</p>
+
+      <h5>Fintech-specific subjects (over 3rd &amp; 4th year)</h5>
+      <ul class="bullet">
+        <li>Digital Payments &amp; Mobile Wallets</li>
+        <li>API Development &amp; Integration in Open Banking</li>
+        <li>InsurTech &amp; Algorithmic Underwriting</li>
+        <li>Blockchain &amp; Cryptocurrencies</li>
+        <li>Financial Data Analytics &amp; Visualization</li>
+        <li>Indian Fintech Regulatory Landscape (RBI, SEBI, IRDAI)</li>
+        <li>Credit Scoring &amp; Alternative Lending Systems</li>
+      </ul>
+
+      <p>Graduates with the additional certification carry the formal title "B.Tech-CSE (Hons.) in Fintech with Paytm" on their degree. Certification is optional and runs alongside the regular B.Tech.</p>
+
+      <h5>Grading</h5>
+      <p>Standard AICTE 10-point CGPA. Internal assessment + practical labs typically count for 40–50% in lab-heavy courses; theory courses split 30:70 internal vs end-semester.</p>
+    </div>
+
+    <!-- DYPIU -->
+    <div class="program-card" id="dypiu">
+      <div class="card-eyebrow">Program 03 · India · UG + PG · 5 years</div>
+      <h3 class="card-title" style="margin-top:0">B.Tech FinTech + Integrated MBA</h3>
+      <div class="card-subtitle">DY Patil International University, Pune</div>
+
+      <div class="stat-strip">
+        <div class="stat"><span class="label">Duration</span><span class="value">5 yrs (integrated)</span></div>
+        <div class="stat"><span class="label">Annual Fee</span><span class="value">~₹3 – 5 L</span></div>
+        <div class="stat"><span class="label">Output</span><span class="value">B.Tech + MBA</span></div>
+        <div class="stat"><span class="label">Entrance</span><span class="value">DYPCET / JEE</span></div>
+      </div>
+
+      <p>A 5-year dual-degree path that gives both an engineering qualification and an MBA. Useful if the eventual career is product management or fintech consulting rather than pure software engineering. Caters to working professionals via flexible scheduling.</p>
+
+      <h5>FinTech track topics</h5>
+      <ul class="bullet">
+        <li>Cryptocurrencies, blockchain architecture, smart contracts</li>
+        <li>AI / Big Data applied to finance</li>
+        <li>FinTech regulation, RBI policy frameworks, Government of India initiatives</li>
+        <li>Capital markets, digital finance, alternative finance</li>
+        <li>Risk management, compliance, RegTech</li>
+      </ul>
+
+      <p>Career roles after graduation: Research Analyst, Product Manager, Data Scientist, Financial Analyst, Compliance Expert, Quantitative Analyst, Risk Management Analyst, Blockchain Specialist, Cryptocurrency Analyst.</p>
+
+      <h5>Grading</h5>
+      <p>Standard 10-point CGPA for B.Tech years; the integrated MBA component follows AICTE PGDM grading norms (10-point scale, with comprehensive assessment via case studies and capstone projects).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CS + BUSINESS SYSTEMS ════════════ -->
+<section id="business">
+  <div class="wrap">
+    <div class="section-eyebrow">§ 05 · Domain Group B</div>
+    <h2 class="section-title">CS + <em>Business Systems</em></h2>
+    <p class="section-lead">This is the most widely available "CS + domain" pattern in India because TCS designed a model curriculum and licensed it to dozens of colleges. The "business" part isn't a single industry — it's business communication, accounting, economics, operations research, and management — preparing graduates for IT-services roles that need both code and client-facing business judgment.</p>
+
+    <!-- CSBS -->
+    <div class="program-card teal" id="csbs-tcs">
+      <div class="card-eyebrow">Program 04 · India · UG · 4 years</div>
+      <h3 class="card-title" style="margin-top:0">B.Tech in Computer Science &amp; Business Systems (CSBS)</h3>
+      <div class="card-subtitle">Curriculum by Tata Consultancy Services, offered at 100+ AICTE-approved colleges</div>
+
+      <div class="stat-strip">
+        <div class="stat"><span class="label">Duration</span><span class="value">4 yrs / 8 sem</span></div>
+        <div class="stat"><span class="label">Total Credits</span><span class="value">180 credits</span></div>
+        <div class="stat"><span class="label">Per Semester</span><span class="value">~22 credits</span></div>
+        <div class="stat"><span class="label">Industry Partner</span><span class="value">TCS (faculty trained)</span></div>
+      </div>
+
+      <p>CSBS was created by TCS in partnership with the Indian Statistical Institute, Kolkata, and approved by AICTE in 2019. It's listed in the official AICTE engineering course nomenclature, so the degree is recognized identically to a regular B.Tech. The premise: graduates know core CS (algorithms, OS, DBMS, networks, ML) <em>and</em> have working understanding of business communication, financial accounting, economics, management, and design thinking.</p>
+
+      <h5>Where it's offered (selection, near Hyderabad)</h5>
+      <ul class="bullet">
+        <li><strong>BVRIT, Narsapur (Telangana)</strong> — started 2020, intake 60</li>
+        <li><strong>VBIT, Hyderabad</strong> — established CSBS department</li>
+        <li><strong>Sri Venkateswara College of Engineering &amp; Technology, Chittoor (Andhra Pradesh)</strong></li>
+        <li><strong>Thiagarajar College of Engineering, Madurai</strong></li>
+        <li><strong>SRM Institute of Science and Technology, Chennai</strong></li>
+        <li><strong>Sri Krishna College of Engineering and Technology, Coimbatore</strong> (first in South India, MoU signed 2018)</li>
+        <li><strong>Chandigarh University</strong></li>
+        <li><strong>Rajalakshmi Engineering College, Chennai</strong></li>
+        <li><strong>Thapar Institute, Patiala</strong></li>
+        <li><strong>KPR Institute of Engineering, Coimbatore</strong></li>
+      </ul>
+
+      <h5>Full curriculum — semester by semester</h5>
+      <p>The TCS-designed CSBS scheme has 180 credits across 8 semesters (about 22 per semester). Below is the standard subject map. Course codes follow the format used at most affiliated colleges; the actual numbering varies by institution but subject names are consistent.</p>
+
+      <div class="semester-block">
+        <div class="sem-label">First Year</div>
+        <div class="sem-name">Semester I (24 credits)</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Discrete Mathematics</span><span class="cr">3 cr · L3-T0-P0</span></div>
+          <div class="subj"><span class="name">Probability &amp; Statistics</span><span class="cr">3 cr · L3-T0-P0</span></div>
+          <div class="subj"><span class="name">Fundamentals of Computer Science</span><span class="cr">3 cr · L3-T0-P0</span></div>
+          <div class="subj"><span class="name">Principles of Electrical Engineering</span><span class="cr">3 cr · L3-T0-P0</span></div>
+          <div class="subj"><span class="name">Fundamentals of Physics</span><span class="cr">3 cr · L3-T0-P0</span></div>
+          <div class="subj"><span class="name">Business Communication &amp; Value Science I</span><span class="cr">4 cr · L3-T0-P0</span></div>
+          <div class="subj"><span class="name">Fundamentals of Computer Science Lab</span><span class="cr">1 cr · L0-T0-P2</span></div>
+          <div class="subj"><span class="name">Principles of Electrical Engineering Lab</span><span class="cr">1 cr · L0-T0-P2</span></div>
+          <div class="subj"><span class="name">Fundamentals of Physics Lab</span><span class="cr">1 cr · L0-T0-P2</span></div>
+          <div class="subj"><span class="name">Foreign Language I</span><span class="cr">2 cr · L2-T0-P0</span></div>
+        </div>
+        <p style="font-size:13px; color: var(--ink-mute); margin-top: 12px;"><em>Plus a 3-week mandatory Induction Program at start: physical activity, creative arts, universal human values, literary, proficiency modules, lectures by eminent people, local-area visits, department familiarization.</em></p>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-name">Semester II (24 credits)</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Linear Algebra</span><span class="cr">4 cr · L4-T0-P0</span></div>
+          <div class="subj"><span class="name">Statistical Modeling</span><span class="cr">3 cr · L3-T0-P0</span></div>
+          <div class="subj"><span class="name">Data Structures &amp; Algorithms</span><span class="cr">3 cr · L3-T0-P0</span></div>
+          <div class="subj"><span class="name">Principles of Electronics</span><span class="cr">3 cr · L3-T0-P0</span></div>
+          <div class="subj"><span class="name">Fundamentals of Economics</span><span class="cr">2 cr · L2-T0-P0</span></div>
+          <div class="subj"><span class="name">Business Communication &amp; Value Science II</span><span class="cr">4 cr · L3-T0-P0</span></div>
+          <div class="subj"><span class="name">Statistical Modeling Lab</span><span class="cr">1 cr · L0-T0-P2</span></div>
+          <div class="subj"><span class="name">Data Structures &amp; Algorithms Lab</span><span class="cr">1 cr · L0-T0-P2</span></div>
+          <div class="subj"><span class="name">Principles of Electronics Lab</span><span class="cr">1 cr · L0-T0-P2</span></div>
+          <div class="subj"><span class="name">Foreign Language II</span><span class="cr">2 cr · L2-T0-P0</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-label">Second Year</div>
+        <div class="sem-name">Semester III (~23 credits)</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Computational Statistics</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Object-Oriented Programming (Java)</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Computer Organization &amp; Architecture</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Software Engineering</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Accounting &amp; Financial Management</span><span class="cr">4 cr</span></div>
+          <div class="subj"><span class="name">Business Communication &amp; Value Science III</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">OOP Lab</span><span class="cr">1 cr · P2</span></div>
+          <div class="subj"><span class="name">Software Engineering Lab</span><span class="cr">1 cr · P2</span></div>
+          <div class="subj"><span class="name">Foreign Language III</span><span class="cr">2 cr</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-name">Semester IV (24 credits)</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Operating Systems</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Database Management Systems</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Software Design with UML</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Introduction to Innovation, IP Management &amp; Entrepreneurship</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Operations Research</span><span class="cr">2 cr</span></div>
+          <div class="subj"><span class="name">Business Communication &amp; Value Science IV</span><span class="cr">4 cr · L2</span></div>
+          <div class="subj"><span class="name">OS Lab</span><span class="cr">1 cr · P2</span></div>
+          <div class="subj"><span class="name">DBMS Lab</span><span class="cr">1 cr · P2</span></div>
+          <div class="subj"><span class="name">UML Lab</span><span class="cr">1 cr · P2</span></div>
+          <div class="subj"><span class="name">Operations Research Lab</span><span class="cr">1 cr · P2</span></div>
+          <div class="subj"><span class="name">Foreign Language IV</span><span class="cr">2 cr</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-label">Third Year</div>
+        <div class="sem-name">Semester V (~22 credits)</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Design &amp; Analysis of Algorithms</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Compiler Design</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Fundamentals of Management</span><span class="cr">4 cr</span></div>
+          <div class="subj"><span class="name">Business Strategy</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Design Thinking</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Elective I — Machine Learning</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Mini Project I</span><span class="cr">1 cr · P2</span></div>
+          <div class="subj"><span class="name">Algorithms Lab</span><span class="cr">1 cr · P2</span></div>
+          <div class="subj"><span class="name">ML Elective Lab</span><span class="cr">1 cr · P2</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-name">Semester VI (~22 credits)</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Computer Networks</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Information Security</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Conversational Systems / Modern AI</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Financial &amp; Cost Accounting</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Industrial Psychology / Behavioural Economics</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Elective II (Professional)</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Elective III (Professional)</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Mini Project II</span><span class="cr">1 cr · P2</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-label">Final Year</div>
+        <div class="sem-name">Semester VII (~21 credits)</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Usability Design of Software Applications</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Marketing Research / Marketing Management</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Services Science &amp; Service Operational Management</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Elective IV (Open Elective: Business Analytics / Satellite Comm.)</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Elective V (Professional: Data Science / Mobile Computing / Blockchain &amp; Crypto)</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Project Evaluation I</span><span class="cr">2 cr · P4</span></div>
+          <div class="subj"><span class="name">Industry Offered Elective (delivered by TCS staff)</span><span class="cr">3 cr</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-name">Semester VIII (~19 credits)</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">IT Project Management</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Services Marketing</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Elective VI (Professional)</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Industry Offered Elective II</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name"><strong>Final Year Project + 8-week Industry Internship (TCS-supported)</strong></span><span class="cr">7+ cr</span></div>
+        </div>
+      </div>
+
+      <div class="callout teal">
+        <div class="callout-title">Elective bank (CSBS professional electives)</div>
+        Across semesters V–VIII, students pick six core electives from a TCS-curated bank: <strong>Machine Learning · Deep Learning · Natural Language Processing · Data Science · Big Data · Cloud Computing · IoT · Blockchain &amp; Cryptocurrency · Mobile Computing · Wireless &amp; Sensor Networks · DevOps · Microservices Architecture · Robotic Process Automation · AR/VR · Quantum Computing · Cybersecurity for Enterprise</strong>. Plus open electives from any department.
+      </div>
+
+      <h5>Subject mix at a glance</h5>
+      <ul class="bullet">
+        <li><strong>~55% Computer Science core</strong> — programming, DS, algos, OS, DBMS, networks, software engineering, ML, security</li>
+        <li><strong>~20% Business / Management</strong> — accounting, economics, marketing, strategy, operations research, project management</li>
+        <li><strong>~15% Math / Statistics</strong> — discrete math, linear algebra, probability, statistical modeling, OR</li>
+        <li><strong>~8% Communication / Language</strong> — Business Communication &amp; Value Science I–IV, Foreign Language I–IV</li>
+        <li><strong>~2% Innovation, design thinking, IP</strong></li>
+      </ul>
+
+      <h5>Grading</h5>
+      <p>Standard AICTE 10-point CGPA. Each course uses Continuous Assessment (typically 30–40% — quizzes, mid-sems, assignments, lab work) + End Semester Exam (60–70%). Labs may carry their own grades. Projects in semesters VII and VIII are graded on review presentations, written report, and viva.</p>
+
+      <p>To graduate: complete 180 credits, CGPA ≥ 5.0, no active F or Ab grades. Honors track (Distinction) requires CGPA ≥ 7.5 at most colleges, ≥ 8.0 at top-tier institutions.</p>
+
+      <h5>Career outcomes</h5>
+      <ul class="bullet">
+        <li>TCS Digital / TCS Code Vita roles directly (CSBS grads come pre-aligned with the TCS skill bundle)</li>
+        <li>IT consulting at Accenture, Deloitte, Infosys, Cognizant, Capgemini</li>
+        <li>Business analyst roles at investment banks &amp; consulting firms</li>
+        <li>Pivot to MBA after 2–3 years of experience (CSBS background reduces the "tech-to-business" friction)</li>
+      </ul>
+    </div>
+
+    <!-- PONDICHERRY -->
+    <div class="program-card teal" id="pondicherry">
+      <div class="card-eyebrow">Program 05 · India · Integrated UG+PG · 5 years</div>
+      <h3 class="card-title" style="margin-top:0">Integrated B.Tech (CSBS) + MBA</h3>
+      <div class="card-subtitle">Pondicherry University, Department of Banking Technology</div>
+
+      <div class="stat-strip">
+        <div class="stat"><span class="label">Duration</span><span class="value">5 yrs (integrated)</span></div>
+        <div class="stat"><span class="label">Output</span><span class="value">B.Tech + MBA</span></div>
+        <div class="stat"><span class="label">Framework</span><span class="value">NEP 2020</span></div>
+        <div class="stat"><span class="label">Discipline Host</span><span class="value">Banking Technology / Mgmt</span></div>
+      </div>
+
+      <p>Launched under NEP 2020, this is one of the more distinctive options because it's hosted by Pondicherry University's <strong>Department of Banking Technology</strong> in the School of Management — combining the TCS CSBS curriculum with banking-specific electives and an MBA capstone. Graduates exit with both an engineering and management qualification, which is unusual at 5 years.</p>
+
+      <h5>Structure</h5>
+      <ul class="bullet">
+        <li><strong>Years 1–4:</strong> CSBS curriculum (180 credits, as detailed above) with the elective bank tilted toward banking technology and financial systems</li>
+        <li><strong>Year 5:</strong> MBA core — strategic management, organizational behavior, marketing management, financial management, operations, plus a 4-month industry capstone</li>
+      </ul>
+
+      <h5>Grading</h5>
+      <p>10-point CGPA throughout. The MBA year uses additional assessment via case studies (15–25% weight), group presentations, and a final dissertation. Honors are awarded based on cumulative CGPA across all 10 semesters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CS + MANUFACTURING ════════════ -->
+<section id="manufacturing">
+  <div class="wrap">
+    <div class="section-eyebrow">§ 06 · Domain Group C</div>
+    <h2 class="section-title">CS + <em>Manufacturing</em>, MES &amp; Industrial Informatics</h2>
+    <p class="section-lead">If you specifically want Manufacturing Execution Systems (MES) and Industry 4.0 — IIoT, shop-floor data, ERP integration, smart factories — this is the cleanest match. The US program below covers MES integration head-on; in India, you'd typically reach the same destination through Industrial Engineering plus electives.</p>
+
+    <!-- PURDUE -->
+    <div class="program-card mustard" id="purdue">
+      <div class="card-eyebrow">Program 06 · USA · UG · 4 years</div>
+      <h3 class="card-title" style="margin-top:0">B.S. in Smart Manufacturing &amp; Industrial Informatics</h3>
+      <div class="card-subtitle">Purdue Polytechnic Institute, Purdue University, West Lafayette, IN</div>
+
+      <div class="stat-strip">
+        <div class="stat"><span class="label">Duration</span><span class="value">4 yrs / 8 sem</span></div>
+        <div class="stat"><span class="label">Total Credits</span><span class="value">~120 cr</span></div>
+        <div class="stat"><span class="label">Tuition (Intl)</span><span class="value">~$30K / year</span></div>
+        <div class="stat"><span class="label">Accreditation</span><span class="value">ABET (ETAC)</span></div>
+      </div>
+
+      <p>The most MES-specific bachelor's degree at a major US university. Accredited by the Engineering Technology Accreditation Commission of ABET under the Manufacturing Engineering Technology criteria. The program explicitly trains for "horizontally- and vertically-integrated manufacturing organizations" — i.e., the kind of factories where MES, MOM, and ERP systems talk to each other.</p>
+
+      <h5>The core "MES-relevant" course</h5>
+
+      <div class="callout">
+        <div class="callout-title">Smart Manufacturing Information Systems</div>
+        "An examination of smart manufacturing information systems with particular focus on applications for horizontal- and vertically-integrated manufacturing organizations. Topics include cloud-based integrated information systems to provide connectivity, visibility, and analytics of production and shop-floor execution systems, and integrating manufacturing execution, manufacturing operations management, and enterprise resource planning (ERP) systems."
+      </div>
+
+      <h5>Curriculum themes (4 years)</h5>
+
+      <div class="semester-block">
+        <div class="sem-label">First Year</div>
+        <div class="sem-name">Foundations</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Calculus I &amp; II</span><span class="cr">4 cr each</span></div>
+          <div class="subj"><span class="name">Engineering Physics</span><span class="cr">4 cr</span></div>
+          <div class="subj"><span class="name">Programming for Engineering (Python)</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Introduction to Smart Manufacturing</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Technical Communication</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Workshop / Fabrication Lab</span><span class="cr">2 cr</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-label">Second Year</div>
+        <div class="sem-name">Industrial computing + materials</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Industrial Networking (IT/OT convergence)</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Database Systems for Manufacturing</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">CAD / CAM / CNC Programming</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Materials Science</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Statistics for Engineers</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Engineering Economics</span><span class="cr">3 cr</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-label">Third Year</div>
+        <div class="sem-name">Core IIoT and process control</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Industrial Internet of Things (IIoT) — devices, networks, standards</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Process Control &amp; Automation</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Manufacturing Data Analytics</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Modeling &amp; Simulation</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Mixed Reality Applications</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Additive Manufacturing (3D printing)</span><span class="cr">3 cr</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-label">Fourth Year</div>
+        <div class="sem-name">Integration + capstone</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Smart Manufacturing Information Systems (MES / MOM / ERP integration)</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Robot Cognition &amp; Human-Robot Systems (ML, machine vision, HRI)</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Cybersecurity for Industrial Control Systems</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name">Project Management for Manufacturing</span><span class="cr">3 cr</span></div>
+          <div class="subj"><span class="name"><strong>Capstone Design Project (team-based, industry-sponsored)</strong></span><span class="cr">6 cr</span></div>
+          <div class="subj"><span class="name">Free / global-experience electives</span><span class="cr">9 cr</span></div>
+        </div>
+      </div>
+
+      <h5>Grading</h5>
+      <p>Purdue uses the standard US 4.0 GPA scale (A=4.0, A−=3.7, B+=3.3...). Engineering programs at Purdue require a minimum 2.0 cumulative GPA to graduate; the College of Engineering's CODO (Change of Degree Objective) policy requires roughly 2.75 to transfer in. Most engineering courses use a curve — typical class median GPA in the 2.7–3.0 range.</p>
+
+      <h5>Career outcomes</h5>
+      <ul class="bullet">
+        <li>Manufacturing Engineer / MES Engineer / Industry 4.0 Specialist</li>
+        <li>Industrial Data Analyst, Smart-Factory Consultant</li>
+        <li>Process Control / Automation Engineer at Siemens, Rockwell, GE Digital</li>
+        <li>Internal consulting roles at automotive, aerospace, pharma manufacturers</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-title">For Indian students — the closest local equivalents</div>
+        India doesn't have an exact match, but the nearest paths are: <strong>B.Tech Industrial Engineering</strong> at MIT Manipal or IITs (Kharagpur, Madras, Roorkee, BHU); <strong>B.Tech Mechatronics</strong> with Industry 4.0 specialization tracks (MIT Manipal, VIT); <strong>B.Tech Production / Manufacturing Engineering</strong> at NITs. None covers MES integration with the specificity Purdue does, but they give the operations research, automation, and ERP foundations.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CS + HEALTHCARE ════════════ -->
+<section id="healthcare">
+  <div class="wrap">
+    <div class="section-eyebrow">§ 07 · Domain Group D</div>
+    <h2 class="section-title">CS + <em>Healthcare</em> &amp; Biomedical</h2>
+    <p class="section-lead">The healthcare-CS intersection has the deepest research history of any vertical here. Programs split into three flavours: applied health informatics (managing EHRs, hospital systems), biomedical engineering with computational specialisation (devices, signal processing), and biomedical AI (diagnostic ML, imaging).</p>
+
+    <!-- CMU -->
+    <div class="program-card plum" id="cmu">
+      <div class="card-eyebrow">Program 07 · USA · PG · 3 semesters</div>
+      <h3 class="card-title" style="margin-top:0">M.S. in AI Engineering — Biomedical Engineering</h3>
+      <div class="card-subtitle">Department of Biomedical Engineering, Carnegie Mellon University</div>
+
+      <div class="stat-strip">
+        <div class="stat"><span class="label">Duration</span><span class="value">3 semesters</span></div>
+        <div class="stat"><span class="label">Level</span><span class="value">Graduate (MS)</span></div>
+        <div class="stat"><span class="label">Status</span><span class="value">First of its kind in US</span></div>
+        <div class="stat"><span class="label">Tuition</span><span class="value">~$55–60K total</span></div>
+      </div>
+
+      <p>Designed for students with undergrad degrees in engineering or related disciplines, this program teaches mastery of AI/ML <em>and</em> biomedical engineering domain expertise — explicitly training graduates to integrate AI approaches into biomedical applications: brain-computer interfaces, neuroprosthetics, medical imaging, biological signal analysis.</p>
+
+      <h5>Three-semester structure</h5>
+
+      <div class="semester-block">
+        <div class="sem-label">Semester 1 (Fall)</div>
+        <div class="sem-name">AI / ML foundations + biomedical context</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Machine Learning Foundations</span><span class="cr">12 units</span></div>
+          <div class="subj"><span class="name">Deep Learning</span><span class="cr">12 units</span></div>
+          <div class="subj"><span class="name">Introduction to Biomedical Engineering</span><span class="cr">12 units</span></div>
+          <div class="subj"><span class="name">AI Engineering Elective (e.g., NLP, computer vision)</span><span class="cr">12 units</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-label">Semester 2 (Spring)</div>
+        <div class="sem-name">Applied biomedical AI</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Biomedical Signal Processing</span><span class="cr">12 units</span></div>
+          <div class="subj"><span class="name">Medical Image Analysis / Computational Imaging</span><span class="cr">12 units</span></div>
+          <div class="subj"><span class="name">AI in Healthcare (diagnosis, prognosis, treatment optimization)</span><span class="cr">12 units</span></div>
+          <div class="subj"><span class="name">Domain Elective (genomics, neural engineering, devices)</span><span class="cr">12 units</span></div>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="sem-label">Semester 3 (Fall)</div>
+        <div class="sem-name">Capstone + advanced electives</div>
+        <div class="subject-grid">
+          <div class="subj"><span class="name">Capstone Project (industry or research lab partnership)</span><span class="cr">24 units</span></div>
+          <div class="subj"><span class="name">Advanced Electives (chosen with advisor)</span><span class="cr">24 units</span></div>
+        </div>
+      </div>
+
+      <h5>Grading</h5>
+      <p>CMU uses the 4.0 GPA scale. Graduate students must maintain a <strong>minimum 3.0 (B) cumulative QPA</strong>; falling below triggers academic probation. Most departments require B− or better in core courses to count them toward the degree. Capstone project graded on technical depth, written thesis, and presentation defense.</p>
+
+      <h5>Career outcomes</h5>
+      <ul class="bullet">
+        <li>AI/ML engineer at medical-imaging companies (Siemens Healthineers, GE Healthcare, Philips)</li>
+        <li>Research scientist at health AI startups (PathAI, Tempus, Recursion)</li>
+        <li>Big Tech health divisions (Google Health, Microsoft Healthcare NExT, Amazon health)</li>
+        <li>PhD pipeline into computational neuroscience, medical imaging, computational biology</li>
+      </ul>
+    </div>
+
+    <!-- UPENN, JHU, SDMINES grouped -->
+    <div class="program-card plum" id="upenn-jhu">
+      <div class="card-eyebrow">Programs 08–10 · USA · UG / PG</div>
+      <h3 class="card-title" style="margin-top:0">UPenn, Johns Hopkins, and South Dakota Mines</h3>
+      <div class="card-subtitle">Cross-disciplinary CS + biomedical / healthcare tracks</div>
+
+      <h4>University of Pennsylvania</h4>
+      <p>UPenn integrates computer science with bioengineering through cross-disciplinary programs in the School of Engineering and Applied Science. Particularly strong in data science, AI, and health tech applications. Specific paths include:</p>
+      <ul class="bullet">
+        <li><strong>B.S.E. in Computer Science</strong> with a <strong>concentration in computational biology</strong></li>
+        <li><strong>B.S.E. in Bioengineering</strong> with computational track</li>
+        <li><strong>M.S.E. in Computational Biology</strong> — graduate level, blending CS and biomedical research</li>
+        <li><strong>Dual degree Vagelos LSM (Life Sciences &amp; Management)</strong></li>
+      </ul>
+
+      <h4>Johns Hopkins University</h4>
+      <p>Strong in data science, AI, and computational biology. Research-heavy program often linked to applications in healthcare and biomedical engineering. Notable degrees:</p>
+      <ul class="bullet">
+        <li><strong>B.S. in Computer Science</strong> with healthcare focus electives</li>
+        <li><strong>B.S. in Biomedical Engineering</strong> with computational concentration (BME is JHU's flagship, ranked #1 nationally)</li>
+        <li><strong>Master of Science in Engineering — Computer Science</strong> (~$66,670/year for 2025–26)</li>
+        <li><strong>M.S. in Bioinformatics</strong> (online or in-person)</li>
+        <li>Tight integration with Johns Hopkins Hospital and the JHU Applied Physics Lab</li>
+      </ul>
+
+      <h4>South Dakota Mines</h4>
+      <p>More accessible than CMU/UPenn/JHU; offers a robust foundation for cross-disciplinary CS-healthcare careers. Programs include Biology, Chemistry, Biomedical Engineering, and Pre-Professional Health Sciences. Strong emphasis on hands-on lab work and internships.</p>
+
+      <h5>Grading (all three institutions)</h5>
+      <p>Standard US 4.0 GPA. UPenn and JHU enforce minimum 2.0 for graduation; honors thresholds at JHU: General Honors (≥ 3.5), Departmental Honors (≥ 3.5 + thesis), University Honors (≥ 3.7 + thesis).</p>
+    </div>
+
+    <!-- NKU -->
+    <div class="program-card plum" id="nku">
+      <div class="card-eyebrow">Program 11 · USA · Online PG · 1.5 – 2 years</div>
+      <h3 class="card-title" style="margin-top:0">Master of Science in Health Informatics (Online)</h3>
+      <div class="card-subtitle">Northern Kentucky University, College of Informatics</div>
+
+      <div class="stat-strip">
+        <div class="stat"><span class="label">Duration</span><span class="value">1.5 – 2 yrs</span></div>
+        <div class="stat"><span class="label">Format</span><span class="value">100% online</span></div>
+        <div class="stat"><span class="label">Total Tuition</span><span class="value">~$20–25K</span></div>
+        <div class="stat"><span class="label">Background needed</span><span class="value">CS / IT / health</span></div>
+      </div>
+
+      <p>A practical, applied online master's that bridges from a CS or IT background into healthcare informatics. Covers the operational side: electronic health records (EHR), population health management software, telemedicine, real-time clinical data systems, and the regulatory landscape (HIPAA, HITRUST).</p>
+
+      <h5>Typical course sequence</h5>
+      <ul class="bullet">
+        <li>Foundations of Health Informatics</li>
+        <li>Healthcare Data Standards &amp; Interoperability (HL7, FHIR, ICD-10)</li>
+        <li>Electronic Health Records Systems</li>
+        <li>Healthcare Analytics &amp; Data Visualization</li>
+        <li>Clinical Decision Support Systems</li>
+        <li>Healthcare Information Security &amp; Privacy (HIPAA)</li>
+        <li>Population Health Informatics</li>
+        <li>Capstone Project</li>
+      </ul>
+
+      <h5>Grading</h5>
+      <p>US 4.0 GPA; minimum 3.0 to maintain good standing. Most courses use a blend of weekly discussions (20%), assignments (40%), and projects/case-studies (40%).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ RESEARCH DUAL ════════════ -->
+<section id="research">
+  <div class="wrap">
+    <div class="section-eyebrow">§ 08 · Domain Group E</div>
+    <h2 class="section-title">Research Dual Degrees <em>(CS + cross-disciplinary research)</em></h2>
+    <p class="section-lead">If your interest is research rather than industry, this category is the gold standard in India. IIIT Hyderabad's dual degrees combine a B.Tech with a research-based Master's in a paired discipline — and crucially, the institute is located in Hyderabad itself.</p>
+
+    <!-- IIIT-H -->
+    <div class="program-card" id="iiith">
+      <div class="card-eyebrow">Programs 12 · India · UG+PG · 5 years</div>
+      <h3 class="card-title" style="margin-top:0">Dual Degree Programs at IIIT Hyderabad</h3>
+      <div class="card-subtitle">International Institute of Information Technology, Hyderabad</div>
+
+      <div class="stat-strip">
+        <div class="stat"><span class="label">Duration</span><span class="value">5 years</span></div>
+        <div class="stat"><span class="label">Output</span><span class="value">B.Tech + MS (Research)</span></div>
+        <div class="stat"><span class="label">Year 1 Fee</span><span class="value">~₹3 L</span></div>
+        <div class="stat"><span class="label">Entrance</span><span class="value">UGEE / JEE Main</span></div>
+        <div class="stat"><span class="label">Location</span><span class="value">Gachibowli, Hyderabad</span></div>
+      </div>
+
+      <p>IIIT-H pioneered the "B.Tech + MS by Research" dual-degree model in India. Unlike standard B.Tech (where final-year project is a token effort), the dual-degree route makes research central from year 2 onwards. Students are paired with a research lab and produce a master's thesis. Graduates are placed in roles split between top tech companies and PhD admissions at global universities.</p>
+
+      <h5>Five dual-degree streams</h5>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Combination</th>
+              <th>Domain Pairing</th>
+              <th>Best for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="credit-cell"><strong>CSD</strong></td>
+              <td>B.Tech CSE + MS Research in CSE</td>
+              <td>Pure CS research depth</td>
+              <td>Future CS researchers, PhD pipeline</td>
+            </tr>
+            <tr>
+              <td class="credit-cell"><strong>CND</strong></td>
+              <td>B.Tech CSE + MS Research in Computational Natural Sciences</td>
+              <td>CS + physics, chemistry, biology, bioinformatics</td>
+              <td>Computational drug discovery, simulation</td>
+            </tr>
+            <tr>
+              <td class="credit-cell"><strong>CLD</strong></td>
+              <td>B.Tech CSE + MS Research in Computational Linguistics</td>
+              <td>CS + linguistics, NLP</td>
+              <td>NLP, machine translation, speech tech (Indian languages)</td>
+            </tr>
+            <tr>
+              <td class="credit-cell"><strong>CHD</strong></td>
+              <td>B.Tech CSE + MS Research in Computing &amp; Human Sciences</td>
+              <td>CS + cognitive science, psychology, sociology</td>
+              <td>HCI, behavioural computing, ethics in AI</td>
+            </tr>
+            <tr>
+              <td class="credit-cell"><strong>ECD</strong></td>
+              <td>B.Tech ECE + MS Research in ECE</td>
+              <td>Hardware-software co-design</td>
+              <td>VLSI, signal processing, embedded systems research</td>
+            </tr>
+            <tr>
+              <td class="credit-cell"><strong>SID</strong></td>
+              <td>B.Tech CSE + MS Research in Spatial Informatics</td>
+              <td>CS + GIS, remote sensing</td>
+              <td>Geospatial AI, urban computing</td>
+            </tr>
+            <tr>
+              <td class="credit-cell"><strong>BSD</strong></td>
+              <td>B.Tech CSE + MS Research in Building Science</td>
+              <td>CS + civil/architecture</td>
+              <td>Smart buildings, digital twins, construction informatics</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h5>Curriculum structure</h5>
+      <ul class="bullet">
+        <li><strong>Semesters 1–5:</strong> Heavy CS core (programming, algorithms, data structures, formal methods, DB, operating systems, computer architecture) + basic science/domain courses + mathematics + humanities</li>
+        <li><strong>Semesters 6–8:</strong> Advanced CS electives + deeper specialization courses in the paired domain. By semester 8, domain courses ≥ CS courses</li>
+        <li><strong>Semesters 9–10:</strong> Full-time MS thesis research at one of IIIT-H's labs (Computer Vision, NLP, IR, Speech Recognition, Cognitive Sciences, Data Sciences, Databases, Robotics, IoT, Spatial Informatics, Quantum Computing, Theoretical CS, Information Security, CADD, Bioinformatics, Systems Biology, Computational Neuroscience, Software Engineering, Cloud, Music Research, Hardware Acceleration)</li>
+      </ul>
+
+      <h5>Eligibility</h5>
+      <p>Admission via the <strong>UGEE</strong> (IIIT-H's own entrance exam) for direct-entry dual-degree, or via <strong>JEE Main</strong> for the 4-year B.Tech route. For UGEE: 60% in PCM in 10+2. Lateral entry (LEEE) after 2nd year of B.Tech is also possible.</p>
+
+      <h5>Grading</h5>
+      <p>IIIT-H uses a 10-point CGPA scale identical in structure to the AICTE norm, but with stricter assessment — the institute uses relative grading, so even mark cutoffs shift based on class performance. Research thesis (semesters 9–10) is graded by an internal-external committee on novelty, technical depth, and publication potential. Many students publish in top conferences (NeurIPS, CVPR, ACL, etc.) during the master's phase.</p>
+
+      <h5>Career outcomes (recent batches)</h5>
+      <ul class="bullet">
+        <li>Highest reported B.Tech CSE package: ₹1.28 crore per annum; average ₹31.98 LPA</li>
+        <li>Dual-degree grads disproportionately go into PhDs at MIT, Stanford, CMU, Berkeley, Oxford</li>
+        <li>Research engineer roles at Microsoft Research, Google Research, Adobe Research, Amazon Science</li>
+        <li>Research-heavy startups in NLP (Indian languages), drug discovery, fintech</li>
+      </ul>
+
+      <div class="callout teal">
+        <div class="callout-title">For Hyderabad-based candidates</div>
+        IIIT-H is the strongest cross-domain CS option physically in Hyderabad. The CND (Computational Natural Sciences) and CLD (Computational Linguistics) streams in particular have no real equivalent elsewhere in India. Note that admissions are highly competitive — UGEE selects roughly 100 students per year combined across all streams.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ COMPARISON ════════════ -->
+<section id="compare">
+  <div class="wrap">
+    <div class="section-eyebrow">§ 09 · At a glance</div>
+    <h2 class="section-title">Side-by-side <em>comparison</em></h2>
+    <p class="section-lead">All thirteen programs in one table. Sortable mentally by what matters most — duration, fees, level, or domain depth.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Program</th>
+            <th>Where</th>
+            <th>Duration</th>
+            <th>Level</th>
+            <th>Domain</th>
+            <th>Fees (total)</th>
+            <th>Grading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>MIT Manipal — CS &amp; FinTech</strong></td>
+            <td>Manipal, KA</td>
+            <td>4 yrs</td>
+            <td>UG</td>
+            <td>Finance, banking</td>
+            <td class="credit-cell">~₹22.1 L</td>
+            <td>10-pt CGPA</td>
+          </tr>
+          <tr>
+            <td><strong>Karnavati — CSE FinTech with Paytm</strong></td>
+            <td>Gandhinagar, GJ</td>
+            <td>4 yrs</td>
+            <td>UG (Hons.)</td>
+            <td>Digital payments, fintech</td>
+            <td class="credit-cell">~₹12–16 L</td>
+            <td>10-pt CGPA</td>
+          </tr>
+          <tr>
+            <td><strong>DY Patil — B.Tech FinTech + MBA</strong></td>
+            <td>Pune, MH</td>
+            <td>5 yrs</td>
+            <td>Integrated</td>
+            <td>Finance + management</td>
+            <td class="credit-cell">~₹15–25 L</td>
+            <td>10-pt CGPA</td>
+          </tr>
+          <tr>
+            <td><strong>CSBS (TCS-designed) — multiple colleges</strong></td>
+            <td>BVRIT, VBIT, SRM, etc.</td>
+            <td>4 yrs</td>
+            <td>UG</td>
+            <td>Business systems</td>
+            <td class="credit-cell">₹4–16 L (varies)</td>
+            <td>10-pt CGPA</td>
+          </tr>
+          <tr>
+            <td><strong>Pondicherry U — CSBS + MBA</strong></td>
+            <td>Puducherry</td>
+            <td>5 yrs</td>
+            <td>Integrated</td>
+            <td>Banking technology + mgmt</td>
+            <td class="credit-cell">~₹5–8 L</td>
+            <td>10-pt CGPA</td>
+          </tr>
+          <tr>
+            <td><strong>Purdue — Smart Mfg. Industrial Informatics</strong></td>
+            <td>West Lafayette, IN</td>
+            <td>4 yrs</td>
+            <td>UG</td>
+            <td>Manufacturing, MES, IIoT</td>
+            <td class="credit-cell">~$120K (intl)</td>
+            <td>4.0 GPA</td>
+          </tr>
+          <tr>
+            <td><strong>CMU — MS AI Engineering in BME</strong></td>
+            <td>Pittsburgh, PA</td>
+            <td>3 semesters</td>
+            <td>PG</td>
+            <td>Biomedical AI</td>
+            <td class="credit-cell">~$55–60K</td>
+            <td>4.0 GPA</td>
+          </tr>
+          <tr>
+            <td><strong>UPenn — CS + Bioengineering</strong></td>
+            <td>Philadelphia, PA</td>
+            <td>4 yrs / +2 PG</td>
+            <td>UG / PG</td>
+            <td>Biomedical, health tech</td>
+            <td class="credit-cell">~$240K (UG, intl)</td>
+            <td>4.0 GPA</td>
+          </tr>
+          <tr>
+            <td><strong>Johns Hopkins — CS + Comp Biology</strong></td>
+            <td>Baltimore, MD</td>
+            <td>4 yrs / +2 PG</td>
+            <td>UG / PG</td>
+            <td>Health, bio, devices</td>
+            <td class="credit-cell">~$67K/yr (MSE)</td>
+            <td>4.0 GPA</td>
+          </tr>
+          <tr>
+            <td><strong>South Dakota Mines — CS + Healthcare</strong></td>
+            <td>Rapid City, SD</td>
+            <td>4 yrs</td>
+            <td>UG</td>
+            <td>Biomedical, pre-health</td>
+            <td class="credit-cell">~$80–100K (intl)</td>
+            <td>4.0 GPA</td>
+          </tr>
+          <tr>
+            <td><strong>NKU — MS Health Informatics (Online)</strong></td>
+            <td>Highland Heights, KY</td>
+            <td>1.5–2 yrs</td>
+            <td>PG online</td>
+            <td>Health IT, EHR, HIPAA</td>
+            <td class="credit-cell">~$20–25K</td>
+            <td>4.0 GPA</td>
+          </tr>
+          <tr>
+            <td><strong>IIIT-H — Dual Degrees (CSD, CND, CLD, CHD, etc.)</strong></td>
+            <td>Hyderabad, TG</td>
+            <td>5 yrs</td>
+            <td>Integrated UG+MS Research</td>
+            <td>Multiple — research</td>
+            <td class="credit-cell">~₹15 L</td>
+            <td>10-pt CGPA (relative)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CHOOSING ════════════ -->
+<section id="choosing">
+  <div class="wrap">
+    <div class="section-eyebrow">§ 10 · Closing thoughts</div>
+    <h2 class="section-title">How to <em>choose</em></h2>
+    <p class="section-lead">Use this rough decision tree based on your strongest signal: career destination, geographic constraint, or learning style.</p>
+
+    <h4>If you know your industry, pick the deepest specialist</h4>
+    <ul class="bullet">
+      <li><strong>Banking / fintech in India</strong> → MIT Manipal CS &amp; FinTech (deepest), or Karnavati if Paytm is your target employer</li>
+      <li><strong>IT services + consulting</strong> → CSBS at any reputable college; BVRIT or VBIT if you want Hyderabad-local</li>
+      <li><strong>Smart manufacturing / MES</strong> → Purdue if you can go to the US; otherwise B.Tech Industrial Engineering at an IIT/NIT with electives in Industry 4.0</li>
+      <li><strong>Health informatics / biomedical AI</strong> → CMU's MS AIE-BME (if you have an undergrad in engineering and want a PG); otherwise JHU or UPenn at UG</li>
+    </ul>
+
+    <h4>If you're geographically constrained to Hyderabad</h4>
+    <ul class="bullet">
+      <li><strong>IIIT Hyderabad dual degree</strong> — most distinctive option, research-heavy</li>
+      <li><strong>BVRIT CSBS</strong> in Narsapur (commutable) — TCS-aligned, industry-oriented</li>
+      <li><strong>VBIT CSBS</strong> in Hyderabad city — similar value, different campus culture</li>
+    </ul>
+
+    <h4>If you're not sure yet</h4>
+    <ul class="bullet">
+      <li>Pick CSBS — it's the broadest "CS + something" net, keeps general SDE options open, and the business modules don't lock you in</li>
+      <li>Avoid hyper-specialist programs (Paytm-branded fintech, single-vendor MES) at age 17–18 unless you're certain — they narrow lateral mobility</li>
+      <li>Watch fees vs ROI — a ₹22L MIT Manipal degree is worth it if you'll get fintech roles at ₹15–20 LPA; a ₹6L CSBS at a state college can give the same TCS placement at lower risk</li>
+    </ul>
+
+    <h4>Common pitfalls</h4>
+    <ul class="bullet">
+      <li>Don't confuse "CSBS" with "CSE" — the former is the TCS-collaborative business-systems track; the latter is plain computer science engineering. They're <em>both</em> AICTE-recognised but lead to different roles.</li>
+      <li>Vendor-branded programs (Paytm, FIS) lock the curriculum to one company's stack. Great for placement at that company; weaker signal elsewhere.</li>
+      <li>Integrated 5-year B.Tech+MBA programs save one year but cost flexibility — you can't switch your MBA to a different school without losing the integration.</li>
+      <li>"Honours" tracks usually require an additional 18–24 credits beyond the base 160. Verify the workload before committing.</li>
+    </ul>
+
+    <div class="pull-quote">The best program isn't the one with the fanciest brochure — it's the one whose curriculum matches the work you actually want to do in five years. Look at the elective list, not the eyebrow-raising acronyms.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Compiled May 2026 · For verification, check institution sites directly · Fees, intakes, and curricula are subject to annual revision
+  </div>
+</footer>
+
+</body>
+</html>
