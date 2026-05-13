@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>
+(function(){if(sessionStorage.getItem("rec_portal_auth_v1")!=="1"){location.replace("index.html");}})();
+</script>
+<title>Future-Ready Interdisciplinary CS Curriculum — B.Tech & M.Tech (India)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  /* Brand blues - refined, professional */
+  --primary:#2563eb;
+  --primary-hover:#1d4ed8;
+  --primary-deep:#1e40af;
+  --primary-50:#eff6ff;
+  --primary-100:#dbeafe;
+  --primary-200:#bfdbfe;
+  --primary-400:#60a5fa;
+  --primary-600:#2563eb;
+  --primary-700:#1d4ed8;
+  --primary-800:#1e40af;
+
+  /* Secondary accent (teal) */
+  --teal:#0891b2;
+  --teal-soft:#cffafe;
+  --teal-deep:#155e75;
+
+  /* Semantic */
+  --success:#059669;
+  --success-soft:#d1fae5;
+  --warn:#d97706;
+  --warn-soft:#fef3c7;
+  --danger:#dc2626;
+  --danger-soft:#fee2e2;
+
+  /* Slate neutrals - cooler, higher contrast */
+  --bg:#f8fafc;
+  --panel:#ffffff;
+  --panel2:#f1f5f9;
+  --ink:#0f172a;
+  --ink2:#1e293b;
+  --muted:#475569;
+  --soft:#64748b;
+  --border:#e2e8f0;
+  --border-strong:#cbd5e1;
+  --chip:#f1f5f9;
+
+  /* Backwards compatibility */
+  --accent:var(--primary);
+  --accent-hover:var(--primary-hover);
+  --accent-soft:var(--primary-100);
+  --accent2:var(--teal);
+  --accent2-soft:var(--teal-soft);
+
+  /* Elevation */
+  --shadow-sm:0 1px 2px rgba(15,23,42,.04);
+  --shadow:0 1px 3px rgba(15,23,42,.07),0 1px 2px rgba(15,23,42,.04);
+  --shadow-md:0 4px 6px -1px rgba(15,23,42,.08),0 2px 4px -2px rgba(15,23,42,.05);
+  --shadow-lg:0 10px 15px -3px rgba(15,23,42,.08),0 4px 6px -4px rgba(15,23,42,.05);
+  --shadow-xl:0 20px 25px -5px rgba(15,23,42,.10),0 8px 10px -6px rgba(15,23,42,.05);
+
+  /* Radius */
+  --r-sm:6px;
+  --r:10px;
+  --r-lg:14px;
+  --r-xl:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:170px}
+body{margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01"}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:50;background:rgba(248,250,252,.85);backdrop-filter:blur(14px) saturate(180%);-webkit-backdrop-filter:blur(14px) saturate(180%);border-bottom:1px solid var(--border);padding:14px 32px}
+.brand{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand h1{font-size:1.18rem;margin:0;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.brand small{color:var(--muted);font-size:.8rem;font-weight:500}
+nav{display:flex;gap:2px;flex-wrap:wrap;margin-top:10px}
+nav a{font-size:.8rem;color:var(--muted);text-decoration:none;padding:6px 11px;border-radius:var(--r-sm);transition:all .15s ease;font-weight:500}
+nav a:hover{color:var(--primary);background:var(--primary-50)}
+
+main{max-width:1320px;margin:0 auto;padding:32px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#ffffff 0%,#eff6ff 60%,#dbeafe 100%);border:1px solid var(--border);border-radius:var(--r-xl);padding:40px 36px;margin-bottom:28px;box-shadow:var(--shadow-md);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(37,99,235,.08) 0%,transparent 70%);pointer-events:none}
+.hero h2{margin:0 0 14px;font-size:2rem;letter-spacing:-.03em;font-weight:700;line-height:1.15;color:var(--ink);position:relative}
+.hero p{margin:0;color:var(--muted);max-width:920px;font-size:.97rem;position:relative;line-height:1.65}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:28px;position:relative}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 18px 16px;transition:all .2s ease;cursor:default}
+.kpi:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--primary-200)}
+.kpi b{font-size:1.55rem;color:var(--primary-700);font-weight:700;letter-spacing:-.025em;display:block;line-height:1.1}
+.kpi span{display:block;font-size:.78rem;color:var(--muted);margin-top:6px;line-height:1.45}
+
+/* TOOLBAR */
+.toolbar{display:grid;grid-template-columns:1.5fr repeat(4,1fr) auto;gap:14px;background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px;margin-bottom:28px;box-shadow:var(--shadow);position:sticky;top:88px;z-index:40;align-items:end;transition:opacity .2s ease}
+.toolbar.toolbar-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.toolbar input,.toolbar select{width:100%;background:var(--bg);color:var(--ink);border:1.5px solid var(--border);border-radius:var(--r);padding:9px 12px;font-size:.9rem;font-family:inherit;font-weight:500;transition:all .15s ease}
+.toolbar input::placeholder{color:var(--soft)}
+.toolbar input:focus,.toolbar select:focus{outline:none;border-color:var(--primary);background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.toolbar label{display:block;font-size:.68rem;color:var(--soft);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.reset-col{display:flex;flex-direction:column;justify-content:flex-end}
+.reset-btn{background:var(--panel);border:1.5px solid var(--border);color:var(--ink);padding:9px 16px;border-radius:var(--r);font-family:inherit;font-weight:600;font-size:.88rem;cursor:pointer;transition:all .15s ease;white-space:nowrap;height:38px;display:flex;align-items:center;gap:6px;justify-content:center}
+.reset-btn:hover{background:var(--primary-50);border-color:var(--primary-400);color:var(--primary-700)}
+.reset-btn:active{transform:scale(.97)}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;align-items:start}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;display:flex;flex-direction:column;gap:10px;transition:all .2s ease;cursor:default;position:relative}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--primary-200)}
+.card.expanded{border-color:var(--primary-400);box-shadow:var(--shadow-md);background:linear-gradient(180deg,var(--panel) 0%,var(--primary-50) 100%)}
+.card.expanded:hover{transform:none}
+.card h3{margin:0;font-size:1.05rem;font-weight:700;letter-spacing:-.015em;color:var(--ink);line-height:1.3}
+.card-blurb{font-size:.86rem;color:var(--muted);margin:0;line-height:1.5}
+
+/* Card details (expanded view) */
+.card-details{display:none;flex-direction:column;gap:14px;margin-top:8px;padding-top:14px;border-top:2px dashed var(--border-strong);animation:cardFadeIn .25s ease}
+.card.expanded .card-details{display:flex}
+@keyframes cardFadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.detail-block{font-size:.85rem;line-height:1.55}
+.detail-label{color:var(--primary-700);display:block;margin-bottom:5px;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;display:flex;align-items:center;gap:6px}
+.detail-content{color:var(--muted)}
+.detail-content b{color:var(--ink);font-weight:600}
+
+/* Card toggle button */
+.card-toggle{margin-top:auto;background:var(--primary-50);border:1.5px solid var(--primary-100);color:var(--primary-700);padding:9px 14px;border-radius:var(--r);font-family:inherit;font-weight:600;font-size:.82rem;cursor:pointer;transition:all .15s ease;width:100%;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}
+.card-toggle:hover{background:var(--primary-100);border-color:var(--primary-200);color:var(--primary-800)}
+.card.expanded .card-toggle{background:var(--primary);border-color:var(--primary);color:#fff}
+.card.expanded .card-toggle:hover{background:var(--primary-hover);border-color:var(--primary-hover)}
+.toggle-hide{display:none}
+.card.expanded .toggle-show{display:none}
+.card.expanded .toggle-hide{display:inline}
+
+/* Expand all controls */
+.expand-controls{display:flex;gap:10px;justify-content:flex-end;margin-bottom:14px;font-size:.82rem}
+.expand-controls button{background:var(--panel);border:1.5px solid var(--border);color:var(--muted);padding:7px 14px;border-radius:var(--r);font-family:inherit;font-weight:600;font-size:.8rem;cursor:pointer;transition:all .15s ease}
+.expand-controls button:hover{background:var(--primary-50);border-color:var(--primary-400);color:var(--primary-700)}
+
+/* TAGS */
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:.7rem;background:var(--chip);color:var(--muted);padding:3px 9px;border-radius:var(--r-sm);font-weight:600;letter-spacing:.01em;border:1px solid transparent}
+.tag.hot{color:#92400e;background:#fef3c7;border-color:#fde68a}
+.tag.green{color:var(--teal-deep);background:var(--teal-soft);border-color:#a5f3fc}
+
+/* ROWS in cards */
+.row{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);padding:7px 0;border-top:1px solid var(--border);gap:10px}
+.row span{flex-shrink:0}
+.row b{color:var(--ink);font-weight:600;text-align:right}
+
+/* ACCORDIONS */
+details{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);margin:12px 0;overflow:hidden;box-shadow:var(--shadow-sm);transition:box-shadow .15s ease}
+details[open]{box-shadow:var(--shadow-md)}
+summary{cursor:pointer;list-style:none;padding:16px 20px;font-weight:600;display:flex;justify-content:space-between;align-items:center;background:var(--panel);color:var(--ink);transition:background .15s ease;font-size:.96rem}
+summary:hover{background:var(--primary-50)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--primary);font-size:1.5rem;font-weight:300;line-height:1;transition:transform .2s ease}
+details[open]>summary{background:var(--primary-50);border-bottom:1px solid var(--border)}
+details[open]>summary::after{content:"−"}
+.body{padding:20px;background:var(--panel)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+
+/* SECTIONS */
+.section{margin:48px 0}
+.section h2{font-size:1.6rem;margin:0 0 18px;font-weight:700;letter-spacing:-.025em;color:var(--ink);display:flex;align-items:center;gap:12px}
+.section h2::before{content:"";width:4px;height:28px;background:linear-gradient(180deg,var(--primary) 0%,var(--teal) 100%);border-radius:2px;display:inline-block}
+
+/* TABLES */
+table{width:100%;border-collapse:collapse;font-size:.86rem;background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--panel2);color:var(--ink2);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--border-strong);position:sticky;top:0}
+tbody tr:hover td{background:var(--primary-50)}
+tbody tr:last-child td{border-bottom:none}
+.scroll{overflow:auto;max-height:none;border-radius:var(--r-lg);border:1px solid var(--border);box-shadow:var(--shadow);background:var(--panel)}
+
+/* CHARTS */
+.chart-wrap{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px;margin:14px 0;box-shadow:var(--shadow)}
+
+/* MISC */
+.note{font-size:.8rem;color:var(--soft);font-style:italic;margin-top:10px;line-height:1.55;padding:8px 12px;background:var(--panel2);border-radius:var(--r-sm);border-left:3px solid var(--border-strong)}
+.cite{font-size:.74rem;color:var(--soft);line-height:1.5}
+
+ol.refs{font-size:.8rem;color:var(--muted);columns:2;column-gap:32px;line-height:1.65;padding-left:24px}
+ol.refs li{margin-bottom:9px;break-inside:avoid;padding-left:4px}
+ol.refs li::marker{color:var(--primary);font-weight:600}
+
+.callout{border-left:4px solid var(--teal);background:linear-gradient(90deg,var(--teal-soft) 0%,#ecfeff 100%);padding:14px 18px;border-radius:var(--r);color:var(--teal-deep);font-size:.9rem;margin:12px 0;line-height:1.6}
+.callout.warn{border-left-color:var(--warn);background:linear-gradient(90deg,var(--warn-soft) 0%,#fffbeb 100%);color:#78350f}
+
+.quote{border-left:4px solid var(--primary);background:linear-gradient(90deg,var(--primary-50) 0%,#fafbfc 100%);padding:16px 20px;margin:12px 0;border-radius:var(--r);font-style:italic;color:var(--ink2);font-size:.92rem;line-height:1.65}
+.quote b{color:var(--primary-700);font-style:normal;display:block;margin-top:10px;font-size:.78rem;font-weight:700;letter-spacing:.01em}
+
+footer{margin-top:60px;padding:36px 28px;border-top:1px solid var(--border);font-size:.82rem;color:var(--soft);text-align:center;background:var(--panel)}
+
+/* RANKING SECTION */
+.weight-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center;font-size:.85rem;color:var(--muted);background:var(--panel);padding:16px 18px;border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-sm)}
+.weight-toolbar strong{color:var(--ink);margin-right:10px;font-weight:700;font-size:.85rem}
+.weight-toolbar button{background:var(--panel);border:1.5px solid var(--border);color:var(--ink);padding:8px 14px;border-radius:var(--r);font-size:.82rem;cursor:pointer;font-family:inherit;font-weight:600;transition:all .15s ease;letter-spacing:-.005em}
+.weight-toolbar button:hover{background:var(--primary-50);border-color:var(--primary-400);color:var(--primary-700)}
+.weight-toolbar button.active{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 4px 10px -2px rgba(37,99,235,.4)}
+
+/* Ranking visualizations grid */
+.viz-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px}
+.viz-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.viz-title{margin:0 0 14px;font-weight:700;color:var(--ink);font-size:1rem;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.viz-canvas-wrap{position:relative;height:540px}
+@media (max-width:1100px){.viz-grid{grid-template-columns:1fr}}
+
+/* Ranking table */
+.rank-scroll{overflow:auto;border-radius:var(--r-lg);border:1px solid var(--border);box-shadow:var(--shadow);background:var(--panel);max-height:75vh;-webkit-overflow-scrolling:touch;position:relative}
+#rankTable{
+  font-size:.84rem;
+  border-radius:0;
+  border:none;
+  box-shadow:none;
+  border-collapse:separate;
+  border-spacing:0;
+  width:100%;
+  min-width:1500px;
+  overflow:visible !important;
+  background:transparent;
+}
+
+/* All header cells: sticky top */
+#rankTable thead th{
+  position:sticky !important;
+  top:0 !important;
+  background:var(--ink);
+  color:#fff;
+  border-bottom:none;
+  font-size:.68rem;
+  padding:12px 8px;
+  cursor:pointer;
+  user-select:none;
+  white-space:nowrap;
+  transition:background .15s ease;
+  z-index:10;
+}
+#rankTable thead th:hover{background:var(--primary-deep);color:#fff}
+#rankTable thead th[data-sort]:after{content:" ⇅";opacity:.4;font-size:.85em;margin-left:3px}
+#rankTable thead th.asc:after{content:" ↑";opacity:1;color:#93c5fd}
+#rankTable thead th.desc:after{content:" ↓";opacity:1;color:#93c5fd}
+
+/* First column (#): sticky on left + fixed width */
+#rankTable th:first-child,
+#rankTable td:first-child{
+  position:sticky !important;
+  left:0 !important;
+  width:60px;
+  min-width:60px;
+  max-width:60px;
+  text-align:center;
+  background:var(--panel);
+  z-index:8;
+}
+#rankTable thead th:first-child{
+  background:var(--ink) !important;
+  z-index:15 !important;
+}
+#rankTable td:first-child{
+  font-weight:700;
+  color:var(--primary);
+  font-size:1rem;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+/* Second column (Domain name): sticky-left aligned right after # column */
+#rankTable th[data-sort="name"],
+#rankTable td.name{
+  position:sticky !important;
+  left:60px !important;
+  min-width:230px;
+  max-width:230px;
+  width:230px;
+  background:var(--panel);
+  z-index:8;
+  box-shadow:6px 0 10px -6px rgba(15,23,42,.18);
+}
+#rankTable thead th[data-sort="name"]{
+  background:var(--ink) !important;
+  z-index:15 !important;
+  border-right:2px solid var(--border-strong);
+}
+#rankTable td.name{
+  font-weight:600;
+  white-space:nowrap;
+  padding-right:16px;
+  color:var(--ink);
+  font-size:.88rem;
+  border-right:2px solid var(--border-strong);
+  border-bottom:1px solid var(--border);
+}
+
+/* Hover state: tint the entire row including sticky cells */
+#rankTable tbody tr:hover td{background:var(--primary-50)}
+#rankTable tbody tr:hover td:first-child,
+#rankTable tbody tr:hover td.name{background:var(--primary-50)}
+
+.score-cell{font-weight:700;text-align:center;font-variant-numeric:tabular-nums;min-width:48px;padding:11px 6px !important;font-size:.86rem;letter-spacing:-.01em;border-bottom:1px solid var(--border)}
+.score-cell.overall{font-size:.95rem;min-width:60px}
+.medal{display:inline-block;font-size:1.1rem;line-height:1}
+
+.rank-list{margin:0;padding-left:24px;line-height:2;list-style:none;counter-reset:rank}
+.rank-list li{font-size:.9rem;color:var(--muted);position:relative;padding-left:8px;counter-increment:rank}
+.rank-list li::before{content:counter(rank);position:absolute;left:-22px;width:20px;height:20px;background:var(--primary-100);color:var(--primary-700);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;top:6px}
+.rank-list li:first-child::before{background:linear-gradient(135deg,#fbbf24,#d97706);color:#fff}
+.rank-list li:nth-child(2)::before{background:linear-gradient(135deg,#94a3b8,#475569);color:#fff}
+.rank-list li:nth-child(3)::before{background:linear-gradient(135deg,#fb923c,#c2410c);color:#fff}
+.rank-list b{color:var(--ink);font-weight:600}
+.rank-list .score{color:var(--primary-700);font-weight:700;font-variant-numeric:tabular-nums;margin-left:4px}
+
+.top5-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:24px}
+.top5-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;box-shadow:var(--shadow-sm);transition:all .2s ease}
+.top5-card:hover{box-shadow:var(--shadow-md);border-color:var(--primary-200)}
+.top5-card h4{margin:0 0 14px;font-size:1rem;color:var(--ink);font-weight:700;letter-spacing:-.01em;line-height:1.3}
+
+@media (max-width:980px){
+  .toolbar{grid-template-columns:1fr 1fr;position:static}
+  .reset-col{grid-column:span 2}
+  ol.refs{columns:1}
+  .hero{padding:28px 22px}
+  .hero h2{font-size:1.55rem}
+  main{padding:20px}
+  header{padding:14px 18px}
+  .section h2{font-size:1.3rem}
+  .section{margin:36px 0}
+  .weight-toolbar{padding:12px}
+  .weight-toolbar button{font-size:.78rem;padding:7px 10px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><h1>🎓 Future-Ready Interdisciplinary CS Curriculum</h1>
+    <small>B.Tech & M.Tech • India • AICTE Model Curriculum 2024 & NEP 2020 aligned</small></div>
+  <nav>
+    <a href="#overview">Overview</a><a href="#charts">Market Charts</a><a href="#domains">Domains</a>
+    <a href="#compare">Comparison</a><a href="#rankings">Rankings</a><a href="#curriculum">Curriculum</a><a href="#research-dual">Research Dual</a>
+    <a href="#pedagogy">Pedagogy</a><a href="#foreign">Global Markets</a><a href="#benchmarks">Benchmarks</a>
+    <a href="#cxo">CXO Voices</a><a href="#skills">Future Skills</a><a href="#accred">Accreditation</a>
+    <a href="#timeline">Tech Timeline</a><a href="#challenges">Challenges</a><a href="#refs">References</a>
+  </nav>
+</header>
+<main>
+<section class="hero" id="overview">
+  <h2>Designing India's Next-Generation Interdisciplinary CS Programs</h2>
+  <p>This dashboard consolidates 2024–2026 market intelligence, employability data, and curriculum benchmarks across <b>17 interdisciplinary Computer Science specializations</b>. It is engineered to help institutions design B.Tech, B.Tech (Hons.), M.Tech, and Integrated B.Tech+M.Tech / B.Tech+MS (Research) programs that are industry-aligned, AICTE/NEP-2020 compliant, and globally competitive. Scroll down to explore market charts, then use the filters to slice the 17 domains by category, degree, lens, or region.</p>
+  <div class="kpis">
+    <div class="kpi"><b>~$1 Trillion</b><span>India's Digital Economy target by 2027–28 (MeitY)</span></div>
+    <div class="kpi"><b>1.25 M</b><span>India AI talent demand by 2027 (NASSCOM–Deloitte)</span></div>
+    <div class="kpi"><b>14 M</b><span>Cloud-driven jobs in India this decade (NASSCOM)</span></div>
+    <div class="kpi"><b>170 M</b><span>New global tech roles by 2030 (WEF)</span></div>
+    <div class="kpi"><b>$621 B</b><span>AI uplift to India GDP by 2030 (~18% of 2023 GDP)</span></div>
+    <div class="kpi"><b>10,000+</b><span>Engineering colleges in India under AICTE</span></div>
+  </div>
+</section>
+
+<section id="charts" class="section">
+  <h2>📊 Market Size & Growth Snapshot (2024–2030/33)</h2>
+  <div class="grid2">
+    <div class="chart-wrap"><canvas id="chart1" height="220"></canvas></div>
+    <div class="chart-wrap"><canvas id="chart2" height="220"></canvas><div class="note">CAGR comparison across domains. Sources: NASSCOM, Mordor, GVR, MarketsandMarkets, Statista, BCG, Deloitte.</div></div>
+  </div>
+  <div class="grid2">
+    <div class="chart-wrap"><canvas id="chart3" height="220"></canvas><div class="note">Salary range (₹ LPA) by domain – entry vs senior in tier-1 Indian metros.</div></div>
+    <div class="chart-wrap"><canvas id="chart4" height="220"></canvas><div class="note">India talent demand–supply gap by domain (illustrative %, 2024–2027).</div></div>
+  </div>
+</section>
+
+<div class="toolbar" role="region" aria-label="Filters">
+  <div><label>🔍 Search</label><input id="q" type="text" placeholder="e.g. FinTech, Industry 4.0, AI, robotics..." /></div>
+  <div><label>Category</label><select id="f-cat"><option value="">All</option><option>Finance & Business</option><option>Industrial & Physical</option><option>Life Sciences</option><option>Core Frontier Tech</option><option>Emerging / Niche</option></select></div>
+  <div><label>Degree Level</label><select id="f-deg"><option value="">All</option><option>B.Tech</option><option>B.Tech (Hons.)</option><option>M.Tech</option><option>Integrated B.Tech+M.Tech</option><option>B.Tech + MS (Research)</option></select></div>
+  <div><label>Data Lens</label><select id="f-lens"><option value="">All</option><option>Market Size</option><option>Jobs & Salary</option><option>Curriculum</option><option>Govt. & Policy</option></select></div>
+  <div><label>Region</label><select id="f-region"><option value="">All</option><option>India</option><option>Global</option></select></div>
+  <div class="reset-col"><label>&nbsp;</label><button id="f-reset" class="reset-btn" type="button">↻ Reset</button></div>
+</div>
+
+<section id="domains" class="section">
+  <h2>🧭 17 Interdisciplinary CS Specializations</h2>
+  <p style="color:var(--muted);font-size:.92rem;margin:0 0 14px;max-width:1000px">
+    Each card shows a compact overview. Click <b>"View full details"</b> on any card to expand and see market data, why-include rationale, top hiring companies, job roles, and government policy push — all inline without leaving this section.
+  </p>
+  <div class="expand-controls">
+    <button type="button" id="expand-all">↧ Expand all</button>
+    <button type="button" id="collapse-all">↥ Collapse all</button>
+  </div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section id="compare" class="section">
+  <h2>📋 Cross-Domain Comparison Matrix</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Domain</th><th>India 24-25</th><th>India 2030</th><th>CAGR</th><th>Global 2030</th><th>Entry ₹</th><th>Senior ₹</th><th>Top Hiring</th><th>Govt. Push</th></tr></thead>
+    <tbody id="cmpBody"></tbody>
+  </table></div>
+</section>
+
+<section id="rankings" class="section">
+  <h2>🏆 Domain Rankings — Comparative Scorecard Across 16 Parameters</h2>
+  <p style="color:var(--muted);font-size:.92rem;margin:0 0 16px;max-width:1000px">
+    Each specialization is scored on a <b>1–10 scale</b> across 16 evidence-based parameters spanning market opportunity, talent dynamics, strategic alignment, and implementation feasibility. <b>Click any column header to sort.</b> Cells are color-coded by intensity (deeper blue = higher score). The <b>Overall</b> column uses weighted averages — switch presets below to view the rankings through different lenses.
+  </p>
+
+  <div class="weight-toolbar">
+    <strong>Scoring Lens:</strong>
+    <button data-preset="balanced">⚖️ Balanced (equal weights)</button>
+    <button data-preset="market">📈 Market-First</button>
+    <button data-preset="employability">💼 Employability-First</button>
+    <button data-preset="research">🔬 Research-First</button>
+    <button data-preset="feasibility">🏗️ Feasibility-First</button>
+  </div>
+
+  <div class="viz-grid">
+    <div class="viz-card">
+      <h4 class="viz-title">📊 Overall Ranking — Visual Bar Chart</h4>
+      <div class="viz-canvas-wrap"><canvas id="rankingBarChart"></canvas></div>
+      <div class="note">Bar length = composite score for selected lens. 🟢 Top 5 · 🔵 Middle tier · 🟠 Lower tier. Hover for exact scores.</div>
+    </div>
+    <div class="viz-card">
+      <h4 class="viz-title">🎯 Strategic Positioning Map</h4>
+      <div class="viz-canvas-wrap"><canvas id="strategicMapCanvas"></canvas></div>
+      <div class="note"><b>X:</b> Market Opportunity (Market×Growth×Jobs) · <b>Y:</b> Employability Index (Salary×Gap×Hiring×Mobility) · <b>Bubble size:</b> Future-Proof score · <b>Color:</b> Overall tier. Top-right quadrant ★ = priority programs to launch.</div>
+    </div>
+  </div>
+
+  <div class="rank-scroll">
+    <table id="rankTable">
+      <thead><tr>
+        <th data-sort="rank">#</th>
+        <th data-sort="name">Domain</th>
+        <th data-sort="overall" title="Weighted composite score based on selected lens">Overall</th>
+        <th data-sort="market" title="India market size by 2030 (USD)">Market Size</th>
+        <th data-sort="cagr" title="Compound annual growth rate, 2024-2030/33">Growth</th>
+        <th data-sort="salary" title="Peak salary potential (₹ LPA, senior)">Salary</th>
+        <th data-sort="jobs" title="Total job creation volume in India">Job Volume</th>
+        <th data-sort="gap" title="Talent demand-supply gap (higher gap = more opportunity)">Talent Gap</th>
+        <th data-sort="govt" title="Strength of government policy support">Govt Push</th>
+        <th data-sort="startup" title="Entrepreneurship & startup ecosystem potential">Startup</th>
+        <th data-sort="global" title="Demand in foreign markets">Global</th>
+        <th data-sort="hiring" title="Diversity of hiring industries & roles">Hiring Mix</th>
+        <th data-sort="future" title="10-year forward relevance / future-proof rating">Future-Proof</th>
+        <th data-sort="curriculum" title="Maturity of curriculum templates available">Curr. Maturity</th>
+        <th data-sort="intl" title="International mobility for graduates (visas, demand)">Intl Mobility</th>
+        <th data-sort="research" title="Academic research depth & PhD pipeline">Research</th>
+        <th data-sort="priority" title="Alignment with national priorities & missions">Nat. Priority</th>
+        <th data-sort="infra" title="Infrastructure accessibility (higher = lower capex needed)">Infra Access</th>
+        <th data-sort="faculty" title="Faculty availability (higher = more qualified faculty available)">Faculty Avail</th>
+      </tr></thead>
+      <tbody id="rankBody"></tbody>
+    </table>
+  </div>
+  <div class="note">📌 Scores are evidence-based composites derived from cited market reports (NASSCOM, BCG, Deloitte, Mordor, GVR, MarketsandMarkets), hiring data (Naukri, LinkedIn), policy documents (MeitY, AICTE, NEP), and benchmarking. Treat as <b>relative rankings</b> rather than absolute measures.</div>
+
+  <div class="top5-grid">
+    <div class="top5-card">
+      <h4>🥇 Top 5 by Overall Score</h4>
+      <ol id="top5overall" class="rank-list"></ol>
+    </div>
+    <div class="top5-card">
+      <h4>⚡ Largest Talent Gaps (Highest Opportunity)</h4>
+      <ol id="top5gap" class="rank-list"></ol>
+    </div>
+    <div class="top5-card">
+      <h4>💰 Highest Salary Potential</h4>
+      <ol id="top5salary" class="rank-list"></ol>
+    </div>
+    <div class="top5-card">
+      <h4>🚀 Fastest Growing (CAGR)</h4>
+      <ol id="top5cagr" class="rank-list"></ol>
+    </div>
+    <div class="top5-card">
+      <h4>🏛️ Strongest National-Priority Alignment</h4>
+      <ol id="top5priority" class="rank-list"></ol>
+    </div>
+    <div class="top5-card">
+      <h4>🏗️ Easiest to Launch (Feasibility)</h4>
+      <ol id="top5feasibility" class="rank-list"></ol>
+    </div>
+  </div>
+
+  <details style="margin-top:20px">
+    <summary>📖 Methodology — How Each Parameter Is Scored</summary>
+    <div class="body">
+      <div class="grid2" style="font-size:.86rem;line-height:1.6">
+        <div><b>Market Size:</b> India market value by 2030. 10 = $80B+ (Cloud); 1 = below $0.5B (Quantum today).</div>
+        <div><b>Growth (CAGR):</b> Compound annual growth rate. 10 = 25%+ (AI, Healthcare); 1 = under 7% (AgriTech).</div>
+        <div><b>Salary:</b> Senior tier-1 ceiling in India. 10 = ₹60+ LPA (AI, Cloud); 5 = ~₹20 LPA; 1 = under ₹10 LPA.</div>
+        <div><b>Job Volume:</b> Sheer count of jobs created/projected. 10 = 1M+ openings (AI, Cloud, DS); 1 = niche (Quantum).</div>
+        <div><b>Talent Gap:</b> Demand-supply mismatch. 10 = 50%+ unfilled (AI, Cloud, Quantum); 1 = oversupplied.</div>
+        <div><b>Govt Push:</b> Strength & funding of national missions. 10 = dedicated ₹6,000+ Cr mission (AI, Semicon, Quantum); 1 = minimal.</div>
+        <div><b>Startup Potential:</b> Active startup ecosystem & unicorn pipeline. 10 = 3000+ startups (FinTech, AI); 1 = nascent.</div>
+        <div><b>Global Demand:</b> Job demand in US/UK/EU/APAC. 10 = universal demand (AI, Cyber, Cloud); 1 = India-centric.</div>
+        <div><b>Hiring Mix:</b> Diversity of recruiting industries. 10 = every sector hires (AI, Cyber); 1 = single-industry.</div>
+        <div><b>Future-Proof:</b> 10-year forward relevance. 10 = becomes infrastructure (AI, Cyber, Health); 1 = uncertain.</div>
+        <div><b>Curriculum Maturity:</b> Templates & references available. 10 = well-established (CSBS, AI, DS); 1 = experimental (Quantum, LegalTech).</div>
+        <div><b>Intl Mobility:</b> Visa-friendliness & global hiring. 10 = STEM-OPT/Blue Card eligible (AI, Cyber); 1 = restricted (Defense).</div>
+        <div><b>Research Depth:</b> PhD pipeline, publications, fundamental science. 10 = deep theory (AI, Quantum, Robotics); 1 = applied only.</div>
+        <div><b>Nat. Priority:</b> Direct alignment with mission documents. 10 = flagship mission (AI, Semicon, ABDM, NQM); 1 = peripheral.</div>
+        <div><b>Infra Access:</b> Inverse of capex required. 10 = laptop + cloud sufficient (Cloud, Web3); 1 = needs lab > ₹3 Cr (Robotics, Aero, Manuf).</div>
+        <div><b>Faculty Avail:</b> Availability of PhD-qualified faculty. 10 = readily available (CSBS, DS); 1 = severe shortage (Quantum, AgriTech).</div>
+      </div>
+    </div>
+  </details>
+</section>
+
+<section id="curriculum" class="section">
+  <h2>🏗️ Recommended Curriculum Architecture (AICTE 2024 + NEP 2020 Compliant)</h2>
+  <div class="callout"><b>Foundation principle:</b> A shared "CS Core" spine (Sem 1–3) feeds into a Domain Specialization (Sem 4–7), with Sem 8 reserved for a full-time industry internship + capstone. Honors / Minor / Research tracks are layered via 18–20 additional credits per AICTE 2024 four-year UG framework. NEP 2020 multiple-entry / multiple-exit (MEME) is built in: Certificate (Y1), Diploma (Y2), B.Tech (Y3), B.Tech Hons. (Y4).</div>
+
+  <details open><summary>① Shared CS Core (Sem 1–3) — All Specializations</summary><div class="body"><div class="grid2">
+    <div><b>Sem 1:</b> Calculus & Linear Algebra · Programming in Python · Digital Logic · Engineering Physics · Communication Skills · NSS/NCC/Sports (NEP)</div>
+    <div><b>Sem 2:</b> Discrete Mathematics · Data Structures (C++/Java) · Computer Organization · Probability & Statistics · Indian Knowledge System · Universal Human Values</div>
+    <div><b>Sem 3:</b> Algorithms · Operating Systems · DBMS · Computer Networks · Object-Oriented Design · Theory of Computation (Hons.)</div>
+    <div><b>Mandatory Labs:</b> Programming, DSA, OS & Networks, DBMS, Open-Source Tools, Hardware Description (Verilog)</div>
+  </div></div></details>
+
+  <details><summary>② Domain Specialization Tracks (Sem 4–7) + Certifications</summary><div class="body"><div class="scroll"><table>
+    <thead><tr><th>Domain</th><th>Sem 4</th><th>Sem 5</th><th>Sem 6</th><th>Sem 7</th><th>Certifications</th></tr></thead>
+    <tbody>
+    <tr><td><b>CS + FinTech</b></td><td>Financial Markets · Software Engg.</td><td>Algo & Quant Trading · Stochastic Modeling · Banking Tech & Payments</td><td>Blockchain & DeFi · Risk Modeling · RegTech</td><td>Capstone · ML for Finance · InsurTech/WealthTech</td><td>NISM VIII/XV, CFA L1, FRM L1, AWS for Financial Services, Bloomberg BMC</td></tr>
+    <tr><td><b>CS + Business Systems (TCS-BS)</b></td><td>Operations Research · SE · Business Comm.</td><td>Stats & Probability · Microeconomics · ERP</td><td>Cloud · ML · Service Science · Design Thinking</td><td>Industry Capstone · IoT for Business · IP & Entrepreneurship</td><td>SAP Associate, Salesforce Admin, Six Sigma GB, PMI-CAPM</td></tr>
+    <tr><td><b>CS + Industry 4.0 / MES</b></td><td>Industrial IoT · Sensors & Embedded</td><td>Digital Twin · SCADA/PLC & MES · SC Analytics</td><td>Robotics & Automation · Edge Computing · OT Security</td><td>Smart Factory Capstone · Predictive Maintenance · Six Sigma</td><td>Six Sigma GB/BB, ISA-95, Siemens MindSphere, PTC ThingWorx, AWS IoT</td></tr>
+    <tr><td><b>CS + Healthcare / BioTech</b></td><td>Biology for Engineers · HL7/FHIR</td><td>Medical Image Processing · Bioinformatics · EHR</td><td>AI for Healthcare · Genomics · Telemedicine</td><td>Clinical Decision Support Capstone · Wearables · HIPAA/DPDPA</td><td>HL7-FHIR, AWS for Health, Coursera Genomic DS, ABDM Developer</td></tr>
+    <tr><td><b>CS + AI/ML</b></td><td>ML I · Linear Algebra II · Optimization</td><td>Deep Learning · NLP · Computer Vision</td><td>RL · GenAI & LLMs · MLOps</td><td>Responsible AI · AI Systems Capstone · Domain elective</td><td>Google ML Engineer, AWS ML Specialty, NVIDIA DLI, IBM AI Engineering</td></tr>
+    <tr><td><b>CS + Data Science</b></td><td>Statistical Inference · Data Engineering</td><td>Big Data (Spark) · Data Viz · Time Series</td><td>Deep Learning · Causal Inference · Cloud DW</td><td>Capstone · Decision Science · Data Ethics</td><td>Databricks DE, Snowflake SnowPro, Tableau, Microsoft DP-100</td></tr>
+    <tr><td><b>CS + Cybersecurity</b></td><td>Cryptography · Network Security</td><td>Ethical Hacking · Secure Coding · Forensics</td><td>Cloud Sec · IoT/OT Sec · SOC Ops</td><td>Red/Blue Team Capstone · GRC & DPDPA · PQC</td><td>CEH, Security+, OSCP, CISSP Assoc., AWS Security Specialty</td></tr>
+    <tr><td><b>CS + Cloud / DevOps</b></td><td>Linux & Shell · Networking</td><td>Cloud Arch · Docker/K8s · CI/CD</td><td>SRE · IaC (Terraform) · FinOps</td><td>Multi-Cloud Capstone · Cloud-Native AI · DevSecOps</td><td>AWS SAA-C03, Azure AZ-104, GCP ACE, CKA, HashiCorp Terraform</td></tr>
+    <tr><td><b>CS + IoT / Embedded</b></td><td>Microcontrollers · RTOS</td><td>Embedded C · Wireless/LPWAN · Edge AI</td><td>RISC-V & SoC · IIoT · CPS</td><td>Edge AI Capstone · Embedded Security · Drone elective</td><td>ARM Accredited, AWS IoT, Bosch IoT, Tata Elxsi Embedded</td></tr>
+    <tr><td><b>CS + Blockchain / Web3</b></td><td>Distributed Systems · Cryptography</td><td>Smart Contracts · Consensus · DeFi</td><td>Tokenomics · NFTs · ZK Proofs · Layer-2</td><td>Web3 Capstone · DAO Governance · RegTech</td><td>Hyperledger CBD, ConsenSys Ethereum Dev</td></tr>
+    <tr><td><b>CS + Robotics & Automation</b></td><td>Mechatronics · Sensors/Actuators</td><td>ROS · Computer Vision · SLAM</td><td>Motion Planning · Manipulation · HRI</td><td>Autonomous Systems Capstone · Industrial Robotics · AMR/AGV</td><td>NVIDIA Isaac, ROS Industrial, FANUC/ABB, Drone Pilot</td></tr>
+    <tr><td><b>CS + Quantum Computing</b></td><td>Quantum Mechanics · LinAlg II</td><td>Quantum Algorithms · Qiskit/Cirq</td><td>QEC · QML · Post-Quantum Crypto</td><td>Quantum Capstone · Sensing elective · Research Project</td><td>IBM Qiskit, AWS Braket, Azure Quantum, QuTiP</td></tr>
+    <tr><td><b>CS + Gaming / AR-VR / Metaverse</b></td><td>Computer Graphics · LinAlg II</td><td>Unity/Unreal · Animation · Game Design</td><td>AR/VR Dev · Spatial Computing · Multiplayer</td><td>Game/XR title Capstone · WebXR · Metaverse Economics</td><td>Unity Certified Programmer, Unreal Authorized, Meta XR, ARCore</td></tr>
+    <tr><td><b>CS + AgriTech / ClimateTech</b></td><td>GIS & Remote Sensing · Sensors</td><td>Precision Agri · Agri-IoT · Climate Modeling</td><td>Carbon Accounting · ESG Analytics · Agri-Drones</td><td>Smart Farm/EnviroTech Capstone · ESG Data · Renewables</td><td>Google Earth Engine, AWS Sustainability, ESRI ArcGIS</td></tr>
+    <tr><td><b>CS + LegalTech / GovTech</b></td><td>Constitution & Cyber Law · SE</td><td>NLP for Legal · Contract Analytics · India Stack</td><td>Digital Identity · Public Policy Analytics</td><td>Citizen-service app Capstone · RegTech · Open Data</td><td>India Stack (iSPIRT), DPDPA Practitioner, ONDC Builder</td></tr>
+    <tr><td><b>CS + Aerospace / Defense</b></td><td>Signal Processing · Embedded RTOS</td><td>Avionics & Flight SW · Radar/SONAR · Sat Comm</td><td>Cyber-Defence · Autonomous Systems · DO-178C</td><td>DRDO/ISRO Capstone · UAV Swarms · Space Data</td><td>iDEX innovator, AS9100, NVIDIA Jetson, VxWorks/QNX RTOS</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">All tracks: minimum <b>3-credit Honors thesis</b> in Sem 7 + <b>6-month industry internship</b> in Sem 8 + <b>1 minor (20 credits)</b> per AICTE 4-year UG / NEP 2020 framework.</div></div></details>
+
+  <details><summary>③ M.Tech (2-yr) Specialization Templates — Thesis/Industry Track</summary><div class="body">
+    <ul>
+      <li><b>Sem 1:</b> Advanced Algorithms · Advanced Math for CS · Domain Core-I · Research Methodology & Ethics · Seminar.</li>
+      <li><b>Sem 2:</b> Domain Core-II · Two Domain Electives · Mini-Project / Industry Internship (8 weeks).</li>
+      <li><b>Sem 3:</b> Two Advanced Electives + Thesis-I (must result in a conference paper / patent disclosure).</li>
+      <li><b>Sem 4:</b> Thesis-II (24 credits) — defended publicly; industry-track only with co-supervisor from a partnering firm.</li>
+    </ul>
+    <div class="callout">Recommend a <b>20:80 industry-track : research-track</b> split per cohort, with research-track requiring ≥1 Scopus-indexed publication or 1 filed patent before degree award.</div>
+  </div></details>
+</section>
+
+<section id="research-dual" class="section">
+  <h2>🔬 Research Dual Degrees — Models & Recommendation</h2>
+  <div class="grid2">
+    <div class="card"><h3>IIT Madras IDDD (5 yrs)</h3><p class="cite">Interdisciplinary Dual Degree (B.Tech + M.Tech): Data Science, Cyber-Physical Systems, Robotics, Computational Engineering; Year-5 = thesis. Source: askiitm.com, iitm.ac.in.</p></div>
+    <div class="card"><h3>IISc B.Tech (Math & Computing) + Integrated M.Tech</h3><p class="cite">IISc Bengaluru research-first culture; integrated programs require 1-year thesis with publication. (iisc.ac.in)</p></div>
+    <div class="card"><h3>IIIT Hyderabad / IIIT-Bangalore</h3><p class="cite">B.Tech + MS by Research dual — 5-yr program with mandatory MS thesis and ≥1 publication. IIITH offers CSD, CSE, ECE, CL, CND streams.</p></div>
+    <div class="card"><h3>BITS Pilani / Plaksha</h3><p class="cite">BITS: 5-yr integrated M.Sc.+B.E. dual. Plaksha: B.Tech in CS & AI, Robotics & CPS, Data Science with industry capstone.</p></div>
+  </div>
+  <div class="callout"><b>Recommended Hybrid for a new institution:</b> A <b>5-year B.Tech (CS-Domain) + MS by Research</b>: (a) common 3-yr B.Tech CS core; (b) Year 4 = lab-rotation + qualifying review; (c) Year 5 = full-time thesis with mandatory 1 conference paper or 1 filed patent; (d) Exit option after Year 4 with B.Tech (Hons.) per NEP MEME.</div>
+</section>
+
+<section id="pedagogy" class="section">
+  <h2>🧑‍🏫 Pedagogical Recommendations</h2>
+  <div class="grid2">
+    <div class="card"><h3>Project-Based Learning (PBL)</h3><p>≥40% of credits via PBL with real datasets and industry-supplied problems; weekly studio-style critique.</p></div>
+    <div class="card"><h3>Mandatory Internships</h3><p>Min 8 weeks after Sem 6 + full Sem 8 (6 months) industry internship — counted as 18-credit capstone. NEP 2020-aligned.</p></div>
+    <div class="card"><h3>MOOC Integration</h3><p>Up to 20% of credits via NPTEL-SWAYAM, Coursera, edX. Mandatory 4 NPTEL elite-grade certificates per student.</p></div>
+    <div class="card"><h3>Honors & Minor</h3><p>20-credit Minor (cross-disciplinary) and 18-credit Honors (research-intensive) per AICTE 2024 4-year UG framework.</p></div>
+    <div class="card"><h3>International Collaboration</h3><p>Semester-abroad MoUs with NUS, ETH Zurich, Purdue, ASU, NTU — under AICTE Twinning & Joint Degree regulations 2022.</p></div>
+    <div class="card"><h3>Hackathons & Industry Visits</h3><p>2 hackathons/yr (Smart India Hackathon mandatory), 4 industry visits, monthly CXO/Founder talks.</p></div>
+    <div class="card"><h3>Research Paper & Patent Culture</h3><p>Each student exits with ≥1 conference paper or patent disclosure; integrated with Honors thesis.</p></div>
+    <div class="card"><h3>Faculty Capability Building</h3><p>TCS Train-the-Trainer model + AICTE ATAL FDPs + 2-week annual industry immersion for every faculty member.</p></div>
+  </div>
+</section>
+
+<section id="foreign" class="section">
+  <h2>🌍 Foreign Market Specifics & Global Pathways for Indian Graduates</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Region</th><th>Key Domains in Demand</th><th>Entry Salary (local)</th><th>India-Friendly Visa / Pathway</th><th>Top Recruiters / Universities</th></tr></thead>
+    <tbody>
+      <tr><td><b>USA</b></td><td>AI/ML, Cloud, Cybersec, Data, Quantum, Robotics</td><td>USD 110–170k</td><td>F1→OPT(3 yr STEM)→H1B→GC; O1 for top researchers</td><td>Google, Meta, Microsoft, Amazon, Apple, NVIDIA; MIT, Stanford, CMU, UC Berkeley, GeorgiaTech, UIUC, Purdue, USC</td></tr>
+      <tr><td><b>UK</b></td><td>FinTech, AI, Cybersecurity, HealthTech</td><td>GBP 40–80k</td><td>Graduate Visa (2 yr), Skilled Worker, Global Talent</td><td>Barclays, HSBC, DeepMind, ARM; Oxford, Cambridge, Imperial, UCL, Edinburgh</td></tr>
+      <tr><td><b>EU (Germany/Netherlands/Ireland)</b></td><td>Industry 4.0, Auto-Tech, Semiconductors, AI, Cloud</td><td>EUR 55–95k</td><td>Blue Card (Germany), DAFT (Netherlands), Critical Skills (Ireland)</td><td>SAP, Siemens, BMW, ASML, Bosch, Philips, Google IE; TU Munich, ETH Zurich (CH), TU Delft, KIT, RWTH Aachen, INSA Lyon</td></tr>
+      <tr><td><b>Singapore / APAC</b></td><td>FinTech, Cloud, Cybersec, Smart Cities, AI</td><td>SGD 65–110k (~₹40-70 LPA)</td><td>Tech.Pass, Employment Pass, S Pass</td><td>DBS, Grab, Sea, ByteDance, Stripe APAC; NUS, NTU, SMU, KAIST (South Korea), Univ. of Tokyo</td></tr>
+      <tr><td><b>Middle East (UAE/Saudi)</b></td><td>GovTech (Smart Govt), Cloud, AI, Cybersec, FinTech</td><td>AED 25–45k/month (tax-free)</td><td>Golden Visa (10-yr), Green Visa, Saudi Premium Residency</td><td>e&, du, Aramco, Saudi STC, Mubadala, G42, ADNOC, ADGM; MBZUAI (AI), KAUST, NYU Abu Dhabi</td></tr>
+      <tr><td><b>Australia / Canada</b></td><td>AI, Cybersec, Data, Cloud, Mining-Tech</td><td>AUD 90–140k / CAD 85–130k</td><td>Skilled Independent (189), Express Entry, Global Talent Stream</td><td>Atlassian, Canva, Shopify, RBC; UoT, UBC, McGill, UMelb, UNSW, UWaterloo</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">Indian CS graduates remain the largest source of international tech talent for the US (F1+OPT pipeline), UK Graduate Visa cohort, and EU Blue Card holders. Singapore and the UAE are emerging as the highest tax-adjusted destinations for early-career engineers.</div>
+</section>
+
+<section id="benchmarks" class="section">
+  <h2>🏛️ Indian & Global Program Benchmarks</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Institution</th><th>Flagship Interdisciplinary Programs</th><th>Avg CTC / Placement</th><th>Distinctive Features</th></tr></thead>
+    <tbody>
+      <tr><td>IIT Madras</td><td>B.Tech DS & AI; IDDD in CPS, DS, Robotics; Online BSc in DS (37k+ students)</td><td>Median ₹21 LPA; Highest int'l ~₹2 Cr</td><td>Pravartak CPS hub; 16 interdisciplinary research centers</td></tr>
+      <tr><td>IIT Bombay</td><td>CSE + Minor across Mgmt, Mech, EE; CMINDS center</td><td>Median ₹21.8 LPA</td><td>Trust Lab cybersecurity, KCDH (digital health)</td></tr>
+      <tr><td>IIT Delhi</td><td>B.Tech CS + Yardi School of AI</td><td>Median ₹20 LPA</td><td>Bharti School of Telecom, AI Centre</td></tr>
+      <tr><td>IIIT Hyderabad</td><td>B.Tech + MS Research dual; CSE, CND, CL, CSD, ECE</td><td>Median ₹26+ LPA</td><td>Strongest publication culture among UG institutions</td></tr>
+      <tr><td>IIIT Bangalore</td><td>iMTech (Integrated 5-yr); MS Digital Society</td><td>Median ₹22 LPA</td><td>e-governance & India-Stack focus</td></tr>
+      <tr><td>BITS Pilani</td><td>B.E. CS + Dual MSc (Math/Physics/Eco); Practice School (2 industry semesters)</td><td>Median ₹17–20 LPA</td><td>Practice School = industry-immersive model since 1973</td></tr>
+      <tr><td>VIT, SRM, Manipal</td><td>CS + AI, Cybersec, IoT, DS, Cloud, FinTech, Gaming, CSBS</td><td>Median ₹8–12 LPA (top quartile ₹40+)</td><td>CBCS; many CSBS programs with TCS</td></tr>
+      <tr><td>Plaksha University</td><td>B.Tech CS & AI / Robotics & CPS / Biological Systems / DS</td><td>First batch (2024): ₹14–28 LPA</td><td>Tech Leaders Fellowship; project-first; faculty from Purdue, UC Berkeley</td></tr>
+      <tr><td>Ashoka University</td><td>CS (Liberal Arts); CS + Math/Eco/Physics minors</td><td>~₹15–22 LPA top quartile</td><td>Liberal-arts + research depth, interdisciplinary majors</td></tr>
+      <tr><td>Mahindra Univ., SNU, Krea</td><td>CS + AI, CompSocial, Integrated Liberal Tech</td><td>₹7–18 LPA</td><td>Strong industry MoUs, US-style residential model</td></tr>
+      <tr><td>MIT (USA)</td><td>Course 6 EECS + 6-7 (CS+Bio), 6-14 (CS+Eco), 6-9 (Brain & CogSci)</td><td>Median entry $130–170k</td><td>Modular "courses" — pure interdisciplinary majors. <b>Direct template for India.</b></td></tr>
+      <tr><td>Stanford (USA)</td><td>CS BS with 9 tracks: AI, Biocomputation, Systems, Theory, HCI, Info, Graphics, Unspec., Individual</td><td>Median entry $150k+</td><td>"Tracks within a single CS degree" — recommended model</td></tr>
+      <tr><td>CMU (USA)</td><td>BS CS + Concentrations (AI, ML, HCI, Robotics, CompBio)</td><td>Median entry $145k+</td><td>Strongest CS+X combos worldwide</td></tr>
+      <tr><td>NUS (Singapore)</td><td>CS + Specialisations (AI, Algos, Bioinfo, MIR, Networking, Security, SW, Parallel)</td><td>Median entry SGD 5.5k/month (~₹35 LPA)</td><td>Industry-aligned; SGUnited Skills, ASEAN reach</td></tr>
+      <tr><td>ETH Zurich</td><td>BSc CS with mobility for CS+Bio, CS+Robotics</td><td>Median entry CHF 95k+ (~₹85 LPA)</td><td>Research-first; mandatory thesis</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="cxo" class="section">
+  <h2>💬 Industry & CXO Voices (Why India Must Move Fast)</h2>
+  <div class="grid2">
+    <div class="quote">"India is positioned to become a global AI powerhouse by 2030 with over a million highly skilled tech professionals. But the focus must shift to quality of AI talent — reskilling the existing workforce and fostering new talent through robust government-academia-industry collaboration."<b>— Sangeeta Gupta, SVP & Chief Strategy Officer, NASSCOM (Aug 2024)</b></div>
+    <div class="quote">"TCS Computer Science & Business Systems is for NextGen Business Engineers… it builds industry-ready engineers with in-depth business and digital skills."<b>— TCS CSBS Program Office (info.tcs.com)</b></div>
+    <div class="quote">"By 2030, India's services sector workforce will see ~70% of required skills change. AI is augmenting, not replacing — hybrid roles combining domain expertise with data/AI proficiency will dominate."<b>— NITI Aayog, Roadmap for Job Creation in the AI Economy (2025)</b></div>
+    <div class="quote">"While total GCC hiring dipped in FY24-25, demand for specialists in VLSI, embedded and security-centric firmware remained strong, buoyed by Semicon India and Chips-to-Startup."<b>— Neelabh Shukla, CBO, Careernet</b></div>
+    <div class="quote">"Microsoft will skill 10 million Indians in AI by 2030 as part of its $3 billion India investment — positioning India as a global hub for cloud and AI services."<b>— Satya Nadella, Microsoft CEO (India visit 2024)</b></div>
+    <div class="quote">"Bridging the AI talent gap will require integrating foundational AI coursework into every academic program, plus practical pathways through workshops, hackathons and internships."<b>— NASSCOM–Deloitte Report (2024)</b></div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <h2>🚀 NASSCOM FutureSkills Prime — Top In-Demand Skills (2025–2027)</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Skill Cluster</th><th>Specific Skills</th><th>Demand Growth (YoY)</th><th>Sample Roles</th></tr></thead>
+    <tbody>
+      <tr><td><b>Artificial Intelligence</b></td><td>Generative AI, LLMs, Prompt Engineering, Responsible AI, RAG, AI Agents</td><td>+67% (AI engineer roles)</td><td>AI Engineer, Applied Scientist, AI Product Manager</td></tr>
+      <tr><td><b>Data Science & Analytics</b></td><td>Data Engineering, MLOps, Causal Inference, Vector DBs, Real-time Analytics</td><td>+30% (sustained 5 yrs)</td><td>Data Scientist, Data Engineer, Analytics Engineer</td></tr>
+      <tr><td><b>Cloud & DevOps</b></td><td>Multi-cloud, Kubernetes, IaC, FinOps, DevSecOps, Cloud-native AI</td><td>+25% (DevOps top-5 hired)</td><td>Cloud Architect, SRE, Platform Engineer</td></tr>
+      <tr><td><b>Cybersecurity</b></td><td>Zero Trust, SOC Automation, OT/ICS Security, DPDPA Compliance, PQC</td><td>+30% (40k unfilled roles)</td><td>SOC Analyst, Cloud Security Architect, CISO-track</td></tr>
+      <tr><td><b>Full-stack / Web3</b></td><td>React/Next, Edge Computing, Smart Contracts, ZK Proofs</td><td>+15%</td><td>Full-stack Dev, Blockchain Dev, Web3 PM</td></tr>
+      <tr><td><b>IoT / Embedded / Semi</b></td><td>RISC-V, Edge AI, Embedded Security, IoT Platforms</td><td>+18% (post-Semicon India)</td><td>Embedded Engineer, VLSI Engineer, Firmware Lead</td></tr>
+      <tr><td><b>Quantum & Frontier</b></td><td>Quantum Algorithms, Qiskit/Braket, Post-Quantum Cryptography</td><td>Niche / Strategic</td><td>Quantum Algo Engineer, PQC Researcher</td></tr>
+      <tr><td><b>Domain-AI Hybrids</b></td><td>FinAI, ClinAI, AgriAI, LegalAI, GovAI</td><td>+40% (emerging)</td><td>Domain AI Engineer, Vertical Product Lead</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Source: NASSCOM FutureSkills Prime + NASSCOM-BCG (2024) + LinkedIn Economic Graph (2025). India recorded ~100% YoY growth in prompt-engineering talent in 2025.</p>
+</section>
+
+<section id="accred" class="section">
+  <h2>🏆 Accreditation Strategy (NBA · NAAC · ABET)</h2>
+  <div class="grid2">
+    <div class="card"><h3>NBA Tier-1 (mandatory)</h3><p>All new CS-X programs should target NBA Tier-1 within 3 years. Requires Outcome-Based Education (OBE), CO-PO mapping, ≥75% Ph.D. faculty in core, structured CQI processes.</p></div>
+    <div class="card"><h3>NAAC A++ (institutional)</h3><p>NEP-2020 multidisciplinary framework, ABC (Academic Bank of Credits), MoUs with industry & foreign universities, ≥30% research/publication output.</p></div>
+    <div class="card"><h3>ABET (aspirational, USA)</h3><p>For 2-3 flagship programs (CS, CS+AI). Improves student mobility to US grad schools and global recruiter perception.</p></div>
+    <div class="card"><h3>NIRF Ranking</h3><p>Target NIRF Engineering top-100 in 5 yrs, top-50 in 10 yrs. Drivers: Teaching-Learning Resources, Research, Graduation Outcomes, Outreach, Perception.</p></div>
+    <div class="card"><h3>Sector Body Endorsements</h3><p>NASSCOM FutureSkills Prime mapping; CII industry endorsement; sector skill councils (IT-ITeS SSC, BFSI SSC, Electronics SSC).</p></div>
+    <div class="card"><h3>International Accreditation Pathways</h3><p>Washington Accord (via NBA), EUR-ACE (Europe), Engineers Canada — for graduate mobility.</p></div>
+  </div>
+</section>
+
+<section id="timeline" class="section">
+  <h2>⏳ Emerging Technology Adoption Timeline (2025–2035, India)</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Horizon</th><th>Mainstream</th><th>Emerging</th><th>Strategic / Long-Bet</th></tr></thead>
+    <tbody>
+      <tr><td><b>2025–27 (Now)</b></td><td>GenAI in services, Cloud-first, UPI/India Stack, DPDPA, Industry 4.0 sensors, EHR (ABDM)</td><td>Edge AI, RISC-V, ONDC, MES on cloud, FinOps</td><td>Quantum pilots, CBDC, Spatial Computing</td></tr>
+      <tr><td><b>2027–30</b></td><td>Multi-modal AI, Autonomous AI agents, Cybersecurity AI, Digital Twin for manufacturing, Telemedicine + AI diagnostics</td><td>Post-Quantum Crypto migration, 6G research, Web3 enterprise, Climate-tech analytics</td><td>Brain-Computer Interfaces, Synthetic biology + CS</td></tr>
+      <tr><td><b>2030–35</b></td><td>Pervasive AI assistants, Smart manufacturing standard, Autonomous vehicles in tier-1 cities</td><td>Quantum advantage in chem/finance, AGI-adjacent systems, Robotics-as-a-Service mainstream</td><td>Fault-tolerant Quantum Computing, Fusion-energy data systems</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Adapted from Gartner Hype Cycle 2024-25, WEF Future of Jobs 2025, NASSCOM Strategic Review 2025, NITI Aayog projections.</p>
+</section>
+
+<section id="entrepreneurship" class="section">
+  <h2>🚀 Entrepreneurship & Higher-Ed Pathways</h2>
+  <div class="grid2">
+    <div class="card"><h3>Startup Potential by Domain</h3>
+      <p>FinTech (3,085+ companies, 150 unicorn target 2030), HealthTech (11,000+ startups), AI/SaaS ($1T market projection by 2030, 500k jobs - SaaSBoomi), Cybersecurity, AgriTech, ClimateTech and AVGC-XR are India's top entrepreneurial domains.</p>
+    </div>
+    <div class="card"><h3>Institutional Incubation</h3>
+      <p>AICTE mandates ATAL Incubation Centres; Startup India DPIIT recognition; Atal Innovation Mission. Each new CS-X program should have a domain-specific pre-incubator with min ₹50L corpus.</p>
+    </div>
+    <div class="card"><h3>Top Graduate-School Destinations</h3>
+      <p>For research dual-degree alumni: MIT, Stanford, CMU, UC Berkeley, GeorgiaTech, UIUC, Purdue, ETH Zurich, EPFL, NUS, NTU, Oxford, Cambridge, ICL, KAIST, Univ. of Tokyo, Univ. of Toronto, UBC, McGill.</p>
+    </div>
+    <div class="card"><h3>Industry-PhD Hybrid Tracks</h3>
+      <p>Microsoft Research India, Google Research, IBM Research, TCS Research, Adobe Research, Samsung R&D Bengaluru, Intel Labs — all sponsor industry-affiliated PhDs.</p>
+    </div>
+  </div>
+</section>
+
+<section id="policy" class="section">
+  <h2>🏛️ Alignment with National Priorities</h2>
+  <div class="grid2">
+    <div class="card"><h3>Digital India / India Stack</h3><p>UPI > 15B txns/month; Aadhaar; ONDC; DigiLocker; ABDM (670M ABHA IDs in 3 yrs). Hooks: FinTech, GovTech, Healthcare.</p></div>
+    <div class="card"><h3>Semicon India + PLI 2.0</h3><p>₹76,000 cr semiconductor mission; PLI 2.0 USD 26B across 14 sectors. Hooks: IoT/Embedded, Industry 4.0, VLSI, RISC-V (IIT-M Shakti, Mindgrove).</p></div>
+    <div class="card"><h3>IndiaAI Mission</h3><p>₹10,372 cr (USD 1.25B) over 5 yrs; supports compute, datasets, startups, FutureSkills. Direct support for AI/ML labs.</p></div>
+    <div class="card"><h3>National Quantum Mission</h3><p>₹6,003 cr through 2030–31; 4 thematic hubs. Hooks for Quantum Computing M.Tech and post-quantum crypto labs.</p></div>
+    <div class="card"><h3>Ayushman Bharat Digital Mission</h3><p>Open digital health stack; 670M ABHA IDs; 420M linked health records. Hook for Health Informatics specialization.</p></div>
+    <div class="card"><h3>Make in India / SAMARTH 4.0</h3><p>National Manufacturing Mission (Budget 2025-26); SAMARTH centers. Hook for Manufacturing/MES/Industry 4.0 track.</p></div>
+    <div class="card"><h3>iDEX (Defense) & Drone Rules</h3><p>iDEX-DIO innovation challenges; liberalised drone rules 2021. Hook for Aerospace/Defence Computing electives.</p></div>
+    <div class="card"><h3>NEP 2020 + AICTE 2024</h3><p>MEME (multi-entry/multi-exit); ABC (Academic Bank of Credits); formal Minor & Honors tracks; multidisciplinary mandate.</p></div>
+  </div>
+</section>
+
+<section id="challenges" class="section">
+  <h2>⚠️ Challenges & Implementation Considerations</h2>
+  <div class="grid2">
+    <div class="card"><h3>Faculty Shortage</h3><p>India faces 40k+ cybersecurity, 600k AI talent shortfall (NASSCOM–Deloitte 2024). PhD-qualified faculty in Quantum, Blockchain, Robotics, GenAI extremely scarce. Plan industry-PhD bridge and visiting-faculty pools.</p></div>
+    <div class="card"><h3>Lab & Infra Capex</h3><p>Per-track capex: AI ≈ ₹1.5–3 Cr (GPU cluster); Robotics ≈ ₹2–4 Cr; FinTech ≈ ₹50L (Bloomberg/Reuters terminals); Quantum ≈ pay-per-use cloud (AWS Braket/Qiskit Runtime).</p></div>
+    <div class="card"><h3>Industry Partnerships</h3><p>Replicate TCS-BS MoU (now 55+ colleges, 5,000+ students) for each domain — TCS, Infosys, IBM, Intel, NVIDIA, Microsoft, AWS, Wipro, NPCI, HDFC, Apollo, Tata Elxsi, Mahindra Defence.</p></div>
+    <div class="card"><h3>Accreditation</h3><p>Mandatory NBA Tier-1, NAAC A++, plus aspirational ABET (USA) for select streams. AICTE Model Curriculum 2024 + NEP 2020 MEME must be built-in from day 1.</p></div>
+    <div class="card"><h3>Skill-Gap Realities</h3><p>AI demand-supply gap ~50% (2024); Cybersecurity gap ~30% with 40k open roles; Cloud/DevOps 64% of firms struggle to hire — implies high placement potential but also pricing pressure on faculty.</p></div>
+    <div class="card"><h3>Curriculum Refresh Cadence</h3><p>GenAI changed CS jobs profile in 18 months. Set up a Curriculum Advisory Board with CXO members + biannual syllabus refresh. AICTE allows ≤30% modification per cycle without re-approval.</p></div>
+  </div>
+</section>
+
+<section id="refs" class="section">
+  <h2>📑 References (2023–2026)</h2>
+  <ol class="refs">
+    <li>NASSCOM–BCG (2024). <i>AI-Powered Tech Services Roadmap</i> — India AI USD 17B by 2027, 25-35% CAGR.</li>
+    <li>NASSCOM–Deloitte (Aug 2024). <i>Advancing India's AI Skills</i> — 1.25M AI talent by 2027.</li>
+    <li>NASSCOM (2025). <i>Tech Sector Strategic Review</i> — 5.8M workforce; 126k net hiring.</li>
+    <li>NITI Aayog (2025). <i>Roadmap for Job Creation in the AI Economy</i>.</li>
+    <li>WEF (2025). <i>Future of Jobs Report</i> — 170M new global tech roles; 92M displaced by 2030.</li>
+    <li>Mordor Intelligence (2026). India FinTech USD 51.3B (2026) → USD 109B (2031), 16.27% CAGR.</li>
+    <li>Inc42/Statista (2024). India FinTech TAM USD 2.1T by 2030; lendingtech CAGR 22%.</li>
+    <li>Research & Markets (May 2025). India FinTech USD 155.7B → USD 990B by 2032, 30.26% CAGR.</li>
+    <li>NASSCOM. India FinTech USD 200B revenue, USD 1T throughput by 2030.</li>
+    <li>MarketsandMarkets (2025). India Cybersecurity USD 8.58B → USD 16.86B (2030), 14.5% CAGR.</li>
+    <li>Mordor Intelligence (2026). India Cybersecurity USD 5.56B → USD 15.06B (2031), 18.07%.</li>
+    <li>Grand View Research/Horizon Databook (2025). India cybersecurity USD 10.16B → USD 38.7B (2033), 18.2%.</li>
+    <li>TeamLease (2023). India cybersecurity 40,000 open positions; 30% gap.</li>
+    <li>ISC2 Cybersecurity Workforce Study (2024). Global gap ~4M.</li>
+    <li>Straits Research (2025). India Industry 4.0 USD 5.49B → USD 26.69B (2033), 19.2%.</li>
+    <li>Grand View Research. India Industry 4.0 USD 6.15B → USD 28.49B (2030), 24.5%.</li>
+    <li>MarketsandMarkets (2025). APAC MES USD 6.02B → USD 10.22B (2030), 11.2%; India 13.3%.</li>
+    <li>Mordor Intelligence (2025). India Manufacturing USD 1.63T → USD 2.47T (2031), 7.26%.</li>
+    <li>IBEF (2025). Manufacturing; PLI 2.0 USD 26B; electronics USD 300B by 2030.</li>
+    <li>B Capital/BCG. India Digital Health USD 2.7B → USD 37B (2030), 10×.</li>
+    <li>Grand View Research (2024). India Digital Health USD 14.5B → USD 107B (2033), 25.1%.</li>
+    <li>Ministry of Health (2024). ABDM: 670M ABHA, 420M records, 330k facilities, 470k pros.</li>
+    <li>Markets & Data (2025). India Cloud Computing USD 21.4B (FY25) → USD 86.4B (FY33), 19.05%.</li>
+    <li>Taggd (2026). India Decoding Jobs — Cloud roles ₹3.5–7.5 LPA entry to ₹40+ LPA architect.</li>
+    <li>Oliver Wyman/NASSCOM. Cloud = 8% of India GDP; 14M cloud-linked jobs.</li>
+    <li>AWS (2025). USD 8.3B Maharashtra cloud investment.</li>
+    <li>Microsoft (2024-25). USD 3B India investment + 10M skilled in AI by 2030.</li>
+    <li>P&S Intelligence. India Embedded Systems USD 4.9B → USD 9.6B (2032), 10.3%.</li>
+    <li>IMARC (2025). India IoT USD 1.5B → USD 3.62B (2034), 10.32%.</li>
+    <li>MarkNtel (2025). India Semiconductor USD 45B → USD 100B (2030), 13.05%.</li>
+    <li>MeitY. SemiconIndia Mission ₹76,000 cr.</li>
+    <li>Grand View Research/Horizon Databook. India Blockchain USD 1.04B → USD 53.2B (2030), 93.5% (high uncertainty).</li>
+    <li>MarketsandMarkets (2025). Global Blockchain USD 33B → USD 393B (2030), 64.2%.</li>
+    <li>MarketsandMarkets (2025). Global Quantum USD 3.52B → USD 20.2B (2030), 41.8%.</li>
+    <li>Government of India (2024). National Quantum Mission — USD 720M through 2030-31.</li>
+    <li>Grand View Research. India Quantum USD 68.7M → USD 231.8M (2030), 22.9% (4.9% global share).</li>
+    <li>Ken Research (2024). India VR CAGR 35.3% (2023-30); Fortune Business Insights confirms.</li>
+    <li>Grand View Research/Horizon Databook. India Metaverse USD 3.9B → USD 43.7B (2030), 49.5%.</li>
+    <li>PwC. AR/VR USD 1.5T globally by 2030; 23M jobs reshaped.</li>
+    <li>MoIB. AVGC-XR National Centre of Excellence, Mumbai (2024).</li>
+    <li>TCS–AICTE. CSBS curriculum partnership (2018+); 55+ colleges; 5,000+ students.</li>
+    <li>AICTE (2024). Framework for 4-Year UG Programme under NEP 2020.</li>
+    <li>IIIT-Delhi (2024). AICTE CSE Curriculum Revision Committee — Pankaj Jalote chair.</li>
+    <li>IIT Madras (2024). IDDD & International Interdisciplinary Masters (I2MP).</li>
+    <li>Naukri JobSpeak (2025). DevOps in top-5 hired roles.</li>
+    <li>LinkedIn Economic Graph (2025). India 100% YoY in prompt-engineering; AI hiring rate 30%.</li>
+    <li>Statista (2024). India IoT devices USD 2.88B → USD 10.28B (2030), 23.2%.</li>
+    <li>Evolute (2025). India Edge AI USD 832M → USD 3.65B (2030), 28.3%.</li>
+    <li>IN-SPACe. India Space Economy USD 8B (2022) → USD 44B (2033).</li>
+    <li>NPCI. UPI > 15B transactions/month (2025).</li>
+  </ol>
+  <p class="cite">⚠️ Several blockchain & metaverse CAGRs (60–90%) are <b>vendor-research projections</b> with high uncertainty; treat as upper bounds. AI / Cloud / Cybersecurity figures show strong cross-source convergence and are higher-confidence.</p>
+</section>
+
+<footer>Built as a curriculum-planning aid for an Indian engineering institution. Data is best-effort and consolidates publicly available sources (2024–2026). Refresh annually before each Board-of-Studies / NBA-NAAC cycle. © Curriculum Architects 2026.</footer>
+</main>
+
+<script>
+const DOMAINS=[
+{key:"fintech",name:"CS + FinTech & Banking",cat:"Finance & Business",degree:["B.Tech","M.Tech","B.Tech (Hons.)"],lens:["Market Size","Jobs & Salary","Curriculum"],region:["India","Global"],hot:true,indiaMkt2024:112.75,indiaMkt2030:550,cagr:30.3,globalMkt2030:1500,salary:[6,40],blurb:"BFSI is India's largest tech consumer; UPI scale, account-aggregator framework, and OCEN make India the world's most exciting FinTech lab.",govt:"Digital India · UPI · RBI Payments Vision 2025 · Account Aggregator · DPDPA · GIFT-IFSC",hiring:"HDFC, ICICI, SBI, Razorpay, PhonePe, Paytm, Zerodha, Groww, Stripe, JP Morgan, Goldman Sachs, BlackRock, Morgan Stanley GCC, NPCI",why:"India FinTech TAM USD 2.1T by 2030 (Inc42/Statista); revenue USD 250B; 87% adoption (highest globally). Up to 150 unicorns by 2030.",roles:"Quant Developer, Risk Modeler, Algo Trader, Blockchain Engineer, RegTech Analyst, Payments Engineer, InsurTech PM"},
+{key:"csbs",name:"CS + Business Systems (TCS-BS)",cat:"Finance & Business",degree:["B.Tech"],lens:["Curriculum","Jobs & Salary"],region:["India"],hot:false,indiaMkt2024:null,indiaMkt2030:null,cagr:null,globalMkt2030:null,salary:[6,28],blurb:"TCS-co-designed AICTE-approved 4-year program blending CS, humanities, management; 55+ partner colleges, 5,000+ students.",govt:"AICTE MoU 2018 · NEP-2020 multidisciplinary mandate",hiring:"TCS, Infosys, Wipro, Accenture, Deloitte, EY, KPMG, Cognizant, Capgemini, IBM",why:"Produces 'business engineers' for India's $250B+ IT-services industry; combines tech depth with management context.",roles:"Business Analyst, Tech Consultant, ERP Consultant, Product Manager, Strategy Analyst, Service Delivery Lead"},
+{key:"manuf",name:"CS + Industry 4.0 / MES",cat:"Industrial & Physical",degree:["B.Tech","M.Tech"],lens:["Market Size","Jobs & Salary","Govt. & Policy"],region:["India","Global"],hot:true,indiaMkt2024:5.49,indiaMkt2030:26.69,cagr:19.2,globalMkt2030:null,salary:[5,30],blurb:"Industry 4.0 + MES + IIoT + Digital Twin — driven by PLI 2.0 (USD 26B), Semicon India, and China+1 supply-chain shift.",govt:"Make in India · PLI 2.0 · SAMARTH Udyog Bharat 4.0 · National Manufacturing Mission 2025-26",hiring:"Tata Motors, Mahindra, L&T, Bosch, Siemens, Honeywell, Schneider, ABB, Tata Elxsi, Infosys, TCS",why:"India manufacturing target USD 1T by FY26; APAC MES 11.2% CAGR, India fastest at 13.3%.",roles:"MES Engineer, IIoT Architect, OT Security Engineer, Digital Twin Developer, Predictive Maintenance Engineer"},
+{key:"health",name:"CS + Healthcare / BioTech",cat:"Life Sciences",degree:["B.Tech","M.Tech"],lens:["Market Size","Jobs & Salary","Govt. & Policy"],region:["India","Global"],hot:true,indiaMkt2024:14.5,indiaMkt2030:107,cagr:25.1,globalMkt2030:1500,salary:[5,32],blurb:"India Digital Health 10× from USD 2.7B (2022) to USD 37B (2030); ABDM created 670M ABHA IDs and linked 420M records.",govt:"Ayushman Bharat Digital Mission · Telemedicine Guidelines · DPDPA",hiring:"Apollo, Practo, 1mg, PharmEasy, Tata 1mg, Philips, GE Healthcare, Siemens Healthineers, Medtronic, Roche, Strand",why:"WHO doctor-patient gap of 30%; 11,000+ healthtech startups; aligned to UN SDG-3.",roles:"Health Informatics Engineer, Clinical AI Engineer, Bioinformatics Scientist, EHR Architect, mHealth Developer"},
+{key:"ai",name:"CS + AI / ML",cat:"Core Frontier Tech",degree:["B.Tech","B.Tech (Hons.)","M.Tech","Integrated B.Tech+M.Tech","B.Tech + MS (Research)"],lens:["Market Size","Jobs & Salary","Curriculum"],region:["India","Global"],hot:true,indiaMkt2024:7,indiaMkt2030:17,cagr:30,globalMkt2030:null,salary:[8,60],blurb:"India 2nd largest AI talent base (420k workers); demand 1.25M by 2027; up to USD 621B GDP uplift (~18% of 2023 GDP).",govt:"IndiaAI Mission ₹10,372 cr · FutureSkills Prime · DPIIT-Startup India",hiring:"Google, Microsoft, OpenAI, Anthropic, NVIDIA, Meta, Adobe, Flipkart, Swiggy, TCS Research, Mu Sigma, Fractal, Tiger Analytics",why:"AI engineer roles growing 67% YoY (NASSCOM-BCG); upskill firms commit USD 1B+ over 3 yrs.",roles:"ML Engineer, Data Scientist, AI Research Scientist, MLOps Engineer, Applied Scientist, Prompt Engineer, AI Product Manager"},
+{key:"ds",name:"CS + Data Science",cat:"Core Frontier Tech",degree:["B.Tech","M.Tech"],lens:["Jobs & Salary","Curriculum"],region:["India","Global"],hot:true,indiaMkt2024:null,indiaMkt2030:null,cagr:26,globalMkt2030:null,salary:[6,45],blurb:"Highest hiring volume in tech: LinkedIn ranks Data Scientist & Data Engineer in top-5 emerging roles 5 yrs in a row.",govt:"IndiaAI Datasets Platform · NDSA Policy",hiring:"Walmart Labs, Amazon, Microsoft, JPMC, Mu Sigma, Fractal, Tiger Analytics, Latent View, Razorpay, Swiggy",why:"India ~30% of global data-science workforce. Cross-sector demand: BFSI, retail, healthcare, telco.",roles:"Data Scientist, Data Engineer, BI Analyst, Analytics Manager, Decision Scientist, MLOps Engineer"},
+{key:"cyber",name:"CS + Cybersecurity",cat:"Core Frontier Tech",degree:["B.Tech","M.Tech"],lens:["Market Size","Jobs & Salary","Govt. & Policy"],region:["India","Global"],hot:true,indiaMkt2024:8.58,indiaMkt2030:16.86,cagr:14.5,globalMkt2030:351.92,salary:[5,45],blurb:"India faces 1M+ cybersecurity professional shortage; 40k+ open positions; DPDPA driving adoption.",govt:"DPDPA · CERT-In · Cyber Surakshit Bharat · National Cyber Security Strategy",hiring:"Palo Alto, Cisco, Fortinet, Microsoft, Mandiant, Wipro, TCS Cyber, KPMG, Deloitte, EY, PwC, SISA, Quick Heal",why:"India 6% of global cybersecurity jobs but rising fast; UPI/AA fraud surface drives BFSI spend; healthcare cyber 18.9% CAGR.",roles:"SOC Analyst, Penetration Tester, Cloud Security Architect, IR Analyst, DPDPA Compliance Officer, CISO-track"},
+{key:"cloud",name:"CS + Cloud / DevOps",cat:"Core Frontier Tech",degree:["B.Tech","M.Tech"],lens:["Market Size","Jobs & Salary"],region:["India","Global"],hot:true,indiaMkt2024:21.4,indiaMkt2030:86.4,cagr:19.05,globalMkt2030:null,salary:[4,70],blurb:"94% of Indian enterprises on cloud; AWS USD 8.3B, Microsoft USD 3B investments; 70%+ of IT roles will require cloud skill by 2030.",govt:"MeghRaj · RBI Indian cloud for BFSI · Data Localization mandates",hiring:"AWS, Microsoft, Google, Oracle, IBM, Salesforce, Adobe, all Indian GCCs",why:"DevOps in top-5 hired roles (Naukri JobSpeak); 64% of firms struggle to hire DevOps; cloud to add 8% to India GDP.",roles:"Cloud Architect, DevOps Engineer, SRE, Cloud Security Engineer, FinOps Analyst, Platform Engineer"},
+{key:"iot",name:"CS + IoT / Embedded",cat:"Industrial & Physical",degree:["B.Tech","M.Tech"],lens:["Market Size","Jobs & Salary","Govt. & Policy"],region:["India","Global"],hot:false,indiaMkt2024:4.9,indiaMkt2030:9.6,cagr:10.3,globalMkt2030:169.1,salary:[4.5,25],blurb:"IoT, RISC-V (Shakti, Mindgrove), Edge AI; semiconductor mission ₹76,000 cr; electronics target USD 300B by 2030.",govt:"Semicon India · Design Linked Incentive · PLI Electronics · Make in India",hiring:"Intel, TI, Qualcomm, Arm, Bosch, Tata Elxsi, eInfochips, Mistral, Tessolve, Samsung, Foxconn",why:"India embedded growing 10–11% CAGR; semiconductor ecosystem boom; defense electronics PLI.",roles:"Embedded Engineer, IoT Architect, VLSI Engineer, Firmware Developer, Edge AI Engineer"},
+{key:"blockchain",name:"CS + Blockchain / Web3",cat:"Emerging / Niche",degree:["B.Tech","M.Tech"],lens:["Market Size","Curriculum"],region:["India","Global"],hot:false,indiaMkt2024:1.04,indiaMkt2030:53.2,cagr:93.5,globalMkt2030:393.45,salary:[6,40],blurb:"India is #2 in global crypto adoption (Chainalysis); MeitY Blockchain CoE; National Blockchain Framework draft 2021.",govt:"MeitY Blockchain CoE · National Blockchain Framework · CBDC pilots",hiring:"Polygon, CoinDCX, CoinSwitch, ConsenSys India, IBM, Infosys, TCS, Wipro Blockchain CoEs",why:"Wide use beyond crypto: trade-finance, land records, supply chain, IP. CAGR estimates 28-93% — high uncertainty.",roles:"Smart Contract Developer, Blockchain Architect, DeFi Engineer, ZK Researcher, Web3 PM"},
+{key:"robotics",name:"CS + Robotics & Automation",cat:"Industrial & Physical",degree:["B.Tech","M.Tech","B.Tech + MS (Research)"],lens:["Curriculum","Jobs & Salary"],region:["India","Global"],hot:false,indiaMkt2024:null,indiaMkt2030:null,cagr:18,globalMkt2030:null,salary:[5,30],blurb:"Industry 4.0 + warehouse automation + defense + agritech drones; ROS, NVIDIA Isaac, Boston Dynamics ecosystem.",govt:"Drone Rules 2021 · iDEX · SAMARTH Udyog 4.0 · National Robotics Strategy (draft)",hiring:"ABB, FANUC, KUKA, GreyOrange, Addverb, Asimov Robotics, ISRO, DRDO, Mahindra Defence",why:"Asia fastest growing region for industrial robots; India robot density 7 vs world 162 — large headroom.",roles:"Robotics Engineer, SLAM Engineer, Perception Engineer, Motion Planning Engineer, AMR Developer"},
+{key:"quantum",name:"CS + Quantum Computing",cat:"Emerging / Niche",degree:["M.Tech","B.Tech + MS (Research)"],lens:["Market Size","Govt. & Policy"],region:["India","Global"],hot:false,indiaMkt2024:0.069,indiaMkt2030:0.232,cagr:22.9,globalMkt2030:20.2,salary:[10,60],blurb:"India NQM ₹6,003 cr; IBM, Google, AWS Braket ecosystem accessible from India; long-horizon talent play.",govt:"National Quantum Mission · 4 Thematic Hubs (IISc, IITM, IITB, IITD/Roorkee)",hiring:"IBM India Research, TCS Research, QpiAI, BosonQ Psi, IISc/IIT research labs, Goldman Sachs Quant",why:"Strategic national priority; cybersecurity (PQC) demand will follow.",roles:"Quantum Algorithm Engineer, Quantum Software Developer, Quantum ML Researcher, PQC Engineer"},
+{key:"xr",name:"CS + Gaming / AR-VR / Metaverse",cat:"Emerging / Niche",degree:["B.Tech","M.Tech"],lens:["Market Size","Curriculum"],region:["India","Global"],hot:false,indiaMkt2024:3.9,indiaMkt2030:43.7,cagr:49.5,globalMkt2030:1303,salary:[5,28],blurb:"India online gamers ~500M; NCoE for AVGC-XR (2024); Reliance/TCS/Tech Mahindra metaverse investments.",govt:"AVGC-XR National Centre of Excellence · IT Rules 2021 · MeitY GameDev push",hiring:"Krafton, Nazara, Dream11, MPL, Tencent India, Tech Mahindra TechMVerse, Unity, Epic Games, Meta, HTC",why:"Global metaverse projected USD 1.3T by 2030 (high uncertainty); 23M jobs reshaped by AR/VR (PwC).",roles:"Game Developer, XR Engineer, Spatial UX Designer, Game AI Engineer, Real-time 3D Engineer"},
+{key:"agritech",name:"CS + AgriTech / ClimateTech",cat:"Emerging / Niche",degree:["B.Tech","M.Tech"],lens:["Curriculum","Govt. & Policy"],region:["India"],hot:false,indiaMkt2024:24,indiaMkt2030:34,cagr:8.3,globalMkt2030:null,salary:[4,20],blurb:"Agri-IoT, drones, satellite remote sensing; India agritech projected USD 34B by 2027 (EY-FICCI 2023, indicative).",govt:"Digital Agriculture Mission · Drone Rules 2021 · Green Hydrogen Mission · BRSR ESG · Net-Zero 2070",hiring:"Cropin, DeHaat, AgNext, Ninjacart, Reliance Jio Agri, ITC Mars, Mahindra Agri, Bayer, ESRI, Climate Corp",why:"India agricultural population 45%; BRSR ESG reporting mandatory; climate tech is strategic moat.",roles:"AgriTech Engineer, Geospatial Data Scientist, Sustainability Analyst, Carbon Accounting Engineer, Climate Modeler"},
+{key:"legal",name:"CS + LegalTech / GovTech",cat:"Emerging / Niche",degree:["B.Tech"],lens:["Curriculum"],region:["India"],hot:false,indiaMkt2024:null,indiaMkt2030:null,cagr:null,globalMkt2030:null,salary:[5,22],blurb:"India Stack + DPDPA + e-Courts; LegalTech is nascent globally and emerging in India. Builders of India's Digital Public Infrastructure.",govt:"India Stack (Aadhaar, UPI, DigiLocker, AA, ONDC, OCEN, ULI) · DPDPA · e-Courts",hiring:"NPCI, UIDAI, ONDC, EkStep, iSPIRT, Sahamati, government PSUs, Big-4 LegalTech, SpotDraft, LegalRaasta",why:"India's DPI is world's largest case-study; export potential to 50+ developing nations.",roles:"India-Stack Developer, e-Governance Architect, DPDPA Engineer, Civic-Tech PM, OpenAPI Developer"},
+{key:"aero",name:"CS + Aerospace / Defense",cat:"Industrial & Physical",degree:["B.Tech","M.Tech"],lens:["Curriculum","Govt. & Policy"],region:["India"],hot:false,indiaMkt2024:null,indiaMkt2030:null,cagr:null,globalMkt2030:null,salary:[6,30],blurb:"595+ industrial licences for defence by Oct 2022; iDEX, ISRO commercialisation, NSIL, drone manufacturing PLI.",govt:"iDEX-DIO · Defence Acquisition Procedure 2020 · IN-SPACe · Drones PLI · Negative Imports List · Atmanirbhar Defence",hiring:"HAL, BEL, BDL, DRDO labs, ISRO/IN-SPACe, Tata Advanced Systems, L&T Defence, Mahindra Defence, Adani Defence, Lockheed/Boeing India, Airbus India",why:"Defence exports target USD 5B by 2025; private space economy USD 8B (2022) → USD 44B (2033) per IN-SPACe.",roles:"Embedded Avionics Engineer, Mission-Critical SW (DO-178C), Radar Signal Processing Engineer, Cyber-Defence Engineer, Space Data Engineer"}
+];
+
+// Refined professional palette for charts
+const PALETTE = {
+  primary: '#2563eb',
+  primaryLight: 'rgba(37, 99, 235, 0.75)',
+  secondary: '#0891b2',
+  secondaryLight: 'rgba(8, 145, 178, 0.75)',
+  accent: '#7c3aed',
+  accentLight: 'rgba(124, 58, 237, 0.75)',
+  warn: '#d97706',
+  warnLight: 'rgba(217, 119, 6, 0.75)',
+  danger: '#dc2626',
+  ink: '#0f172a',
+  muted: '#475569',
+  soft: '#64748b',
+  border: '#e2e8f0',
+  grid: 'rgba(15, 23, 42, 0.06)'
+};
+
+function renderCards(data){
+  const c=document.getElementById("cards");c.innerHTML="";
+  data.forEach(d=>{
+    const el=document.createElement("article");
+    el.className="card";
+
+    // Build market detail text
+    const marketParts=[];
+    if(d.indiaMkt2024) marketParts.push(`India 2024-25: <b>$${d.indiaMkt2024} Bn</b>`);
+    if(d.indiaMkt2030) marketParts.push(`India 2030: <b>$${d.indiaMkt2030} Bn</b>`);
+    if(d.cagr) marketParts.push(`CAGR: <b>${d.cagr}%</b>`);
+    if(d.globalMkt2030) marketParts.push(`Global 2030: <b>$${d.globalMkt2030} Bn</b>`);
+    const marketText = marketParts.length ? marketParts.join('<br>') : 'Market sizing not consolidated.';
+
+    el.innerHTML=`
+      <div class="tags">${d.hot?'<span class="tag hot">🔥 High Demand</span>':''}<span class="tag">${d.cat}</span>${d.cagr?`<span class="tag green">CAGR ${d.cagr}%</span>`:''}</div>
+      <h3>${d.name}</h3>
+      <p class="card-blurb">${d.blurb}</p>
+      <div class="row"><span>India Mkt 2030</span><b>${d.indiaMkt2030?'$'+d.indiaMkt2030+' Bn':'n/a'}</b></div>
+      <div class="row"><span>Salary (₹ LPA)</span><b>${d.salary[0]} – ${d.salary[1]}+</b></div>
+      <div class="row"><span>Degree</span><b>${d.degree.join(' · ')}</b></div>
+
+      <div class="card-details">
+        <div class="detail-block">
+          <span class="detail-label">📈 Market Data</span>
+          <div class="detail-content">${marketText}</div>
+        </div>
+        <div class="detail-block">
+          <span class="detail-label">💡 Why Include This Course</span>
+          <div class="detail-content">${d.why}</div>
+        </div>
+        <div class="detail-block">
+          <span class="detail-label">🏢 Top Hiring Companies</span>
+          <div class="detail-content">${d.hiring}</div>
+        </div>
+        <div class="detail-block">
+          <span class="detail-label">💼 Job Roles & Career Paths</span>
+          <div class="detail-content">${d.roles}</div>
+        </div>
+        <div class="detail-block">
+          <span class="detail-label">🏛️ Government Push & Policy</span>
+          <div class="detail-content">${d.govt}</div>
+        </div>
+      </div>
+
+      <button class="card-toggle" type="button">
+        <span class="toggle-show">View full details ↓</span>
+        <span class="toggle-hide">Hide details ↑</span>
+      </button>
+    `;
+    el.querySelector('.card-toggle').addEventListener('click',()=>el.classList.toggle('expanded'));
+    c.appendChild(el);
+  });
+}
+function renderTable(data){
+  const tb=document.getElementById("cmpBody");tb.innerHTML="";
+  data.forEach(d=>{
+    tb.innerHTML+=`<tr><td><b>${d.name}</b></td><td>${d.indiaMkt2024?'$'+d.indiaMkt2024+'B':'—'}</td><td>${d.indiaMkt2030?'$'+d.indiaMkt2030+'B':'—'}</td><td>${d.cagr?d.cagr+'%':'—'}</td><td>${d.globalMkt2030?'$'+d.globalMkt2030+'B':'—'}</td><td>₹${d.salary[0]} LPA</td><td>₹${d.salary[1]}+ LPA</td><td style="font-size:.78rem">${d.hiring.split(',').slice(0,5).join(', ')}…</td><td style="font-size:.78rem">${d.govt}</td></tr>`;
+  });
+}
+function applyFilters(){
+  const q=document.getElementById("q").value.toLowerCase();
+  const cat=document.getElementById("f-cat").value,deg=document.getElementById("f-deg").value;
+  const lens=document.getElementById("f-lens").value,reg=document.getElementById("f-region").value;
+  const filtered=DOMAINS.filter(d=>{
+    const s=(d.name+" "+d.blurb+" "+d.hiring+" "+d.roles+" "+d.govt).toLowerCase();
+    if(q&&!s.includes(q))return false;
+    if(cat&&d.cat!==cat)return false;
+    if(deg&&!d.degree.includes(deg))return false;
+    if(lens&&!d.lens.includes(lens))return false;
+    if(reg&&!d.region.includes(reg))return false;
+    return true;
+  });
+  renderCards(filtered);
+}
+["q","f-cat","f-deg","f-lens","f-region"].forEach(id=>document.getElementById(id).addEventListener("input",applyFilters));
+document.getElementById("f-reset").addEventListener("click",()=>{
+  document.getElementById("q").value="";
+  document.getElementById("f-cat").value="";
+  document.getElementById("f-deg").value="";
+  document.getElementById("f-lens").value="";
+  document.getElementById("f-region").value="";
+  applyFilters();
+  document.getElementById("domains").scrollIntoView({behavior:"smooth",block:"start"});
+});
+// Expand/collapse all card details
+document.getElementById("expand-all").addEventListener("click",()=>{
+  document.querySelectorAll("#cards .card").forEach(c=>c.classList.add("expanded"));
+});
+document.getElementById("collapse-all").addEventListener("click",()=>{
+  document.querySelectorAll("#cards .card").forEach(c=>c.classList.remove("expanded"));
+});
+
+// Filter only applies to the Domains section — hide toolbar once user scrolls past it
+(function(){
+  const toolbar=document.querySelector(".toolbar");
+  const domainsSec=document.getElementById("domains");
+  if(!toolbar||!domainsSec)return;
+  const update=()=>{
+    const rect=domainsSec.getBoundingClientRect();
+    if(rect.bottom<160){toolbar.classList.add("toolbar-hidden");}
+    else{toolbar.classList.remove("toolbar-hidden");}
+  };
+  window.addEventListener("scroll",update,{passive:true});
+  window.addEventListener("resize",update,{passive:true});
+  update();
+})();
+
+renderCards(DOMAINS);renderTable(DOMAINS);
+
+const labels=DOMAINS.filter(d=>d.indiaMkt2030).map(d=>d.name.replace("CS + ",""));
+const v2024=DOMAINS.filter(d=>d.indiaMkt2030).map(d=>d.indiaMkt2024||0);
+const v2030=DOMAINS.filter(d=>d.indiaMkt2030).map(d=>d.indiaMkt2030);
+const cagrs=DOMAINS.filter(d=>d.cagr).map(d=>({label:d.name.replace("CS + ",""),v:d.cagr}));
+const salaryData=DOMAINS.map(d=>({label:d.name.replace("CS + ",""),min:d.salary[0],max:d.salary[1]}));
+
+// Common chart options for light theme
+const lightTheme = {
+  scales: {
+    x: { ticks: { color: PALETTE.muted, font: { size: 9, family: 'Inter' } }, grid: { color: PALETTE.grid } },
+    y: { ticks: { color: PALETTE.muted, font: { family: 'Inter' } }, grid: { color: PALETTE.grid } }
+  },
+  plugins: {
+    legend: { labels: { color: PALETTE.ink, font: { family: 'Inter', size: 11 } } }
+  }
+};
+
+new Chart(document.getElementById("chart1"),{type:"bar",data:{labels,datasets:[
+  {label:"2024-25 (USD Bn)",data:v2024,backgroundColor:PALETTE.primaryLight,borderColor:PALETTE.primary,borderWidth:1,borderRadius:4},
+  {label:"2030 Proj. (USD Bn)",data:v2030,backgroundColor:PALETTE.secondaryLight,borderColor:PALETTE.secondary,borderWidth:1,borderRadius:4}
+]},options:{
+  responsive:true,
+  plugins:{
+    title:{display:true,text:"India Market Size by Domain (USD Bn, log scale)",color:PALETTE.ink,font:{family:'Inter',size:13,weight:'600'},padding:{bottom:14}},
+    legend:lightTheme.plugins.legend
+  },
+  scales:{
+    x:{ticks:{color:PALETTE.muted,font:{size:9,family:'Inter'}},grid:{color:PALETTE.grid}},
+    y:{ticks:{color:PALETTE.muted,font:{family:'Inter'}},type:"logarithmic",grid:{color:PALETTE.grid}}
+  }
+}});
+
+new Chart(document.getElementById("chart2"),{type:"bar",data:{labels:cagrs.map(c=>c.label),datasets:[{label:"CAGR %",data:cagrs.map(c=>c.v),backgroundColor:PALETTE.accentLight,borderColor:PALETTE.accent,borderWidth:1,borderRadius:4}]},options:{
+  responsive:true,
+  indexAxis:"y",
+  plugins:{
+    title:{display:true,text:"CAGR Comparison (India, 2024–2030/33)",color:PALETTE.ink,font:{family:'Inter',size:13,weight:'600'},padding:{bottom:14}},
+    legend:{display:false}
+  },
+  scales:{
+    x:{ticks:{color:PALETTE.muted,font:{family:'Inter'}},grid:{color:PALETTE.grid}},
+    y:{ticks:{color:PALETTE.muted,font:{size:10,family:'Inter'}},grid:{display:false}}
+  }
+}});
+
+new Chart(document.getElementById("chart3"),{type:"bar",data:{labels:salaryData.map(s=>s.label),datasets:[
+  {label:"Entry ₹ LPA",data:salaryData.map(s=>s.min),backgroundColor:PALETTE.secondaryLight,borderColor:PALETTE.secondary,borderWidth:1,borderRadius:4},
+  {label:"Senior ₹ LPA",data:salaryData.map(s=>s.max),backgroundColor:PALETTE.primaryLight,borderColor:PALETTE.primary,borderWidth:1,borderRadius:4}
+]},options:{
+  responsive:true,
+  plugins:{
+    title:{display:true,text:"India Salary Range by Domain (₹ LPA)",color:PALETTE.ink,font:{family:'Inter',size:13,weight:'600'},padding:{bottom:14}},
+    legend:lightTheme.plugins.legend
+  },
+  scales:{
+    x:{ticks:{color:PALETTE.muted,font:{size:9,family:'Inter'}},grid:{display:false}},
+    y:{ticks:{color:PALETTE.muted,font:{family:'Inter'}},grid:{color:PALETTE.grid}}
+  }
+}});
+
+const gap=[{l:"AI/ML",v:50},{l:"Cybersecurity",v:30},{l:"DevOps/Cloud",v:64},{l:"Data Science",v:30},{l:"IoT/Embedded",v:25},{l:"Robotics",v:40},{l:"Quantum",v:80},{l:"Blockchain",v:55},{l:"Health Informatics",v:45},{l:"FinTech (Quant)",v:35}];
+new Chart(document.getElementById("chart4"),{type:"radar",data:{labels:gap.map(g=>g.l),datasets:[{label:"Demand–Supply Gap %",data:gap.map(g=>g.v),backgroundColor:"rgba(37, 99, 235, 0.15)",borderColor:PALETTE.primary,borderWidth:2.5,pointBackgroundColor:PALETTE.secondary,pointBorderColor:'#fff',pointRadius:4,pointHoverRadius:6}]},options:{
+  responsive:true,
+  plugins:{
+    title:{display:true,text:"India Talent Gap by Domain (%, illustrative)",color:PALETTE.ink,font:{family:'Inter',size:13,weight:'600'},padding:{bottom:14}},
+    legend:lightTheme.plugins.legend
+  },
+  scales:{
+    r:{
+      ticks:{color:PALETTE.muted,backdropColor:'transparent',font:{family:'Inter',size:9}},
+      grid:{color:PALETTE.border},
+      angleLines:{color:PALETTE.border},
+      pointLabels:{color:PALETTE.ink,font:{size:10,family:'Inter',weight:'500'}}
+    }
+  }
+}});
+
+// ========= RANKINGS SECTION =========
+const RANKINGS = {
+  fintech:    {market:9,cagr:9,salary:9,jobs:9,gap:7,govt:9,startup:10,global:9,hiring:10,future:9,curriculum:8,intl:9,research:7,priority:10,infra:8,faculty:7},
+  csbs:       {market:7,cagr:6,salary:7,jobs:8,gap:5,govt:6,startup:6,global:6,hiring:9,future:7,curriculum:9,intl:7,research:5,priority:7,infra:9,faculty:8},
+  manuf:      {market:8,cagr:9,salary:8,jobs:8,gap:7,govt:10,startup:7,global:8,hiring:9,future:9,curriculum:6,intl:8,research:7,priority:10,infra:5,faculty:6},
+  health:     {market:9,cagr:10,salary:8,jobs:9,gap:8,govt:10,startup:9,global:9,hiring:8,future:10,curriculum:6,intl:9,research:9,priority:10,infra:6,faculty:5},
+  ai:         {market:9,cagr:10,salary:10,jobs:10,gap:10,govt:10,startup:10,global:10,hiring:10,future:10,curriculum:9,intl:10,research:10,priority:10,infra:6,faculty:6},
+  ds:         {market:8,cagr:9,salary:9,jobs:10,gap:8,govt:8,startup:9,global:10,hiring:10,future:9,curriculum:9,intl:10,research:8,priority:9,infra:8,faculty:8},
+  cyber:      {market:8,cagr:7,salary:9,jobs:10,gap:9,govt:9,startup:8,global:10,hiring:9,future:10,curriculum:8,intl:10,research:8,priority:10,infra:8,faculty:6},
+  cloud:      {market:10,cagr:9,salary:10,jobs:10,gap:10,govt:7,startup:8,global:10,hiring:10,future:9,curriculum:9,intl:10,research:7,priority:8,infra:9,faculty:7},
+  iot:        {market:7,cagr:6,salary:7,jobs:7,gap:6,govt:10,startup:7,global:8,hiring:8,future:9,curriculum:7,intl:8,research:8,priority:10,infra:6,faculty:7},
+  blockchain: {market:6,cagr:10,salary:8,jobs:6,gap:8,govt:5,startup:8,global:7,hiring:6,future:7,curriculum:6,intl:7,research:7,priority:5,infra:9,faculty:5},
+  robotics:   {market:7,cagr:8,salary:8,jobs:8,gap:8,govt:8,startup:8,global:9,hiring:8,future:10,curriculum:6,intl:9,research:9,priority:8,infra:4,faculty:5},
+  quantum:    {market:4,cagr:9,salary:9,jobs:4,gap:10,govt:9,startup:6,global:8,hiring:5,future:10,curriculum:4,intl:9,research:10,priority:9,infra:5,faculty:3},
+  xr:         {market:7,cagr:10,salary:7,jobs:7,gap:7,govt:7,startup:8,global:8,hiring:7,future:8,curriculum:6,intl:7,research:6,priority:7,infra:7,faculty:5},
+  agritech:   {market:7,cagr:5,salary:5,jobs:7,gap:6,govt:8,startup:8,global:7,hiring:7,future:9,curriculum:4,intl:6,research:7,priority:8,infra:7,faculty:4},
+  legal:      {market:5,cagr:6,salary:6,jobs:7,gap:6,govt:10,startup:7,global:6,hiring:6,future:8,curriculum:4,intl:5,research:5,priority:9,infra:9,faculty:4},
+  aero:       {market:6,cagr:7,salary:8,jobs:7,gap:8,govt:10,startup:7,global:7,hiring:7,future:9,curriculum:6,intl:5,research:9,priority:10,infra:4,faculty:4}
+};
+
+const PARAMS = ['market','cagr','salary','jobs','gap','govt','startup','global','hiring','future','curriculum','intl','research','priority','infra','faculty'];
+
+// Weight presets — higher number = more weight in composite
+const PRESETS = {
+  balanced: PARAMS.reduce((a,p)=>{a[p]=1; return a;}, {}),
+  market: {market:3,cagr:3,salary:2,jobs:2,gap:1,govt:1,startup:2,global:2,hiring:1,future:1,curriculum:1,intl:1,research:0,priority:1,infra:1,faculty:1},
+  employability: {market:1,cagr:1,salary:3,jobs:3,gap:3,govt:1,startup:1,global:2,hiring:3,future:2,curriculum:2,intl:2,research:0,priority:1,infra:1,faculty:1},
+  research: {market:1,cagr:2,salary:1,jobs:1,gap:1,govt:2,startup:1,global:2,hiring:1,future:3,curriculum:1,intl:2,research:3,priority:2,infra:1,faculty:1},
+  feasibility: {market:1,cagr:1,salary:1,jobs:1,gap:1,govt:2,startup:1,global:1,hiring:1,future:1,curriculum:3,intl:1,research:1,priority:1,infra:3,faculty:3}
+};
+
+let currentPreset = 'balanced';
+let currentSort = {col: 'overall', dir: 'desc'};
+
+function computeOverall(scores, weights) {
+  let total = 0, wSum = 0;
+  for (const p of PARAMS) {
+    const w = weights[p] || 0;
+    total += scores[p] * w;
+    wSum += w;
+  }
+  return wSum ? (total / wSum) : 0;
+}
+
+function getCellColor(score) {
+  // Discrete color scale with WCAG-compliant contrast at every level
+  if (score >= 9) return '#1e40af';  // blue-800 (very high)
+  if (score >= 8) return '#2563eb';  // blue-600 (high)
+  if (score >= 7) return '#3b82f6';  // blue-500 (good)
+  if (score >= 6) return '#60a5fa';  // blue-400 (above avg)
+  if (score >= 5) return '#93c5fd';  // blue-300 (average)
+  if (score >= 4) return '#bfdbfe';  // blue-200 (below avg)
+  if (score >= 3) return '#dbeafe';  // blue-100 (low)
+  return '#f1f5f9';                  // slate-100 (very low)
+}
+
+function getCellTextColor(score) {
+  // Ensures WCAG AA contrast
+  if (score >= 7) return '#ffffff';   // White text on dark blue
+  if (score >= 5) return '#1e3a8a';   // Deep blue text on medium blue
+  if (score >= 3) return '#1e40af';   // Blue text on light blue
+  return '#475569';                    // Slate text on slate
+}
+
+function buildRankRows() {
+  const weights = PRESETS[currentPreset];
+  return DOMAINS.map(d => {
+    const r = RANKINGS[d.key];
+    return { key: d.key, name: d.name, ...r, overall: computeOverall(r, weights) };
+  });
+}
+
+function renderRankings() {
+  const rows = buildRankRows();
+  const sortCol = currentSort.col;
+
+  if (sortCol === 'name') {
+    rows.sort((a, b) => currentSort.dir === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
+  } else if (sortCol !== 'rank') {
+    rows.sort((a, b) => currentSort.dir === 'asc' ? a[sortCol] - b[sortCol] : b[sortCol] - a[sortCol]);
+  } else {
+    rows.sort((a, b) => b.overall - a.overall);
+  }
+
+  const tbody = document.getElementById('rankBody');
+  tbody.innerHTML = '';
+  rows.forEach((r, i) => {
+    const tr = document.createElement('tr');
+    let html = `<td>${i + 1}</td>
+      <td class="name">${r.name.replace('CS + ', '')}</td>
+      <td class="score-cell overall" style="background:${getCellColor(r.overall)};color:${getCellTextColor(r.overall)}">${r.overall.toFixed(2)}</td>`;
+    PARAMS.forEach(p => {
+      html += `<td class="score-cell" style="background:${getCellColor(r[p])};color:${getCellTextColor(r[p])}">${r[p]}</td>`;
+    });
+    tr.innerHTML = html;
+    tbody.appendChild(tr);
+  });
+
+  // Top 5 lists
+  const renderTop = (id, sortKey) => {
+    const sorted = [...rows].sort((a, b) => b[sortKey] - a[sortKey]).slice(0, 5);
+    document.getElementById(id).innerHTML = sorted.map((r) => {
+      const val = typeof r[sortKey] === 'number' ? (sortKey === 'overall' ? r[sortKey].toFixed(2) : r[sortKey]) : r[sortKey];
+      return `<li><b>${r.name.replace('CS + ', '')}</b> <span class="score">${val}/10</span></li>`;
+    }).join('');
+  };
+  renderTop('top5overall', 'overall');
+  renderTop('top5gap', 'gap');
+  renderTop('top5salary', 'salary');
+  renderTop('top5cagr', 'cagr');
+  renderTop('top5priority', 'priority');
+
+  // Feasibility composite (curriculum + infra + faculty)
+  const feas = rows.map(r => ({...r, feasScore: (r.curriculum + r.infra + r.faculty) / 3})).sort((a,b) => b.feasScore - a.feasScore).slice(0,5);
+  document.getElementById('top5feasibility').innerHTML = feas.map(r =>
+    `<li><b>${r.name.replace('CS + ', '')}</b> <span class="score">${r.feasScore.toFixed(1)}/10</span></li>`
+  ).join('');
+
+  // Update sort indicators
+  document.querySelectorAll('#rankTable th[data-sort]').forEach(th => {
+    th.classList.remove('asc', 'desc');
+    if (th.dataset.sort === sortCol) th.classList.add(currentSort.dir);
+  });
+
+  // Render the visual bar chart + strategic positioning map
+  renderRankingBar(buildRankRows());
+  renderStrategicMap(buildRankRows());
+}
+
+// === Visual Ranking Bar Chart ===
+let rankingBarChart = null;
+function renderRankingBar(rows) {
+  const sorted = [...rows].sort((a,b) => b.overall - a.overall);
+  const labels = sorted.map(r => r.name.replace('CS + ',''));
+  const data = sorted.map(r => parseFloat(r.overall.toFixed(2)));
+  const colors = sorted.map((_, i) => {
+    if (i < 5) return '#059669';        // Top 5: emerald
+    if (i < 11) return '#2563eb';        // Mid: blue
+    return '#f59e0b';                    // Bottom: amber
+  });
+  const borders = sorted.map((_, i) => {
+    if (i < 5) return '#047857';
+    if (i < 11) return '#1d4ed8';
+    return '#d97706';
+  });
+
+  if (rankingBarChart) {
+    rankingBarChart.data.labels = labels;
+    rankingBarChart.data.datasets[0].data = data;
+    rankingBarChart.data.datasets[0].backgroundColor = colors;
+    rankingBarChart.data.datasets[0].borderColor = borders;
+    rankingBarChart.update('none');
+    return;
+  }
+
+  rankingBarChart = new Chart(document.getElementById("rankingBarChart"), {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{
+        label: "Overall Score",
+        data,
+        backgroundColor: colors,
+        borderColor: borders,
+        borderWidth: 1,
+        borderRadius: 4,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      indexAxis: "y",
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0f172a',
+          padding: 10,
+          titleFont: { family:'Inter', weight:'600', size:12 },
+          bodyFont: { family:'Inter', size:12 },
+          callbacks: {
+            label: (ctx) => `Composite Score: ${ctx.parsed.x.toFixed(2)} / 10`
+          }
+        }
+      },
+      scales: {
+        x: {
+          beginAtZero: true,
+          max: 10,
+          ticks: { color: '#475569', font: { family:'Inter', size:10 }, stepSize: 2 },
+          grid: { color: 'rgba(15,23,42,0.06)' }
+        },
+        y: {
+          ticks: {
+            color: '#0f172a',
+            font: { family:'Inter', size:10, weight:'500' },
+            callback: function(value, index){ return (index+1).toString().padStart(2,'0') + '. ' + this.getLabelForValue(value); }
+          },
+          grid: { display: false }
+        }
+      }
+    }
+  });
+}
+
+// === Strategic Positioning Map (bubble chart) ===
+let strategicMapChart = null;
+function renderStrategicMap(rows) {
+  // Compute rank from current overall scores
+  const ranked = [...rows].sort((a,b) => b.overall - a.overall);
+  const rankIndex = {};
+  ranked.forEach((r, i) => { rankIndex[r.key] = i + 1; });
+
+  const data = rows.map(r => {
+    const marketOpp = (r.market + r.cagr + r.jobs) / 3;
+    const empIndex = (r.salary + r.gap + r.hiring + r.intl) / 4;
+    return {
+      x: parseFloat(marketOpp.toFixed(2)),
+      y: parseFloat(empIndex.toFixed(2)),
+      r: 6 + (r.future - 1) / 9 * 16,
+      label: r.name.replace('CS + ', ''),
+      rank: rankIndex[r.key],
+      overall: r.overall,
+      future: r.future
+    };
+  });
+
+  const colors = data.map(d => {
+    if (d.rank <= 5) return 'rgba(5, 150, 105, 0.65)';
+    if (d.rank <= 11) return 'rgba(37, 99, 235, 0.65)';
+    return 'rgba(245, 158, 11, 0.65)';
+  });
+  const borders = data.map(d => {
+    if (d.rank <= 5) return '#047857';
+    if (d.rank <= 11) return '#1d4ed8';
+    return '#d97706';
+  });
+
+  // Custom plugin for quadrant guides + bubble labels + pill-styled quadrant labels
+  const quadrantPlugin = {
+    id: 'strategicQuadrants',
+    beforeDatasetsDraw(chart) {
+      const { ctx, chartArea, scales: { x: xScale, y: yScale } } = chart;
+      if (!chartArea) return;
+      const midX = xScale.getPixelForValue(6.5);
+      const midY = yScale.getPixelForValue(6.5);
+
+      // Subtle quadrant background tints
+      ctx.save();
+      ctx.fillStyle = 'rgba(5, 150, 105, 0.05)';
+      ctx.fillRect(midX, chartArea.top, chartArea.right - midX, midY - chartArea.top);
+      ctx.fillStyle = 'rgba(37, 99, 235, 0.03)';
+      ctx.fillRect(chartArea.left, chartArea.top, midX - chartArea.left, midY - chartArea.top);
+      ctx.fillStyle = 'rgba(245, 158, 11, 0.04)';
+      ctx.fillRect(midX, midY, chartArea.right - midX, chartArea.bottom - midY);
+      ctx.fillStyle = 'rgba(100, 116, 139, 0.04)';
+      ctx.fillRect(chartArea.left, midY, midX - chartArea.left, chartArea.bottom - midY);
+
+      // Quadrant divider lines
+      ctx.strokeStyle = 'rgba(15,23,42,0.15)';
+      ctx.setLineDash([5, 4]);
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(midX, chartArea.top);
+      ctx.lineTo(midX, chartArea.bottom);
+      ctx.moveTo(chartArea.left, midY);
+      ctx.lineTo(chartArea.right, midY);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.restore();
+    },
+    afterDatasetsDraw(chart) {
+      const { ctx, chartArea } = chart;
+      if (!chartArea) return;
+
+      const dataset = chart.data.datasets[0];
+      const meta = chart.getDatasetMeta(0);
+
+      // === Bubble labels (above each bubble) ===
+      ctx.save();
+      ctx.font = '600 9.5px Inter';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      meta.data.forEach((point, idx) => {
+        const item = dataset.data[idx];
+        if (!item || !item.label) return;
+        const r = point.options.radius || 8;
+        const display = item.label.length > 22 ? item.label.slice(0, 20) + '…' : item.label;
+
+        ctx.strokeStyle = 'rgba(255,255,255,0.95)';
+        ctx.lineWidth = 3;
+        ctx.strokeText(display, point.x, point.y - r - 7);
+
+        ctx.fillStyle = '#0f172a';
+        ctx.fillText(display, point.x, point.y - r - 7);
+      });
+      ctx.restore();
+
+      // === Quadrant labels as pill badges (rendered LAST so always visible on top) ===
+      const drawPill = (text, anchorX, anchorY, fillColor, textColor, align) => {
+        ctx.save();
+        ctx.font = '700 10.5px Inter';
+        const textWidth = ctx.measureText(text).width;
+        const padX = 10;
+        const pillW = textWidth + padX * 2;
+        const pillH = 22;
+
+        let pillX = anchorX;
+        if (align === 'right') pillX = anchorX - pillW;
+
+        // Pill background (white) with colored border
+        ctx.fillStyle = 'rgba(255,255,255,0.97)';
+        ctx.strokeStyle = fillColor;
+        ctx.lineWidth = 1.5;
+        ctx.shadowColor = 'rgba(15,23,42,0.12)';
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 1;
+        ctx.beginPath();
+        if (ctx.roundRect) {
+          ctx.roundRect(pillX, anchorY, pillW, pillH, 11);
+        } else {
+          ctx.rect(pillX, anchorY, pillW, pillH);
+        }
+        ctx.fill();
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetY = 0;
+        ctx.stroke();
+
+        // Text
+        ctx.fillStyle = textColor;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, pillX + pillW / 2, anchorY + pillH / 2 + 1);
+        ctx.restore();
+      };
+
+      drawPill('★ PRIORITY',    chartArea.right - 8, chartArea.top + 8,    '#059669', '#047857', 'right');
+      drawPill('NICHE PREMIUM', chartArea.left + 8,  chartArea.top + 8,    '#2563eb', '#1d4ed8', 'left');
+      drawPill('VOLUME PLAY',   chartArea.right - 8, chartArea.bottom - 30,'#d97706', '#b45309', 'right');
+      drawPill('EMERGING',      chartArea.left + 8,  chartArea.bottom - 30,'#64748b', '#475569', 'left');
+    }
+  };
+
+  if (strategicMapChart) {
+    strategicMapChart.data.datasets[0].data = data;
+    strategicMapChart.data.datasets[0].backgroundColor = colors;
+    strategicMapChart.data.datasets[0].borderColor = borders;
+    strategicMapChart.update('none');
+    return;
+  }
+
+  strategicMapChart = new Chart(document.getElementById('strategicMapCanvas'), {
+    type: 'bubble',
+    data: {
+      datasets: [{
+        label: 'Domains',
+        data,
+        backgroundColor: colors,
+        borderColor: borders,
+        borderWidth: 1.5,
+        hoverBorderWidth: 2.5
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: 8, right: 8, bottom: 4, left: 4 } },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0f172a',
+          padding: 12,
+          titleFont: { family: 'Inter', weight: '700', size: 13 },
+          bodyFont: { family: 'Inter', size: 11 },
+          displayColors: false,
+          callbacks: {
+            title: (items) => `#${items[0].raw.rank} · ${items[0].raw.label}`,
+            label: (item) => {
+              const d = item.raw;
+              return [
+                `Overall: ${d.overall.toFixed(2)} / 10`,
+                `Market Opportunity: ${d.x.toFixed(1)} / 10`,
+                `Employability Index: ${d.y.toFixed(1)} / 10`,
+                `Future-Proof: ${d.future} / 10`
+              ];
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          min: 3,
+          max: 10.3,
+          title: { display: true, text: 'Market Opportunity →', color: '#475569', font: { family: 'Inter', size: 11, weight: '600' } },
+          ticks: { color: '#64748b', font: { family: 'Inter', size: 10 }, stepSize: 1 },
+          grid: { color: 'rgba(15,23,42,0.04)' }
+        },
+        y: {
+          min: 3,
+          max: 10.3,
+          title: { display: true, text: 'Employability Index →', color: '#475569', font: { family: 'Inter', size: 11, weight: '600' } },
+          ticks: { color: '#64748b', font: { family: 'Inter', size: 10 }, stepSize: 1 },
+          grid: { color: 'rgba(15,23,42,0.04)' }
+        }
+      }
+    },
+    plugins: [quadrantPlugin]
+  });
+}
+
+// Wire preset buttons
+document.querySelectorAll('.weight-toolbar button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentPreset = btn.dataset.preset;
+    document.querySelectorAll('.weight-toolbar button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderRankings();
+  });
+});
+document.querySelector('.weight-toolbar button[data-preset="balanced"]').classList.add('active');
+
+// Wire column sorting
+document.querySelectorAll('#rankTable th[data-sort]').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.sort;
+    if (currentSort.col === col) {
+      currentSort.dir = currentSort.dir === 'asc' ? 'desc' : 'asc';
+    } else {
+      currentSort.col = col;
+      currentSort.dir = 'desc';
+    }
+    renderRankings();
+  });
+});
+
+renderRankings();
+</script>
+</body>
+</html>

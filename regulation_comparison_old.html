@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){if(sessionStorage.getItem("rec_portal_auth_v1")!=="1"){location.replace("index.html");}})();
+</script>
+<title>Academic Regulations Comparison — VIT vs. Raghu Engineering College (AR-23)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --navy:#0f2540; --navy-light:#1b3a66; --gold:#c8a04a; --gold-light:#e2c684;
+    --vit:#1565c0; --vit-light:#e3f0fc; --vit-border:#90caf9;
+    --rec:#8e1a2e; --rec-light:#fbe9ec; --rec-border:#e7a4ae;
+    --bg:#f6f4ef; --card:#fff; --text:#1d2433; --muted:#5a6374;
+    --same:#2e7d32; --diff:#c62828; --unique-v:#0d47a1; --unique-r:#6a0f22;
+    --border:#e2dccb;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.55;}
+  h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;letter-spacing:.2px;}
+  a{color:var(--navy-light);}
+  header.top{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:#fff;padding:38px 24px 30px;text-align:center;border-bottom:5px solid var(--gold);}
+  header.top .eyebrow{font-family:'Inter';font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold-light);}
+  header.top h1{font-size:2.3rem;margin:8px 0 4px;color:#fff;}
+  header.top p{margin:0;color:#cfd6e1;font-size:1rem;max-width:880px;margin-left:auto;margin-right:auto;}
+  .vs-row{display:flex;justify-content:center;align-items:center;gap:24px;margin-top:22px;flex-wrap:wrap;}
+  .vs-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:14px 22px;min-width:240px;text-align:left;}
+  .vs-card h3{margin:0 0 4px;font-size:1.05rem;color:#fff;}
+  .vs-card small{color:#bcc6d4;font-size:.78rem;}
+  .vs-card.vit{border-left:4px solid #64b5f6;}
+  .vs-card.rec{border-left:4px solid #f48fb1;}
+  .vs-sep{font-family:'Playfair Display';font-size:1.6rem;color:var(--gold);}
+  nav.toc{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);padding:10px 16px;z-index:100;overflow-x:auto;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.05);}
+  nav.toc a{display:inline-block;font-size:.78rem;color:var(--navy);margin:0 10px;text-decoration:none;padding:6px 10px;border-radius:6px;}
+  nav.toc a:hover{background:var(--gold-light);color:var(--navy);}
+  nav.toc .toc-title{font-family:'Playfair Display';font-weight:700;color:var(--gold);margin-right:14px;font-size:.9rem;}
+  main{max-width:1380px;margin:0 auto;padding:30px 22px 60px;}
+  section.block{margin-bottom:42px;}
+  section.block > h2{font-size:1.55rem;color:var(--navy);border-bottom:3px solid var(--gold);padding-bottom:8px;margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+  section.block > h2 i{color:var(--gold);font-size:1.2rem;}
+  section.block > .intro{color:var(--muted);font-size:.95rem;margin-bottom:18px;}
+  .overview{background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:32px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+  .overview h2{margin-top:0;color:var(--navy);}
+  .overview .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:16px;}
+  .stat{background:var(--bg);border-left:4px solid var(--gold);padding:12px 14px;border-radius:6px;}
+  .stat h4{margin:0 0 4px;font-family:'Inter';font-size:.78rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);}
+  .stat .val{font-family:'Playfair Display';font-size:1.4rem;color:var(--navy);}
+  .stat .sub{font-size:.82rem;color:var(--muted);}
+  .topic{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:18px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+  .topic-head{padding:14px 18px;background:linear-gradient(90deg,#fbf8f0,#fff);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .topic-head h3{margin:0;color:var(--navy);font-size:1.15rem;display:flex;align-items:center;gap:8px;}
+  .topic-head h3 i{color:var(--gold);}
+  .topic-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  .pane{padding:16px 18px;font-size:.92rem;}
+  .pane.vit{background:var(--vit-light);border-right:1px solid var(--vit-border);}
+  .pane.rec{background:var(--rec-light);}
+  .pane h5{margin:0 0 8px;font-family:'Inter';font-size:.78rem;text-transform:uppercase;letter-spacing:1.2px;font-weight:700;}
+  .pane.vit h5{color:var(--vit);}
+  .pane.rec h5{color:var(--rec);}
+  .pane ul{margin:6px 0;padding-left:18px;}
+  .pane li{margin-bottom:5px;}
+  .pane code{background:rgba(0,0,0,.06);padding:1px 6px;border-radius:3px;font-size:.85em;}
+  .pane.na{color:var(--muted);font-style:italic;}
+  .badge{display:inline-block;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;font-weight:700;padding:4px 10px;border-radius:999px;}
+  .b-same{background:#e7f5e9;color:var(--same);border:1px solid #a5d6a7;}
+  .b-diff{background:#fdecec;color:var(--diff);border:1px solid #ef9a9a;}
+  .b-uv{background:#e3f0fc;color:var(--unique-v);border:1px solid #90caf9;}
+  .b-ur{background:var(--rec-light);color:var(--unique-r);border:1px solid var(--rec-border);}
+  .b-part{background:#fff3e0;color:#bf6a00;border:1px solid #ffcc80;}
+  table.mini{border-collapse:collapse;width:100%;font-size:.84rem;margin-top:6px;}
+  table.mini th,table.mini td{border:1px solid rgba(0,0,0,.12);padding:5px 7px;text-align:left;}
+  table.mini th{background:rgba(0,0,0,.05);font-weight:600;}
+  footer{background:var(--navy);color:#cfd6e1;padding:28px 22px;text-align:center;font-size:.85rem;border-top:5px solid var(--gold);}
+  footer h4{color:#fff;margin:0 0 8px;}
+  footer a{color:var(--gold-light);}
+  @media (max-width:820px){
+    .topic-body{grid-template-columns:1fr;}
+    .pane.vit{border-right:none;border-bottom:1px solid var(--vit-border);}
+    header.top h1{font-size:1.7rem;}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="eyebrow">Side-by-Side Academic Regulations Comparison</div>
+  <h1>VIT (FFCS v4.0) &nbsp;vs.&nbsp; Raghu Engineering College (AR-23)</h1>
+  <p>An exhaustive, dimension-by-dimension comparison of the academic regulations of Vellore Institute of Technology and Raghu Engineering College (Autonomous), Visakhapatnam — covering programme structure, evaluation, grading, attendance, Honours/Minor, internships, NEP alignment, code of conduct and unique institutional features.</p>
+  <div class="vs-row">
+    <div class="vs-card vit"><h3><i class="fa-solid fa-building-columns"></i> Vellore Institute of Technology (VIT)</h3><small>FFCS Academic Regulations, Version 4.0 · approved 13 Dec 2023 · 72<sup>nd</sup> Academic Council · applicable from AY 2021-22</small></div>
+    <div class="vs-sep">⚖</div>
+    <div class="vs-card rec"><h3><i class="fa-solid fa-graduation-cap"></i> Raghu Engineering College (REC) — AR-23</h3><small>Autonomous · Affiliated to JNTU-GV · NAAC A+ · Visakhapatnam, Andhra Pradesh</small></div>
+  </div>
+</header>
+
+<nav class="toc">
+  <span class="toc-title">JUMP TO ▸</span>
+  <a href="#overview">Overview</a><a href="#prog">Programme</a><a href="#credits">Credits</a><a href="#course-types">Course Types</a><a href="#code">Course Code</a><a href="#registration">Registration</a><a href="#theory">Theory Eval</a><a href="#mid">Mid/CAT</a><a href="#end">End-Sem Paper</a><a href="#lab">Lab Eval</a><a href="#drawing">Drawing</a><a href="#skill">Skill</a><a href="#project">Project/Internship</a><a href="#cal">CAL</a><a href="#mini">Mini-Project</a><a href="#pass">Pass Criteria</a><a href="#grade">Grading</a><a href="#sgpa">SGPA/CGPA</a><a href="#pct">CGPA→%</a><a href="#class">Class Award</a><a href="#att">Attendance</a><a href="#promo">Promotion</a><a href="#dur">Max Duration</a><a href="#reg">Re-registration</a><a href="#honors">Honors</a><a href="#minor">Minor</a><a href="#lateral">Lateral Entry</a><a href="#nep">Multi Entry-Exit</a><a href="#gap">Gap Year</a><a href="#moocs">MOOCs</a><a href="#ct">Credit Transfer</a><a href="#abc">ABC</a><a href="#blended">Blended</a><a href="#audit">Mandatory/Audit</a><a href="#induction">Induction</a><a href="#discipline">Discipline</a><a href="#ragging">Anti-Ragging</a><a href="#unique">Unique Features</a><a href="#takeaways">Takeaways</a>
+</nav>
+
+<main>
+
+<!-- OVERVIEW -->
+<section id="overview" class="overview">
+  <h2><i class="fa-solid fa-clipboard-list"></i> Executive Overview</h2>
+  <p>VIT operates under the <strong>Fully Flexible Credit System (FFCS™)</strong> — a slot-based, choice-driven, relative-grading framework introduced in 2008 and now in its 4<sup>th</sup> major version. REC AR-23 follows the more conventional <strong>UGC/AICTE CBCS</strong> framework, aligned with the National Education Policy (NEP-2020), with mandatory mid-sem tests, absolute grading and a fixed year-wise curriculum. The two regulations therefore differ on almost every operational dimension: course registration, evaluation weightages, grading philosophy (relative vs absolute), attendance enforcement, classification of the degree, and award structure.</p>
+  <div class="grid">
+    <div class="stat"><h4>Total Credits (B.Tech)</h4><div class="val">VIT: curriculum-set</div><div class="sub">REC: <strong>160 credits</strong> fixed</div></div>
+    <div class="stat"><h4>Duration</h4><div class="val">4 yrs / 8 sem</div><div class="sub">Both. VIT max <strong>n+3</strong>; REC max <strong>2n = 8 yrs</strong> (NEP).</div></div>
+    <div class="stat"><h4>Theory Internal : External</h4><div class="val">VIT 60 : 40</div><div class="sub">REC <strong>30 : 70</strong></div></div>
+    <div class="stat"><h4>Grading</h4><div class="val">VIT Relative + Absolute</div><div class="sub">REC <strong>Absolute only</strong> · 10-point</div></div>
+    <div class="stat"><h4>Pass Mark (Theory)</h4><div class="val">VIT ≥40% FAT + ≥50% total</div><div class="sub">REC ≥35% End + ≥40% Total</div></div>
+    <div class="stat"><h4>Attendance</h4><div class="val">VIT 75% / course</div><div class="sub">REC 75% aggregate + 40% per course</div></div>
+    <div class="stat"><h4>Honours / Minor credits</h4><div class="val">VIT 18 + 18 (extra)</div><div class="sub">REC <strong>15 (Hon)</strong> + <strong>12 (Minor within 160)</strong></div></div>
+    <div class="stat"><h4>Multiple Entry-Exit (NEP)</h4><div class="val">VIT — Not specified</div><div class="sub">REC <strong>Cert/Dip/BSc Engg/B.Tech</strong></div></div>
+  </div>
+</section>
+
+<!-- 1. PROGRAMME -->
+<section id="prog" class="block">
+  <h2><i class="fa-solid fa-sitemap"></i> 1. Programme Structure & Duration</h2>
+  <div class="topic"><div class="topic-head"><h3>Duration, Semesters & Branches</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li>Semester system — two regular semesters per year: <strong>Fall</strong> (Jun/Jul–Nov) and <strong>Winter</strong> (Dec/Jan–May).</li>
+          <li>Optional <strong>Weekend Intra-Semester</strong> and <strong>Summer Semesters</strong> (fast-track, same instructional hours compressed).</li>
+          <li>Each semester has <strong>15 instructional weeks</strong>.</li>
+          <li>B.Tech / B.Des / B.Sc(Hons) Agriculture = <strong>4 yrs</strong>; B.Arch / 5-yr Integrated M.Tech / M.Sc = <strong>5 yrs</strong>; BCA / B.Sc / B.Com / BBA = <strong>3 yrs</strong>; M.Tech / MBA / MCA = <strong>2 yrs</strong>.</li>
+          <li>Wide programme portfolio across multiple schools (SCOPE, SENSE, SMEC, SELECT, SCHEME, SAS, VITBS, etc.).</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li><strong>4-year B.Tech</strong>, <strong>8 semesters</strong>, English medium, CBCS pattern.</li>
+          <li>9 branches: <strong>CE, EEE, ME, ECE, CSE, AIML, DS, CY, IoT</strong>.</li>
+          <li>Autonomous college affiliated to <strong>JNTU-GV</strong>, NAAC A+.</li>
+          <li>Two semesters per year, conventional fixed timetable.</li>
+          <li><strong>3-week mandatory Induction Programme</strong> for fresh entrants.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. CREDITS -->
+<section id="credits" class="block">
+  <h2><i class="fa-solid fa-layer-group"></i> 2. Credit Requirements & Distribution</h2>
+  <div class="topic"><div class="topic-head"><h3>Total Credits and Course Buckets</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li>Total credits = <strong>curriculum-set per programme</strong>; no fixed all-programmes number stated in regulations.</li>
+          <li>1 credit = 15 hrs lecture / 15 hrs tutorial / 30 hrs lab. <strong>LTPC</strong> notation (e.g., 2-1-2-4).</li>
+          <li>Course buckets: <strong>Foundation Core (FC)</strong>, <strong>Discipline Linked Engineering (DLEC)</strong>, <strong>Discipline Core (DC)</strong>, <strong>Discipline Elective (DE)</strong> / <strong>Specialization Elective (SE)</strong>, <strong>Open Elective (OE)</strong>, <strong>Skill Enhancement (SEC)</strong>, <strong>Ability Enhancement (AEC)</strong>, Value Added, English/Foreign Language, Compulsory, Optional, Honours, Project &amp; Internship.</li>
+          <li>FC includes baskets such as Foreign Language and HSM (Humanities, Science &amp; Management) Electives — student picks any from basket.</li>
+          <li>Min credits/semester = <strong>16</strong>; max = <strong>27</strong>; average = <strong>23</strong>. CGPA &lt; 4.0 → restricted to ≤16.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li>Fixed <strong>160 credits</strong> for B.Tech (8 semesters).</li>
+          <li>Lateral entry students complete <strong>120 credits in 3 years</strong> (start Sem-III).</li>
+          <li>Distribution buckets per AICTE: Basic Sciences (BS), Engineering Sciences (ES), <strong>Programme Core (PC)</strong>, <strong>Programme Electives (PE)</strong>, <strong>Open Electives (OE)</strong>, <strong>Humanities &amp; Social Sciences (HSS)</strong>, Skill courses, Projects, Internships, Mandatory non-credit courses.</li>
+          <li>Per-semester load structured by the printed curriculum (≈20 credits/sem).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. COURSE TYPES -->
+<section id="course-types" class="block">
+  <h2><i class="fa-solid fa-shapes"></i> 3. Course Types</h2>
+  <div class="topic"><div class="topic-head"><h3>Classification of Courses</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li><strong>Theory-only</strong>, <strong>Lab-only</strong>, <strong>Theory+Lab embedded</strong>, <strong>Project-only</strong>.</li>
+          <li>"Project &amp; Internship" group: Summer Internship, Research Project, Dissertation, Industrial Internship, Project-I/II, Study Oriented Project, Design Project, Internship-I/II, Dissertation-I/II.</li>
+          <li><strong>Class Based Learning (CBL)</strong> for traditional courses.</li>
+          <li>UG Research Experience (URE): TARP, Design Project, Lab Project, Product Development, Reading Course, Special Project, Simulation Project — each 3 credits.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li>Theory, <strong>Practical/Lab</strong>, <strong>Drawing/Design</strong>, <strong>Skill-Oriented</strong>, <strong>Mandatory non-credit (Audit)</strong>, Mini-Project, Internship, Capstone Project.</li>
+          <li>Skill-oriented: <strong>5 across Sem III-VII</strong> (2 domain + 2 advanced/job-oriented + 1 soft skill).</li>
+          <li>Mandatory non-credit: Environmental Sciences, Indian Constitution, Technical Paper Writing &amp; IPR, Design Thinking for Innovation, Tinkering Labs.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. COURSE CODE -->
+<section id="code" class="block">
+  <h2><i class="fa-solid fa-barcode"></i> 4. Course Code Format</h2>
+  <div class="topic"><div class="topic-head"><h3>Course Code Convention</h3><span class="badge b-uv">UNIQUE TO VIT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li><strong>8 alphanumeric characters</strong>: 4 alphabets (discipline) + 3 digits (1st = cognitive level, rest = running serial) + 1 alphabet (version).</li>
+          <li>Each course also has a versioned syllabus (e.g., v1.0 → v1.1 minor; → v2.0 major).</li>
+        </ul>
+      </div>
+      <div class="pane rec na"><h5>REC AR-23</h5>
+        <p>AR-23 does not prescribe an explicit alphanumeric code structure in the regulations; codes are listed in the curriculum / scheme document.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. COURSE REGISTRATION -->
+<section id="registration" class="block">
+  <h2><i class="fa-solid fa-circle-check"></i> 5. Course Registration / Add-Drop / Withdrawal</h2>
+  <div class="topic"><div class="topic-head"><h3>Registration Mechanics</h3><span class="badge b-uv">VIT IS UNIQUE</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT — Choice-Based Registration</h5>
+        <ul>
+          <li>Mandatory <strong>Course Registration</strong> on declared days; late registration up to 10 days with fee + Dean approval.</li>
+          <li><strong>Add/Drop</strong> permitted in <strong>first 3 instructional days</strong>; not available in summer/weekend.</li>
+          <li><strong>Course Withdrawal ("W")</strong>: after CAT-I if dissatisfied with performance, 3-day window; must keep ≥16 credits (graduating year exempt). Re-registered courses cannot be withdrawn. Fee charged.</li>
+          <li>"Wish list" inputs from students decide course offerings; choice of <strong>slot</strong> permitted.</li>
+          <li><strong>Pre-requisites, anti-requisites, co-requisites</strong> codified per course; F-grade in pre-req still allows higher-level registration (deemed exposure).</li>
+        </ul>
+      </div>
+      <div class="pane rec na"><h5>REC AR-23</h5>
+        <p>AR-23 does not feature a flexible per-semester registration mechanism — students are enrolled in their year's fixed curriculum. Re-registration of failed courses follows supplementary norms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. THEORY -->
+<section id="theory" class="block">
+  <h2><i class="fa-solid fa-file-pen"></i> 6. Evaluation — Theory Courses</h2>
+  <div class="topic"><div class="topic-head"><h3>Internal/External Split & Components</h3><span class="badge b-diff">FUNDAMENTALLY DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT — Class Based Learning</h5>
+        <p><strong>CAM 60% : FAT 40%</strong></p>
+        <table class="mini">
+          <tr><th>Component</th><th>Marks (Theory-only)</th></tr>
+          <tr><td>CAT-I (90 min, 50M → 15)</td><td>15</td></tr>
+          <tr><td>CAT-II (90 min, <em>open-book</em>, 50M → 15)</td><td>15</td></tr>
+          <tr><td>Digital Assignments (min 3 × 10)</td><td>30</td></tr>
+          <tr><td><strong>FAT</strong> (3 hr, 100M → 40)</td><td>40</td></tr>
+          <tr><td>Total</td><td>100</td></tr>
+        </table>
+        <ul>
+          <li><strong>≥80% HOTs questions</strong> in CAT &amp; FAT; <strong>100% HOTs</strong> in open-book CAT-II.</li>
+          <li>No re-CAT generally; exceptions for international internship / fellowship / placement / hospitalization.</li>
+          <li>Re-FAT only on hospitalization (≥1 wk) or family death; apply within 14 days.</li>
+          <li>Assignment mode (instead of digital assignment) can be substituted with HoD approval before semester start.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <p><strong>Internal 30 : External 70</strong></p>
+        <table class="mini">
+          <tr><th>Component</th><th>Marks</th></tr>
+          <tr><td>Subjective (Mid)</td><td>15</td></tr>
+          <tr><td>Objective (Mid)</td><td>10</td></tr>
+          <tr><td>Assignment</td><td>5</td></tr>
+          <tr><td><strong>End Semester Exam</strong></td><td>70</td></tr>
+          <tr><td>Total</td><td>100</td></tr>
+        </table>
+        <ul>
+          <li>Two Mids: <strong>Mid-1 → Units I-II</strong>; <strong>Mid-2 → Units III, IV, V</strong>.</li>
+          <li>Final mid mark = <strong>80% × better mid + 20% × other</strong>.</li>
+          <li>If absent in one mid: 80% × appeared mid + 20% × 0.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. MID / CAT -->
+<section id="mid" class="block">
+  <h2><i class="fa-solid fa-stopwatch"></i> 7. Mid-Semester / Continuous Assessment Structure</h2>
+  <div class="topic"><div class="topic-head"><h3>Continuous Assessment Tests</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li><strong>CAT-I</strong>: closed-book, 90 min, 50 marks → 15.</li>
+          <li><strong>CAT-II</strong>: <em>open-book / open-notebook</em>, 90 min, 50 marks → 15.</li>
+          <li><strong>Digital Assignments</strong>: minimum 3 × 10 marks (or alt continuous-assessment mode pre-approved).</li>
+          <li>Internal marks visible in student login ≥1 week before FAT; escalations within 2 days.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li><strong>Two Mid-Sem tests</strong> (Mid-1 + Mid-2): each 25 marks (15 subjective + 10 objective).</li>
+          <li>Plus 5 marks Assignment.</li>
+          <li><strong>Weighted final = 80% best + 20% other</strong>; absence handled as 80% appeared + 20% × 0.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. END EXAM -->
+<section id="end" class="block">
+  <h2><i class="fa-solid fa-scroll"></i> 8. End-Semester Exam Pattern</h2>
+  <div class="topic"><div class="topic-head"><h3>Question Paper Structure</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT — Final Assessment Test (FAT)</h5>
+        <ul>
+          <li>Duration: <strong>3 hours</strong>; max marks <strong>100</strong>, scaled to <strong>40</strong>.</li>
+          <li><strong>≥80% HOTs</strong> (analysis / evaluation / synthesis).</li>
+          <li>Conducted centrally by the <strong>Controller of Examinations (CoE)</strong>.</li>
+          <li>Detailed section breakdown set by Course Committee, not regulations.</li>
+          <li>LL.B / LL.M: 6 × 10-mark CAM (60%) + 100-mark FAT (40%); Moot court may serve as a CAM component.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — End Sem (70 marks)</h5>
+        <ul>
+          <li><strong>Q1</strong>: 10 short-answers × 2m = <strong>20 marks</strong> (all units).</li>
+          <li><strong>Q2-Q6</strong>: 5 "either/or" × 10m = <strong>50 marks</strong> (one per unit).</li>
+          <li>Total = <strong>70 marks</strong>, 3 hours.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. LAB -->
+<section id="lab" class="block">
+  <h2><i class="fa-solid fa-flask"></i> 9. Practical / Lab Course Evaluation</h2>
+  <div class="topic"><div class="topic-head"><h3>Lab Evaluation Breakdown</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li><strong>Lab-only</strong>: 60% continuous + 40% FAT.</li>
+          <li><strong>Embedded</strong>: combined in ratio <code>(L+T) : (P/2)</code>; FAT separate for theory and lab.</li>
+          <li>Pass lab: <strong>≥50% average across exercises</strong>; else "N" — re-register lab/whole course.</li>
+          <li>All <strong>soft-skill courses</strong> treated as lab → absolute grading, 60:40.</li>
+          <li>No re-evaluation provision for lab / practical / viva / project.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — Total 100 marks</h5>
+        <table class="mini">
+          <tr><td>Day-to-day evaluation</td><td>15</td></tr>
+          <tr><td>Internal Test</td><td>15</td></tr>
+          <tr><td>Procedure (end exam)</td><td>20</td></tr>
+          <tr><td>Experiment + Results</td><td>30</td></tr>
+          <tr><td>Viva-Voce</td><td>20</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>100</strong></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. DRAWING -->
+<section id="drawing" class="block">
+  <h2><i class="fa-solid fa-compass-drafting"></i> 10. Drawing / Design Course Evaluation</h2>
+  <div class="topic"><div class="topic-head"><h3>Drawing / Engineering Graphics</h3><span class="badge b-ur">UNIQUE TO REC</span></div>
+    <div class="topic-body">
+      <div class="pane vit na"><h5>VIT</h5>
+        <p>FFCS regulations do not prescribe a separate Drawing/Design pattern; such courses are treated per their LTPC (theory / lab / embedded) and the relative/absolute grading rules.</p>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — Drawing / Design (100 marks)</h5>
+        <table class="mini">
+          <tr><td>Day-to-day evaluation</td><td>15</td></tr>
+          <tr><td>Two Mid-Sem tests</td><td>15</td></tr>
+          <tr><td>End-Sem — 5 either/or × 14 marks</td><td>70</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>100</strong></td></tr>
+        </table>
+        <p>No objective-type questions in Drawing end-sem paper.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. SKILL -->
+<section id="skill" class="block">
+  <h2><i class="fa-solid fa-screwdriver-wrench"></i> 11. Skill-Oriented Course Evaluation</h2>
+  <div class="topic"><div class="topic-head"><h3>Skill / Soft-Skill Courses</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT — SEC &amp; AEC</h5>
+        <ul>
+          <li>Treated like lab courses (absolute grading regardless of class size).</li>
+          <li><strong>60% continuous + 40% FAT</strong>.</li>
+          <li>SEC and AEC baskets are programme-dependent.</li>
+          <li>All <strong>soft skill courses</strong> use this lab pattern.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — Skill Courses</h5>
+        <ul>
+          <li><strong>5 skill courses across Sem III-VII</strong>:
+            <ul><li>2 × Domain-specific skill</li><li>2 × Advanced / job-oriented</li><li>1 × Soft-skill course</li></ul>
+          </li>
+          <li>Evaluation: <strong>30 continuous + 70 end practical</strong> = 100 marks.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. PROJECT -->
+<section id="project" class="block">
+  <h2><i class="fa-solid fa-briefcase"></i> 12. Project Work & Internship</h2>
+  <div class="topic"><div class="topic-head"><h3>Mandatory Internships and Final Project</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li><strong>Industrial Internship</strong>: <strong>4 weeks</strong> in a reputed industry (one stretch of 4 wk or two of 2 wk), any time after Year 1.</li>
+          <li>Digital activity log + report + completion certificate uploaded; School "Industrial Internship Evaluation Committee" awards marks.</li>
+          <li><strong>Final-semester Project / Internship</strong>; 3-review timeline:
+            <ul>
+              <li>Review-1 (acceptance of title) — <strong>5%</strong></li>
+              <li>Review-2 (during CAT-I) — <strong>40%</strong></li>
+              <li>Draft report 10 days before viva — <strong>5%</strong></li>
+              <li>Synopsis 7 days before viva</li>
+              <li>Corrections 3 days before viva</li>
+              <li>Final report 1 day before viva</li>
+              <li>Review-3 (Final Viva during FAT) — <strong>50%</strong> (25% Guide + 25% External)</li>
+            </ul>
+          </li>
+          <li>Group projects ≤5 members; each student's report must have a distinct title.</li>
+          <li>Purchased / borrowed / duplicate projects ⇒ <strong>"N"</strong>, treated as malpractice; re-register.</li>
+          <li>PG: individual projects, mandatory paper at <strong>SET Conference</strong> (last week of every semester).</li>
+          <li>Reviews via video-conferencing possible; final viva must be in-person.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — Three Mandatory Internships</h5>
+        <ul>
+          <li><strong>Year-2 Community Service Project (CSP)</strong>: 8 weeks in Govt/NGO setting, <strong>50 marks</strong>.</li>
+          <li><strong>Year-3 Industry Internship</strong>: 8 weeks in Industry/MNC, <strong>50 marks</strong>.</li>
+          <li><strong>Final-Semester Full Internship + Project</strong>: <strong>200 marks total</strong>:
+            <ul><li>Internal — 60 (Supervisor 30 + DRC 30)</li><li>External Viva — 140</li></ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="topic"><div class="topic-head"><h3>Additional Learning / Hack-a-thons</h3><span class="badge b-uv">UNIQUE TO VIT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT — Additional Learning Marks</h5>
+        <ul>
+          <li>Up to <strong>20 bonus marks</strong> addable to CAM of <strong>one course per semester</strong> for Hack-a-thons / Make-a-thons (≥24 continuous hours, faculty-monitored, team ≤3, course-aligned).</li>
+          <li>Tiered: Participation 5 / Tangible output 10 / Creative input 15 / Prize-winner 20.</li>
+          <li>Cap: total internal incl. additional marks ≤ 60 (with 40 to FAT).</li>
+          <li>Online courses / workshops / seminars do <em>not</em> qualify for additional marks.</li>
+        </ul>
+      </div>
+      <div class="pane rec na"><h5>REC AR-23</h5><p>No equivalent "Hack-a-thon bonus marks" provision in AR-23.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. CAL (VIT unique) -->
+<section id="cal" class="block">
+  <h2><i class="fa-solid fa-flask-vial"></i> 13. Curriculum for Applied Learning (CAL)</h2>
+  <div class="topic"><div class="topic-head"><h3>Project-Embedded / Applied Learning</h3><span class="badge b-uv">UNIQUE TO VIT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT — CAL</h5>
+        <ul>
+          <li><strong>Curriculum for Applied Learning (CAL)</strong> was introduced in FFCS v3.0 (2015) and is now embedded throughout the curriculum.</li>
+          <li>"Learning-by-doing": project courses, group projects (≤5), real-world problem-driven assignments.</li>
+          <li>Three structured reviews per project course in a semester.</li>
+          <li>UG Research Experience (URE) project types — TARP, Design / Lab / Product Development / Reading / Simulation / Special Project — each 3 credits, sequential registration.</li>
+        </ul>
+      </div>
+      <div class="pane rec na"><h5>REC AR-23</h5><p>No CAL framework; applied-learning intent embedded via mandatory internships, skill-oriented courses, and tinkering labs.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. MINI-PROJECT -->
+<section id="mini" class="block">
+  <h2><i class="fa-solid fa-cubes-stacked"></i> 14. Mini-Project / Capstone Project</h2>
+  <div class="topic"><div class="topic-head"><h3>Smaller Project Courses</h3><span class="badge b-part">BOTH HAVE</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li>"Project type" courses (e.g., Mini Project) carrying 2-3 credits may be registered in summer/weekend semester.</li>
+          <li>Evaluated by the Guide along with the HoD (not full Project Monitoring Committee).</li>
+          <li>3-credit URE project courses (TARP / Design Project / etc.) act as mini-projects, counted under DE / OE per curriculum.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li>Mini-Project carried out in the curriculum prior to the Capstone.</li>
+          <li><strong>Capstone Project</strong> = the final-semester Internship + Project (200 marks, see above).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15. PASS CRITERIA -->
+<section id="pass" class="block">
+  <h2><i class="fa-solid fa-check-double"></i> 15. Pass Criteria</h2>
+  <div class="topic"><div class="topic-head"><h3>Minimum Marks to Clear a Course</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li>Theory FAT: <strong>≥40%</strong> of FAT alone.</li>
+          <li>Lab / Project component: <strong>≥50%</strong> of component (average across exercises).</li>
+          <li>Grand total (in credit ratio for 100): <strong>≥50%</strong> (except theory-only courses).</li>
+          <li><strong>Theory-only courses</strong>: pass is set by the <strong>relative grading band</strong> (Mean − 2σ floor).</li>
+          <li><strong>No minimum</strong> mark on CAM.</li>
+          <li>If E-grade band falls below 50, that band sets the pass mark; if above 50, students above absolute 50 still passed as "E".</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li>End-Sem: <strong>≥35%</strong> (≥24.5/70).</li>
+          <li>Internal + External combined: <strong>≥40%</strong> (≥40/100).</li>
+          <li>Both required.</li>
+          <li>Mandatory non-credit: <strong>≥40%</strong> in 30-mark internal evaluation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16. GRADING -->
+<section id="grade" class="block">
+  <h2><i class="fa-solid fa-table-list"></i> 16. Grading System</h2>
+  <div class="topic"><div class="topic-head"><h3>Letter Grades and Grade Points</h3><span class="badge b-part">SIMILAR LETTERS · DIFFERENT PHILOSOPHY</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT — 10-pt, Relative + Absolute</h5>
+        <table class="mini">
+          <tr><th>Grade</th><th>Pt</th><th>Remark</th></tr>
+          <tr><td>S</td><td>10</td><td>Pass</td></tr><tr><td>A</td><td>9</td><td>Pass</td></tr><tr><td>B</td><td>8</td><td>Pass</td></tr><tr><td>C</td><td>7</td><td>Pass</td></tr><tr><td>D</td><td>6</td><td>Pass</td></tr><tr><td>E</td><td>5</td><td>Pass</td></tr>
+          <tr><td>F</td><td>0</td><td>Fail — re-register</td></tr><tr><td>N</td><td>0</td><td>Incomplete / debarred / absent FAT / malpractice</td></tr>
+          <tr><td>W</td><td>—</td><td>Withdrawn</td></tr><tr><td>U</td><td>—</td><td>Audit completed</td></tr><tr><td>P</td><td>—</td><td>Pass-Fail course passed</td></tr>
+        </table>
+        <p><strong>Relative</strong> (theory class &gt;10): Mean ± 0.5σ / 1.0σ / 1.5σ / 2.0σ. <strong>Absolute</strong> for theory ≤10, all labs, soft skills, projects, NGCR.</p>
+        <table class="mini">
+          <tr><th>Absolute</th><th>Marks</th></tr>
+          <tr><td>S</td><td>≥90</td></tr><tr><td>A</td><td>80-89</td></tr><tr><td>B</td><td>70-79</td></tr><tr><td>C</td><td>60-69</td></tr><tr><td>D</td><td>55-59</td></tr><tr><td>E</td><td>50-54</td></tr><tr><td>F</td><td>&lt;50</td></tr>
+        </table>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — 10-pt, Absolute</h5>
+        <table class="mini">
+          <tr><th>Grade</th><th>Pt</th><th>Range</th></tr>
+          <tr><td>S</td><td>10</td><td>Outstanding</td></tr><tr><td>A</td><td>9</td><td>Excellent</td></tr><tr><td>B</td><td>8</td><td>Very Good</td></tr><tr><td>C</td><td>7</td><td>Good</td></tr><tr><td>D</td><td>6</td><td>Fair</td></tr><tr><td>E</td><td>5</td><td>Satisfactory / Pass</td></tr>
+          <tr><td>F</td><td>0</td><td>Fail</td></tr><tr><td>AB</td><td>0</td><td>Absent</td></tr>
+        </table>
+        <p>Absolute only. Distinct "<strong>AB</strong>" for absent (VIT uses "N" for this).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17. SGPA / CGPA -->
+<section id="sgpa" class="block">
+  <h2><i class="fa-solid fa-square-root-variable"></i> 17. SGPA &amp; CGPA Formulas</h2>
+  <div class="topic"><div class="topic-head"><h3>Computation</h3><span class="badge b-same">SAME FORMULA · MINOR DIFFERENCES</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <p>GPA = <code>Σ(Cᵢ × GPᵢ) / Σ Cᵢ</code> per semester. CGPA same across all semesters since joining.</p>
+        <ul>
+          <li>Failed-course credits counted <strong>only once</strong>, even after re-attempts.</li>
+          <li><strong>Excluded</strong>: P-grade, Audit, Honours, Minor, W courses.</li>
+          <li>GPA/CGPA rounded to <strong>2 decimals</strong>.</li>
+          <li>Programme rank by CGPA; ties share rank, next rank skips.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <p>SGPA = <code>Σ(Cᵢ × GPᵢ) / Σ Cᵢ</code>; CGPA = same across all semesters.</p>
+        <ul>
+          <li>"AB" / "F" carry 0 grade points.</li>
+          <li>Honors credits excluded from B.Tech CGPA computation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18. CGPA→% -->
+<section id="pct" class="block">
+  <h2><i class="fa-solid fa-percent"></i> 18. CGPA → Percentage Conversion</h2>
+  <div class="topic"><div class="topic-head"><h3>Conversion Formula</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <p>Percentage = <strong>CGPA × 10</strong>. Example: 8.75 → 87.5%. CoE issues conversion certificate.</p>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <p>Percentage = <strong>(CGPA − 0.5) × 10</strong>. Example: 8.75 → 82.5%. Standard JNTU / AP autonomous formula.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 19. CLASS AWARD -->
+<section id="class" class="block">
+  <h2><i class="fa-solid fa-award"></i> 19. Award of Class / Division</h2>
+  <div class="topic"><div class="topic-head"><h3>Classification of the Degree</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li><strong>No class / division</strong> awarded.</li>
+          <li>Consolidated Grade Sheet and Degree Certificate mention only the <strong>CGPA</strong>.</li>
+          <li>Top performers may enter <strong>Honours Club</strong> (CGPA ≥ 9.25, no F, no debar) → conference sponsorship / merit certificate / cash awards.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — Four Classes</h5>
+        <table class="mini">
+          <tr><th>Class</th><th>CGPA</th></tr>
+          <tr><td><strong>Distinction</strong></td><td>≥ 7.5</td></tr>
+          <tr><td><strong>First Class</strong></td><td>≥ 6.5</td></tr>
+          <tr><td><strong>Second Class</strong></td><td>≥ 5.5</td></tr>
+          <tr><td><strong>Pass</strong></td><td>≥ 5.0</td></tr>
+        </table>
+        <p>No class awarded for Honors / Minor specialization.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 20. ATTENDANCE -->
+<section id="att" class="block">
+  <h2><i class="fa-solid fa-user-check"></i> 20. Attendance Requirements</h2>
+  <div class="topic"><div class="topic-head"><h3>Minimum Attendance &amp; Condonation</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li>Expected 100%; permitted minimum <strong>75% per course</strong>, per exam component (CAT-I, CAT-II, FAT).</li>
+          <li>25% absence covers <em>all</em> reasons (medical, personal, NCC/NSS, events) — <strong>no proof required</strong>.</li>
+          <li>Falling below 75% before any component ⇒ "<strong>Debarred</strong>"; absent at FAT ⇒ <strong>"N" grade</strong> → re-register.</li>
+          <li><strong>9-point CGPA exemption</strong>: CGPA ≥ 9.00 + no backlog → exempt for that exam (status recomputed dynamically). Not available in summer/weekend.</li>
+          <li>Beyond 25% absence (prolonged illness) ⇒ apply for <strong>Break of Study</strong>.</li>
+          <li><strong>Sectional holidays</strong> for Meelad-un-Nabi, Muharram, Bakrid, Onam, Telugu New Year, Good Friday — requests through Proctor.</li>
+          <li>No condonation fee structure mentioned.</li>
+          <li>Benchmark-disability students may get +30 min CAT / +60 min FAT at Dean/CoE discretion.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li><strong>40% minimum per course</strong> + <strong>75% aggregate</strong> required for promotion.</li>
+          <li>Condonation rules per JNTU-GV norms (typically 65-74% with medical proof + prescribed fee).</li>
+          <li>Attendance counts toward aggregate for mandatory non-credit courses.</li>
+          <li>Shortfall = detention from end-sem exams; re-registration in subsequent semester required.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 21. PROMOTION -->
+<section id="promo" class="block">
+  <h2><i class="fa-solid fa-arrow-up-right-dots"></i> 21. Promotion Rules</h2>
+  <div class="topic"><div class="topic-head"><h3>Year-to-Year Promotion</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li><strong>Automatic promotion</strong> to next semester / year regardless of performance.</li>
+          <li>CGPA &lt; 4.00 → restricted to ≤16 credits per semester until CGPA crosses 4.00.</li>
+          <li>Persistent failure → studentship may be cancelled by Dean Academics' Committee → VC.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li>Promotion requires <strong>aggregate attendance (75%)</strong> and prescribed credit thresholds at end of each year (JNTU-style — typically ≥50% of preceding-years' credits earned).</li>
+          <li>Failure to meet credit norms → year-back detention.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 22. MAX DURATION -->
+<section id="dur" class="block">
+  <h2><i class="fa-solid fa-hourglass-half"></i> 22. Maximum Duration to Complete Degree</h2>
+  <div class="topic"><div class="topic-head"><h3>Time Limit</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li>Maximum = <strong>n + 3 years</strong> (B.Tech 4 → max 7).</li>
+          <li>Beyond n+3 → studentship <strong>automatically cancelled</strong>, no formal notice.</li>
+          <li><strong>Break of Study</strong> (max 1 yr) for medical reasons extends the limit by break period — once per programme.</li>
+          <li>Drop after semester start: fees not refunded; before start: semester continuation fee + balance carried over.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li>Maximum <strong>= 2n = 8 years</strong> for B.Tech.</li>
+          <li>NEP optional gap year permitted under multiple entry-exit.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 23. RE-REGISTRATION -->
+<section id="reg" class="block">
+  <h2><i class="fa-solid fa-rotate-right"></i> 23. Re-Registration / Supplementary Exams</h2>
+  <div class="topic"><div class="topic-head"><h3>Backlog Handling</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li>"F" grade ⇒ re-register the <strong>whole course</strong> (all components reset); fee per university norms.</li>
+          <li>"N" grade ⇒ if some components cleared, only failed component(s) re-registered.</li>
+          <li>Re-registration possible in Fall / Winter / Weekend Intra / Summer semesters.</li>
+          <li><strong>Arrear examination</strong> option available after final semester (must register all components; no component-only).</li>
+          <li><strong>Grade Improvement</strong> (Sec 15): one re-registration per course; max 1 per regular semester (more in graduating / timed-out year).</li>
+          <li><strong>Course Substitution</strong>: failed DE / OE replaceable by another in same basket; not allowed for FC/DC/DLEC.</li>
+          <li>Re-evaluation of FAT: deviation &gt;5% → 3<sup>rd</sup> evaluator; best of two/three; ≤5% → best of two. No re-evaluation for labs/viva/project/comprehensive/soft-skill.</li>
+          <li>Further dispute → <strong>Examination Appellate Committee</strong>; their marks final.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li>Supplementary exams offered each semester for "F" / "AB".</li>
+          <li>Mandatory non-credit courses: re-exam available on failure.</li>
+          <li>Internal (mid-sem) marks generally carry forward; re-registration when supplementary attempts exhausted.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 24. HONORS -->
+<section id="honors" class="block">
+  <h2><i class="fa-solid fa-medal"></i> 24. Honors / Honours Degree</h2>
+  <div class="topic"><div class="topic-head"><h3>Eligibility &amp; Credit Requirement</h3><span class="badge b-diff">DIFFERENT CREDITS</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT — 'Honours' Credential</h5>
+        <ul>
+          <li>Honours = additional credits in <strong>own major discipline</strong>.</li>
+          <li>Required: <strong>minimum 18 credits</strong> in prescribed Honours basket (extra to normal curriculum).</li>
+          <li>Avg CGPA in Honours courses ≥ <strong>7.50</strong>.</li>
+          <li>Must be completed within <strong>minimum programme time limit</strong>.</li>
+          <li>Honours grades excluded from main programme CGPA.</li>
+          <li>If withdrawn mid-way → completed Honours courses converted to "Audit".</li>
+          <li>Degree reads: "B.Tech (Honours) in Computer Science Engineering with specialization in Data Science".</li>
+          <li>No relaxation on semester credit cap (16-27); Honours load must fit within.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — Honors</h5>
+        <ul>
+          <li>Eligibility: <strong>CGPA ≥ 7.5</strong>, <strong>no backlogs</strong>.</li>
+          <li>Register from <strong>Sem IV</strong> onwards.</li>
+          <li><strong>+15 credits</strong> over and above 160 (total 175).</li>
+          <li>Max <strong>2 Honors subjects per semester</strong> from Sem V onwards.</li>
+          <li>All Honors subjects from the <strong>same parent department</strong>.</li>
+          <li><strong>75% attendance separately</strong> for Honors courses.</li>
+          <li><strong>No class / division</strong> awarded for Honors.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 25. MINOR -->
+<section id="minor" class="block">
+  <h2><i class="fa-solid fa-puzzle-piece"></i> 25. Minor Degree</h2>
+  <div class="topic"><div class="topic-head"><h3>Eligibility &amp; Credits</h3><span class="badge b-diff">FUNDAMENTALLY DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT — 'Minor' Credential</h5>
+        <ul>
+          <li>Minor = additional credits in a <strong>discipline other than own major</strong>.</li>
+          <li>Required: <strong>minimum 18 credits</strong> as <em>additional</em> load (beyond curriculum).</li>
+          <li>Avg CGPA in Minor courses ≥ <strong>7.50</strong>.</li>
+          <li>FC/DC of own curriculum <strong>cannot</strong> be counted toward Minor.</li>
+          <li>No relaxation on semester credit cap; must fit within 16-27.</li>
+          <li>Minor grades excluded from main programme CGPA.</li>
+          <li>Degree reads: "B.Tech in Civil Engineering with Minor in Data Science".</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — Minor</h5>
+        <ul>
+          <li>Structure: <strong>2 compulsory courses (6 credits) + 2+ electives (6 credits) = 12 credits total</strong>.</li>
+          <li>Credits achievable <strong>within the 160 credits</strong> of B.Tech — can use <strong>Open Elective slots</strong>.</li>
+          <li>Cannot overlap with major's syllabus.</li>
+          <li>No class/division awarded for Minor.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 26. LATERAL ENTRY -->
+<section id="lateral" class="block">
+  <h2><i class="fa-solid fa-right-to-bracket"></i> 26. Lateral Entry</h2>
+  <div class="topic"><div class="topic-head"><h3>Diploma-Holder Direct Admission to Sem-III</h3><span class="badge b-ur">DETAILED IN REC ONLY</span></div>
+    <div class="topic-body">
+      <div class="pane vit na"><h5>VIT</h5>
+        <p>FFCS regulations do not contain a separate lateral-entry chapter — admission is governed by VITEEE / the year's admissions brochure. Inter-University credit transfer (Sec 16) and intra-VIT programme migration cover related cases.</p>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li>Diploma / B.Sc. graduates admitted directly to <strong>Sem-III</strong> (Year 2).</li>
+          <li>Total credits = <strong>120</strong> in 3 years.</li>
+          <li>Governed by JNTU-GV ECET norms.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 27. NEP -->
+<section id="nep" class="block">
+  <h2><i class="fa-solid fa-door-open"></i> 27. Multiple Entry-Exit (NEP-2020)</h2>
+  <div class="topic"><div class="topic-head"><h3>NEP Exit Awards</h3><span class="badge b-ur">UNIQUE TO REC</span></div>
+    <div class="topic-body">
+      <div class="pane vit na"><h5>VIT</h5>
+        <p>FFCS v4.0 does not formally prescribe NEP-style multiple entry-exit credentials. VIT continues the continuous-programme model + Honours / Minor / Honours Club credentials.</p>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — NEP-Aligned Exit Awards</h5>
+        <table class="mini">
+          <tr><th>Year Completed</th><th>Credits</th><th>Award</th></tr>
+          <tr><td>Year 1</td><td>40 + 10 internship</td><td>UG Certificate</td></tr>
+          <tr><td>Year 2</td><td>80 + 10 internship</td><td>UG Diploma</td></tr>
+          <tr><td>Year 3</td><td>120</td><td>B.Sc. (Engg) — 3-yr exit</td></tr>
+          <tr><td>Year 4</td><td>160</td><td>B.Tech Degree</td></tr>
+        </table>
+        <p>Optional <strong>gap year</strong> permitted between exits; re-entry allowed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 28. GAP YEAR -->
+<section id="gap" class="block">
+  <h2><i class="fa-solid fa-pause"></i> 28. Gap Year / Break of Study</h2>
+  <div class="topic"><div class="topic-head"><h3>Permitted Pause in Studies</h3><span class="badge b-part">BOTH HAVE · DIFFERENT TERMS</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li><strong>Break of Study</strong> = max <strong>1 year</strong>, only on medical/serious grounds.</li>
+          <li>Recommendation by School Dean → approval by Dean Academics → Registrar order.</li>
+          <li>Programme duration extended by break period; <strong>once per programme</strong>.</li>
+          <li>Debarment / disciplinary suspension does <em>not</em> count as break of study.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li>NEP-style <strong>optional gap year</strong> permitted between exit-points.</li>
+          <li>Student re-joins at the same level after the gap.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 29. MOOCS -->
+<section id="moocs" class="block">
+  <h2><i class="fa-solid fa-globe"></i> 29. MOOCs / Online Courses</h2>
+  <div class="topic"><div class="topic-head"><h3>SWAYAM / NPTEL Integration</h3><span class="badge b-part">SIMILAR INTENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li>Students may register <strong>SWAYAM-NPTEL</strong> online courses.</li>
+          <li>Credits earned claimable only under <strong>Open Elective</strong> category.</li>
+          <li>No fixed minimum MOOC count mandated.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li><strong>At least 1 MOOC course mandatory</strong> for all students.</li>
+          <li>Credits recognized within B.Tech curriculum.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 30. CT -->
+<section id="ct" class="block">
+  <h2><i class="fa-solid fa-right-left"></i> 30. Credit Transfer</h2>
+  <div class="topic"><div class="topic-head"><h3>Inter-Institutional Credit Mobility</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li>Within VIT (programme migration after Year-1): matching courses' credits and <strong>grades</strong> transferred (count toward CGPA).</li>
+          <li>From approved external universities: only credits transfer; grades excluded; total noted at bottom of Consolidated Grade Sheet.</li>
+          <li><strong>Semester Abroad Program (SAP)</strong>: B.Tech in Sem 6-8, eligibility CGPA ≥ 7, no backlog. Duration 4-5 mo (min) to 8-10 mo. Max <strong>21 credits</strong> transferable (PE/DE/OE only). Grades count toward CGPA.</li>
+          <li>Partner Universities or Top-500 QS / THE / Shanghai-ranked institutions only.</li>
+          <li>Two options: Option-I (project at partner univ with both guides), Option-II (internship/project elsewhere with credit transfer).</li>
+          <li>Period of SAP for BCA/B.Sc/B.Com/BBA = Sem 5-6; MBA = Year 2; M.Tech/M.Sc 2-yr = Sem 3 and/or 4.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li>Credit transfer permitted via the <strong>Academic Bank of Credits (ABC)</strong> as per UGC norms.</li>
+          <li>MOOCs / cross-institutional credits accepted within prescribed limits.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 31. ABC -->
+<section id="abc" class="block">
+  <h2><i class="fa-solid fa-vault"></i> 31. Academic Bank of Credits (ABC)</h2>
+  <div class="topic"><div class="topic-head"><h3>ABC Registration</h3><span class="badge b-ur">EXPLICIT IN REC</span></div>
+    <div class="topic-body">
+      <div class="pane vit na"><h5>VIT</h5>
+        <p>FFCS regulations do not explicitly invoke ABC; SAP and SWAYAM-NPTEL credit-transfer routes are the documented mechanisms.</p>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li>AR-23 explicitly aligned with <strong>Academic Bank of Credits</strong> (UGC initiative).</li>
+          <li>Credits can be deposited / withdrawn from ABC to support multiple entry-exit.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 32. BLENDED -->
+<section id="blended" class="block">
+  <h2><i class="fa-solid fa-chalkboard"></i> 32. Blended / Flipped Learning</h2>
+  <div class="topic"><div class="topic-head"><h3>Pedagogy</h3><span class="badge b-ur">EXPLICIT IN REC</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT</h5>
+        <ul>
+          <li>Emphasis on <strong>experiential / learning-by-doing</strong>, project-style courses, HOTs, slot-based timetable, FFCS.</li>
+          <li>No fixed % of "blended" courses prescribed.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul><li><strong>~25% of courses preferred to be offered in blended-learning mode</strong> (online + offline).</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 33. MANDATORY / AUDIT -->
+<section id="audit" class="block">
+  <h2><i class="fa-solid fa-book-bookmark"></i> 33. Mandatory Non-Credit / Audit Courses</h2>
+  <div class="topic"><div class="topic-head"><h3>Non-CGPA Courses</h3><span class="badge b-diff">DIFFERENT</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT — Audit Courses</h5>
+        <ul>
+          <li>B.Tech / M.Tech (SE) / Int M.Sc: max <strong>2 audit courses</strong>; other PG: 1 audit course.</li>
+          <li>Eligibility: <strong>CGPA ≥ 8.00</strong> at registration.</li>
+          <li>Must meet minimum attendance even for audit.</li>
+          <li>FC/DC/DLEC of own curriculum <strong>cannot</strong> be audited.</li>
+          <li>On performance grade → recorded as "<strong>U</strong>" grade; not counted in CGPA.</li>
+          <li>Late registration not permitted for audit. Only 1 audit per semester (except graduating year).</li>
+          <li>UG students with CGPA ≥ 8.00 may also register a <strong>Post-Graduate level course</strong> against OE option.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — Mandatory Non-Credit Courses</h5>
+        <ul>
+          <li>Mandatory courses (no credits):
+            <ul>
+              <li>Environmental Sciences</li>
+              <li>Indian Constitution</li>
+              <li>Technical Paper Writing &amp; IPR</li>
+              <li>Design Thinking for Innovation</li>
+              <li>Tinkering Labs</li>
+            </ul>
+          </li>
+          <li>Evaluation: <strong>30 internal marks</strong>, <strong>≥40% to pass</strong>.</li>
+          <li>Attendance counts toward aggregate.</li>
+          <li><strong>Re-exam available</strong> on failure.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 34. INDUCTION -->
+<section id="induction" class="block">
+  <h2><i class="fa-solid fa-handshake"></i> 34. Induction Programme</h2>
+  <div class="topic"><div class="topic-head"><h3>Welcome / Orientation</h3><span class="badge b-ur">FORMAL IN REC</span></div>
+    <div class="topic-body">
+      <div class="pane vit na"><h5>VIT</h5>
+        <p>No formal multi-week induction programme is codified in FFCS regulations. <strong>Bridge Courses</strong> (Sec 7.2) are auto-registered in Sem-I for students needing them, based on screening or prior qualification. Bridge-course credits/grades do not count toward CGPA or minimum credit requirement.</p>
+      </div>
+      <div class="pane rec"><h5>REC AR-23</h5>
+        <ul>
+          <li><strong>3-week mandatory Induction Programme</strong> for all fresh entrants in Sem-I (per AICTE model).</li>
+          <li>Includes universal human values, mentor-mentee, literary/creative arts, physical activity, lectures by eminent people, visits, familiarization with local area/college.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 35. CODE OF CONDUCT / DISCIPLINE -->
+<section id="discipline" class="block">
+  <h2><i class="fa-solid fa-gavel"></i> 35. Code of Conduct / Discipline / Academic Malpractice</h2>
+  <div class="topic"><div class="topic-head"><h3>Discipline Rules</h3><span class="badge b-diff">DIFFERENT EMPHASIS</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT — Academic Malpractice</h5>
+        <ul>
+          <li>Each case enquired by a <strong>"Malpractice Committee"</strong> constituted by the University.</li>
+          <li><strong>CAT-level malpractice</strong> → <strong>zero marks</strong> in <em>all subjects</em> of that semester's CAT.</li>
+          <li><strong>FAT-level malpractice</strong> → <strong>"N" grade</strong> in <em>all FAT-eligible courses</em> of that semester; student must re-register.</li>
+          <li>Submitting bought/borrowed/duplicate project → <strong>"N" + malpractice</strong>; re-register.</li>
+          <li><strong>"N" grade also awarded for acts of indiscipline</strong> (regardless of academic performance).</li>
+          <li>"Outstanding dues" → registration permitted but classes barred until fees paid.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — Discipline &amp; Anti-Ragging</h5>
+        <ul>
+          <li>Discipline governed by the College Code of Conduct.</li>
+          <li>Detailed <strong>statutory anti-ragging penalties</strong> under AP Legislative Assembly Act 26 of 1997 (see Section 36 below).</li>
+          <li>Indiscipline / malpractice handled by the Examination Committee &amp; Disciplinary Committee per JNTU-GV norms.</li>
+          <li>Mandatory anti-ragging undertaking signed at admission.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 36. ANTI-RAGGING -->
+<section id="ragging" class="block">
+  <h2><i class="fa-solid fa-shield-halved"></i> 36. Anti-Ragging Rules &amp; Penalties</h2>
+  <div class="topic"><div class="topic-head"><h3>Statutory Framework</h3><span class="badge b-ur">DETAILED IN REC ONLY</span></div>
+    <div class="topic-body">
+      <div class="pane vit na"><h5>VIT</h5>
+        <p>The FFCS Academic Regulations document does not separately enumerate anti-ragging penalties; ragging is governed by VIT's separate disciplinary policy and the UGC Anti-Ragging Regulations, 2009.</p>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — Under AP Act 26 of 1997</h5>
+        <table class="mini">
+          <tr><th>Offence</th><th>Imprisonment</th><th>Fine</th></tr>
+          <tr><td>Teasing / embarrassing / humiliating</td><td>up to <strong>6 months</strong></td><td>₹1,000</td></tr>
+          <tr><td>Assaulting / criminal intimidation</td><td>up to <strong>1 year</strong></td><td>₹2,000</td></tr>
+          <tr><td>Wrongful restraint</td><td>up to <strong>2 years</strong></td><td>₹5,000</td></tr>
+          <tr><td>Grievous hurt / kidnapping</td><td>up to <strong>5 years</strong></td><td>₹10,000</td></tr>
+          <tr><td>Causing death / abetting suicide</td><td>up to <strong>10 years</strong></td><td>₹50,000</td></tr>
+        </table>
+        <p><strong>Anti-Ragging Toll-Free Helpline: 1800-425-1288</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 37. UNIQUE FEATURES -->
+<section id="unique" class="block">
+  <h2><i class="fa-solid fa-star"></i> 37. Unique Institutional Features</h2>
+  <div class="topic"><div class="topic-head"><h3>Distinctive Mechanisms</h3><span class="badge b-part">SIDE-BY-SIDE HIGHLIGHTS</span></div>
+    <div class="topic-body">
+      <div class="pane vit"><h5>VIT — Unique to FFCS</h5>
+        <ul>
+          <li><strong>FFCS™ — Fully Flexible Credit System</strong>: students choose courses, faculty, slots; build their own timetable.</li>
+          <li><strong>Slot-based timetable</strong>: students may have entirely different timetables.</li>
+          <li><strong>CAL — Curriculum for Applied Learning</strong> (since 2015).</li>
+          <li><strong>Proctor (Faculty Advisor)</strong> system — one per student.</li>
+          <li><strong>Add/Drop</strong> window: first 3 instructional days.</li>
+          <li><strong>Course Withdrawal</strong> ("W") after CAT-I, 3-day window, ≥16 credits remain.</li>
+          <li><strong>Course Substitution</strong>: failed DE/OE replaceable by another in same basket.</li>
+          <li><strong>Grade Improvement</strong>: re-register a passed course once for improvement.</li>
+          <li><strong>Honours Club</strong>: CGPA ≥ 9.25, no F / debar — conference sponsorship, merit cert, cash awards.</li>
+          <li><strong>Semester Abroad Program (SAP)</strong>: structured Sem 6-8 abroad with 21-credit transfer cap.</li>
+          <li><strong>UG Research Experience (URE)</strong>: TARP, Design / Lab / Product / Reading / Simulation projects.</li>
+          <li><strong>SET Conference</strong>: end-of-semester student-research conference; mandatory PG paper.</li>
+          <li><strong>Weekend Intra-Semester &amp; Summer Semesters</strong> for backlog clearing.</li>
+          <li><strong>Course Equivalence</strong> &amp; versioned syllabi: students can re-register newer versions.</li>
+          <li><strong>Bridge Courses</strong> auto-registered in Sem-I based on screening.</li>
+          <li><strong>Sectional holidays</strong>: Meelad-un-Nabi, Muharram, Bakrid, Onam, Telugu New Year, Good Friday.</li>
+          <li><strong>9-point attendance exemption</strong> for CGPA ≥ 9.00.</li>
+          <li><strong>Examination Appellate Committee</strong> for re-evaluation disputes.</li>
+          <li><strong>HOTs question requirement</strong>: ≥80% in CAT/FAT, 100% in open-book CAT-II.</li>
+          <li><strong>UG → PG course registration</strong>: CGPA ≥ 8 students can credit/audit PG-level courses against OE.</li>
+        </ul>
+      </div>
+      <div class="pane rec"><h5>REC AR-23 — Unique Features</h5>
+        <ul>
+          <li><strong>CBCS + NEP-2020 multiple entry-exit</strong> framework: UG Certificate, UG Diploma, B.Sc. (Engg), B.Tech.</li>
+          <li><strong>Three-tier mandatory internships</strong>: Community Service Project (Yr 2), Industry Internship (Yr 3), Final-Semester Full Internship + Project (200 marks).</li>
+          <li><strong>Drawing/Design course evaluation pattern</strong> explicitly codified (15+15+70).</li>
+          <li><strong>Skill courses across Sem III-VII</strong>: 5 courses (2 domain + 2 advanced + 1 soft) at 30+70.</li>
+          <li>Mandatory non-credit audit courses: Environmental Sciences, Indian Constitution, Technical Paper Writing &amp; IPR, Design Thinking, Tinkering Labs.</li>
+          <li><strong>Award of Class</strong> based on CGPA (Distinction / First / Second / Pass).</li>
+          <li><strong>CGPA→% formula = (CGPA − 0.5) × 10</strong> (AP autonomous convention).</li>
+          <li><strong>3-week Induction Programme</strong>.</li>
+          <li>Explicit <strong>ABC alignment</strong>.</li>
+          <li><strong>25% blended-learning</strong> mode preferred.</li>
+          <li><strong>At least 1 mandatory MOOC</strong>.</li>
+          <li>Statutory anti-ragging penalties under <strong>AP Act 26 of 1997</strong> + helpline 1800-425-1288.</li>
+          <li>Honors degree of <strong>+15 credits</strong> (≤2 subjects/sem, same-department, attendance separate).</li>
+          <li>Minor degree of <strong>12 credits within 160</strong> — more accessible than VIT's 18-extra model.</li>
+          <li>Lateral entry standard 120-credit / 3-year path.</li>
+          <li>Two mid-sem tests with <strong>80%/20% weighted scoring</strong>.</li>
+          <li>Affiliated to <strong>JNTU-GV</strong>; NAAC <strong>A+</strong>; autonomous; 9 branches including AIML, DS, CY, IoT.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY TAKEAWAYS -->
+<section id="takeaways" class="block">
+  <h2><i class="fa-solid fa-lightbulb"></i> Key Takeaways at a Glance</h2>
+  <div class="topic">
+    <div class="topic-body" style="grid-template-columns:1fr;">
+      <div class="pane" style="background:#fff;">
+        <ol>
+          <li><strong>Philosophy</strong> — VIT is choice-driven and flexible (FFCS + CAL); REC is structured and NEP-aligned (CBCS, multiple entry-exit).</li>
+          <li><strong>Evaluation weightage</strong> — VIT places 60% on continuous assessment and 40% on the end exam; REC reverses this (30 : 70). VIT's continuous portion is assignment-heavy (30 marks); REC's is mid-test-heavy.</li>
+          <li><strong>Grading</strong> — VIT uses class-wise <strong>relative grading</strong> for theory (with absolute fallback); REC uses pure <strong>absolute grading</strong>. VIT has no class/division; REC awards Distinction / First / Second / Pass.</li>
+          <li><strong>Pass mark</strong> — VIT: ≥40% in FAT alone <em>and</em> ≥50% overall (theory-only graded relatively). REC: ≥35% end exam <em>and</em> ≥40% overall.</li>
+          <li><strong>CGPA → %</strong> — VIT × 10; REC (CGPA − 0.5) × 10 (5-point delta).</li>
+          <li><strong>Attendance</strong> — VIT 75% per course (with 9-CGPA exemption); REC 40% per course + 75% aggregate.</li>
+          <li><strong>Honours / Minor</strong> — VIT requires 18 + 18 <em>extra</em> credits (≥7.5 CGPA). REC offers +15 Honors and 12-credit Minor <em>within</em> 160 — more accessible.</li>
+          <li><strong>Internship volume</strong> — REC mandates three (CSP, II, Final-Sem 200-mark capstone); VIT requires only 4-week industrial + final-semester project.</li>
+          <li><strong>NEP entry/exit</strong> — Formal in REC; not codified in VIT FFCS v4.0.</li>
+          <li><strong>Unique to VIT</strong>: FFCS, slot timetable, CAL, Proctor, SAP, Honours Club, Hack-a-thon bonus marks, weekend/summer semesters, course substitution &amp; equivalence, relative grading, re-FAT, Examination Appellate Committee.</li>
+          <li><strong>Unique to REC</strong>: NEP multi-exit, ABC, 25% blended learning, mandatory MOOC, statutory anti-ragging penalties, codified drawing/skill evaluation, three mandatory internships, 3-week induction, mandatory audit courses with re-exam, AP-formula CGPA conversion.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <h4>Source Documents</h4>
+  <p>
+    <strong>VIT</strong>: <em>FFCS Academic Regulations, Version 4.0</em> — Vellore Institute of Technology, approved 13 Dec 2023 (72<sup>nd</sup> Academic Council). PDF: <a href="https://vit.ac.in/sites/default/files/academic/Academic-Regulations.pdf">vit.ac.in/sites/default/files/academic/Academic-Regulations.pdf</a>
+    <br>
+    <strong>REC</strong>: <em>Raghu Engineering College AR-23 Academic Regulations</em> — Raghu Engineering College (Autonomous), affiliated to JNTU-GV, Visakhapatnam, NAAC A+.
+  </p>
+  <p style="font-size:.78rem;color:#9aa6b8;margin-top:14px;">
+    Comparison prepared 13 May 2026. All factual statements extracted from the cited regulations. Where a topic is not addressed in one document, this is marked "Not specified" / "Unique to". This is an analytical comparison and not an official endorsement by either institution.
+  </p>
+</footer>
+
+</body>
+</html>
